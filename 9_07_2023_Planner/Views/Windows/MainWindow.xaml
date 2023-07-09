@@ -6,11 +6,27 @@
         xmlns:local="clr-namespace:_9_07_2023_Planner.Views.Windows"
         xmlns:dataContext="clr-namespace:_9_07_2023_Planner.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="{Binding Path=Title}" Height="450" Width="800">
     <Window.DataContext>
         <dataContext:MainWindowViewModel></dataContext:MainWindowViewModel>
     </Window.DataContext>
-    <Grid>
-        
-    </Grid>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="Exit"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Settings">
+                <MenuItem Header="Language"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Header="Info"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <StatusBar DockPanel.Dock="Bottom">
+            
+        </StatusBar>
+        <StackPanel>
+            
+        </StackPanel>
+    </DockPanel>
 </Window>
