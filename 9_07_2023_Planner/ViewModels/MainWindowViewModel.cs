@@ -14,9 +14,13 @@ namespace _9_07_2023_Planner.ViewModels
         //_9_07_2023_Planner.Data.TextData TextData = new Data.TextData();
 
         #region ЗАГОЛОВОК ОКНА
-        /// <summary>ЗАГОЛОВОК ОКНА</summary>
+
+        /// <summary>Заголовок окна </summary>
+
         private string _title = TextData.ApplicationTitle;
+        /// <summary>Заголовок окна</summary>
         public string Title { get => _title; set => Set(ref _title, value); }
+        /// <summary>Заголовок окна</summary>
         #endregion
 
 
