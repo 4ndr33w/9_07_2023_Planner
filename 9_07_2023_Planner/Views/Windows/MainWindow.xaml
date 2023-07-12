@@ -13,10 +13,10 @@
         <dataContext:MainWindowViewModel></dataContext:MainWindowViewModel>
     </Window.DataContext>
     <Window.InputBindings>
-        <KeyBinding Modifiers="Ctrl" Key="Q">
-            <KeyBinding.Command>
+        <KeyBinding Modifiers="Ctrl" Key="Q" Command="{StaticResource CloseAppCommand}">
+            <!--<KeyBinding.Command>
                 <cmd:CloseApplicationCommand/>
-            </KeyBinding.Command>
+            </KeyBinding.Command>-->
         </KeyBinding>
     </Window.InputBindings>
     <DockPanel>
@@ -25,11 +25,7 @@
         </DockPanel.DataContext>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="File">
-                <MenuItem Header="Exit">
-                    <MenuItem.Command>
-                        <cmd:CloseApplicationCommand/>
-                    </MenuItem.Command>
-                </MenuItem>
+                <MenuItem Header="Exit" Command="{StaticResource CloseAppCommand}"/>
             </MenuItem>
             <MenuItem Header="Settings">
                 <MenuItem Header="Language"></MenuItem>

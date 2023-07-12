@@ -2,8 +2,9 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:_9_07_2023_Planner"
+             xmlns:commands="clr-namespace:_9_07_2023_Planner.Infrastructure.Commands"
     StartupUri="Views/Windows/MainWindow.xaml">
     <Application.Resources>
-         
+        <commands:CloseApplicationCommand x:Key="CloseAppCommand"/>
     </Application.Resources>
 </Application>
