@@ -70,6 +70,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\Components\LeftPanel\InformativeButton_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Components\LeftPanel\TaskGroupPanel_UserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -87,7 +91,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Data\TextData.cs" />
-    <Compile Include="Infrastructure\Commands\AddNewTaskGroupCommand.cs" />
     <Compile Include="Infrastructure\Commands\Base\CommandBase.cs" />
     <Compile Include="Infrastructure\Commands\CloseApplicationCommand.cs" />
     <Compile Include="Infrastructure\Commands\MainWindowCommands\AddNewTaskGroup_ShowWindowCommand.cs" />
@@ -97,6 +100,9 @@
     <Compile Include="Models\ViewPanelTemplate\TaskGroupTemplate.cs" />
     <Compile Include="ViewModels\Base\ViewModelBase.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="Views\Components\LeftPanel\InformativeButton_UserControl.xaml.cs">
+      <DependentUpon>InformativeButton_UserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Components\LeftPanel\TaskGroupPanel_UserControl.xaml.cs">
       <DependentUpon>TaskGroupPanel_UserControl.xaml</DependentUpon>
     </Compile>

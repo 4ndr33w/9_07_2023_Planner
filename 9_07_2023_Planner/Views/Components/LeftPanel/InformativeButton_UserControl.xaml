@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="_9_07_2023_Planner.Views.Components.LeftPanel.InformativeButton_UserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:_9_07_2023_Planner.Views.Components.LeftPanel"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style x:Key="InformativeButtonCounterStyle">
+            <Setter Property="TextBox.Foreground" Value="Black"/>
+            <Setter Property="TextBox.Width" Value="35"/>
+            <Setter Property="TextBox.Background" Value="White"/>
+            <Setter Property="TextBox.BorderThickness" Value="1"/>
+            <Setter Property="TextBox.BorderBrush" Value="DarkGray"/>
+            <Setter Property="TextBox.Margin" Value="1,1,15,1"/>
+            <Setter Property="DockPanel.Dock" Value="Right"/>
+            <Setter Property="TextBox.IsEnabled" Value="False"/>
+            <Setter Property="TextBox.HorizontalContentAlignment" Value="Center"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <StackPanel x:Name="InformativeButtonStackPanel">
+            <Button x:Name="InformativeButton" Background="Transparent">
+                <DockPanel LastChildFill="False"
+                           HorizontalAlignment="Stretch"
+                           Width="200">
+                    <TextBlock Foreground="LightGray"
+                               DockPanel.Dock="Left"
+                               Margin="15,1,1,1"
+                               x:Name="InformativeButtonTitleTextBlock"
+                               Text="{Binding TodayButton.Title, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox x:Name="InformativeButtonCounterTextBox"
+                             Style="{StaticResource InformativeButtonCounterStyle}" Text="{Binding TodayButton.Counter}"/>
+                    <!--Text="{Binding Path=Counter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
+                </DockPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

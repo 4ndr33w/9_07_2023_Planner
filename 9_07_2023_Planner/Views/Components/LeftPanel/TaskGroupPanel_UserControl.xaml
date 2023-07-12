@@ -60,8 +60,8 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-                <Label/>
-                <Button Content="Load Saved Groups" Background="Transparent" Foreground="Black" Command="{Binding GenerateTaskListCommand}"/>
+                <!--<Label/>
+                <Button Content="Load Saved Groups" Background="Transparent" Foreground="Black" Command="{Binding GenerateTaskListCommand}"/>-->
             </StackPanel>
         </Expander>
     </Grid>
