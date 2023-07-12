@@ -15,11 +15,11 @@ namespace _9_07_2023_Planner
     /// </summary>
     public partial class App : Application
     {
-        MainWindowViewModel _vm = new MainWindowViewModel();
+        //MainWindowViewModel _vm = new MainWindowViewModel();
 
-        public App() 
-        {
-            new MainWindow() { DataContext = _vm }.ShowDialog();
-        }
+        //public App() 
+        //{
+        //    new MainWindow() { DataContext = _vm }.ShowDialog();
+        //}
     }
 }

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:_9_07_2023_Planner.Views.Components.LeftPanel"
              xmlns:dataContext="clr-namespace:_9_07_2023_Planner.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="350" d:DesignWidth="290">
+             d:DesignHeight="350" d:DesignWidth="290" Background="White">
     <UserControl.DataContext>
         <dataContext:MainWindowViewModel></dataContext:MainWindowViewModel>
     </UserControl.DataContext>

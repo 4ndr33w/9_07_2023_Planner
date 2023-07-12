@@ -5,19 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_9_07_2023_Planner.Views.Windows"
         xmlns:dataContext="clr-namespace:_9_07_2023_Planner.ViewModels"
+        xmlns:cmd="clr-namespace:_9_07_2023_Planner.Infrastructure.Commands"
         mc:Ignorable="d"
         xmlns:taskGroupPanel="clr-namespace:_9_07_2023_Planner.Views.Components.LeftPanel"
-        Title="{Binding Path=Title}" Height="400" Width="800" x:Name="mainWindow">
+        Title="{Binding Path=Title}" Height="500" Width="1000" x:Name="mainWindow">
     <Window.DataContext>
         <dataContext:MainWindowViewModel></dataContext:MainWindowViewModel>
     </Window.DataContext>
+    <Window.InputBindings>
+        <KeyBinding Modifiers="Ctrl" Key="Q">
+            <KeyBinding.Command>
+                <cmd:CloseApplicationCommand/>
+            </KeyBinding.Command>
+        </KeyBinding>
+    </Window.InputBindings>
     <DockPanel>
         <DockPanel.DataContext>
             <dataContext:MainWindowViewModel></dataContext:MainWindowViewModel>
         </DockPanel.DataContext>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="File">
-                <MenuItem Header="Exit"></MenuItem>
+                <MenuItem Header="Exit">
+                    <MenuItem.Command>
+                        <cmd:CloseApplicationCommand/>
+                    </MenuItem.Command>
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="Settings">
                 <MenuItem Header="Language"></MenuItem>
@@ -46,7 +58,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="300"/>
                     <ColumnDefinition Width="450"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition/>
 
                 </Grid.ColumnDefinitions>
                 <GridSplitter BorderBrush="DimGray" BorderThickness="0" Grid.Column="0" Margin="1,5,1,5" MinWidth="150" Background="Transparent"/>
