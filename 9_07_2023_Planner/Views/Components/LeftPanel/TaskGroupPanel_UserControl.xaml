@@ -21,7 +21,7 @@
             <StackPanel Background="Transparent">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button x:Name="AddTaskGroupButton" Content="+ Add Group" Background="Transparent" Foreground="Black" BorderBrush="White" BorderThickness="0"
-                            HorizontalAlignment="Center" Width="85" Margin="1,0,1,0" Command="{StaticResource ShowChildWindowOfNewTaskGroupCommand}"/>
+                            HorizontalAlignment="Center" Width="85" Margin="1,0,1,0" Command="{StaticResource ShowChildWindowOfNewTaskGroupCommand}" CommandParameter="{Binding ElementName=TaskGroupListBox}"/>
                     <Button x:Name="EditTaskGroupButton" Content="Edit Group" Background="Transparent" Foreground="Black" BorderBrush="White" BorderThickness="0"
                             HorizontalAlignment="Center" Width="70" Margin="1,0,1,0" Command="{Binding EditGroupCommand}" CommandParameter="{Binding SelectedGroup}"/>
                     <!--<Button x:Name="DeleteTaskGroupButton" Content="Delete Group" Background="Transparent" Foreground="White" BorderBrush="White" BorderThickness="0"

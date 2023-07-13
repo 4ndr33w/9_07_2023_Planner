@@ -18,16 +18,12 @@ namespace _9_07_2023_Planner.Infrastructure.Commands
 
         public override void Execute(object parameter)
         {
-            MainWindowViewModel mainVM = new MainWindowViewModel();
             if (parameter != null)
             {
-                #region пока что работает
                 var list = (ListBox)parameter;
                 var selectedItem = list.SelectedItem as TaskGroupTemplate;
                 var selectedIndex = list.SelectedIndex;
                 (list.DataContext as MainWindowViewModel).GroupList.Remove(selectedItem).ToString();
-                //MessageBox.Show((list.DataContext as MainWindowViewModel).GroupList.Remove(selectedItem).ToString());
-                #endregion
             }
         }
     }

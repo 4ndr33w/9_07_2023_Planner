@@ -6,6 +6,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using _9_07_2023_Planner.Views.Windows.ChildWindows;
+using System.Windows.Controls;
 
 namespace _9_07_2023_Planner.Infrastructure.Commands.MainWindowCommands
 {
@@ -16,7 +17,7 @@ namespace _9_07_2023_Planner.Infrastructure.Commands.MainWindowCommands
         public override void Execute(object parameter)
         {
             SetWindowOwnerSetPositionAndShow setWindowOwnerSetPositionAndShow = new SetWindowOwnerSetPositionAndShow();
-            AddNewTaskGroupWindow newTaskGroupWindow = new AddNewTaskGroupWindow();
+            AddNewTaskGroupWindow newTaskGroupWindow = new AddNewTaskGroupWindow(parameter as ListBox);
             setWindowOwnerSetPositionAndShow.SetPositionAndShowModalWindow(newTaskGroupWindow);
         }
     }

@@ -19,6 +19,13 @@ namespace _9_07_2023_Planner.Views.Windows.ChildWindows
     /// </summary>
     public partial class AddNewTaskGroupWindow : Window
     {
+        public ListBox taskGroupListBox = new ListBox();
+        public AddNewTaskGroupWindow(ListBox listBox)
+        {
+            InitializeComponent();
+            this.taskGroupListBox = listBox;
+        }
+
         public AddNewTaskGroupWindow()
         {
             InitializeComponent();
