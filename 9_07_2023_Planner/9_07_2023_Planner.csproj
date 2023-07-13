@@ -78,6 +78,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Components\RightPanel\RightPanel_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Windows\ChildWindows\AddNewTaskGroupWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -105,6 +109,9 @@
     </Compile>
     <Compile Include="Views\Components\LeftPanel\TaskGroupPanel_UserControl.xaml.cs">
       <DependentUpon>TaskGroupPanel_UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Components\RightPanel\RightPanel_UserControl.xaml.cs">
+      <DependentUpon>RightPanel_UserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Windows\ChildWindows\AddNewTaskGroupWindow.xaml.cs">
       <DependentUpon>AddNewTaskGroupWindow.xaml</DependentUpon>
