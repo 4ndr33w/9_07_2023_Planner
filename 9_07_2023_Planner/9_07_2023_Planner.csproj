@@ -70,11 +70,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Infrastructure\Commands\DeleteTaskGroup_ShowRequestWindowCommand.cs" />
+    <Compile Include="Views\Components\RequestWindowComponents\DeleteTaskGroupRequest_UserControl.xaml.cs">
+      <DependentUpon>DeleteTaskGroupRequest_UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\RequestWindows\RequestWindow.xaml.cs">
+      <DependentUpon>RequestWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="Views\Components\LeftPanel\InformativeButton_UserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Components\LeftPanel\TaskGroupPanel_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Components\MiddlePanel\TaskPanel_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Components\RequestWindowComponents\DeleteTaskGroupRequest_UserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -112,6 +127,9 @@
     <Compile Include="Views\Components\LeftPanel\TaskGroupPanel_UserControl.xaml.cs">
       <DependentUpon>TaskGroupPanel_UserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Components\MiddlePanel\TaskPanel_UserControl.xaml.cs">
+      <DependentUpon>TaskPanel_UserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Components\RightPanel\RightPanel_UserControl.xaml.cs">
       <DependentUpon>RightPanel_UserControl.xaml</DependentUpon>
     </Compile>
@@ -122,6 +140,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\Windows\RequestWindows\RequestWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -154,7 +176,6 @@
     <Folder Include="Languages\" />
     <Folder Include="Styles\" />
     <Folder Include="Views\Components\ChildWindowComponents\" />
-    <Folder Include="Views\Components\MiddlePanel\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">

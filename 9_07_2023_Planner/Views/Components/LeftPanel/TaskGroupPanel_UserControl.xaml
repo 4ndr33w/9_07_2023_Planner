@@ -36,11 +36,11 @@
                             <DockPanel LastChildFill="True" Background="Transparent">
 
                                 <StackPanel Orientation="Horizontal" DockPanel.Dock="Left" Background="Transparent" Width="200">
-                                    <Button Visibility="{Binding DeleteButtonVisibility}" Background="DimGray"
-                                            Command="{StaticResource DeleteTaskGroupCommand}"
+                                    <Button Visibility="{Binding DeleteButtonVisibility}" Background="Transparent"
+                                            Command="{StaticResource DeleteGroupRequestWindowCommand}"
                                             CommandParameter="{Binding ElementName=TaskGroupListBox}" CommandTarget="{Binding ElementName=dataTemplateItem}">
                                         <Label BorderBrush="Red" BorderThickness="1" Content=" X " Foreground="Red"  FontSize="10"
-                                               HorizontalContentAlignment="Center" Width="30" Height="18" Background="DarkSlateGray"
+                                               HorizontalContentAlignment="Center" Width="30" Height="18" Background="Transparent"
                                                VerticalContentAlignment="Center" Padding="0"/>
                                         <!--Command="ApplicationCommands.Delete"-->
                                     </Button>

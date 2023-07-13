@@ -7,9 +7,9 @@ using System.Windows;
 
 namespace _9_07_2023_Planner.Infrastructure
 {
-    internal class SetWindowOwnerSetPositionAndShow
+    internal static class SetWindowOwnerSetPositionAndShow
     {
-        internal void SetPositionAndShowModalWindow(Window window)
+        internal static void SetPositionAndShowModalWindow(Window window)
         {
             window.Owner = System.Windows.Application.Current.MainWindow;
             window.WindowStartupLocation = WindowStartupLocation.CenterOwner;

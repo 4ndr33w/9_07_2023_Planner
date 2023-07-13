@@ -10,6 +10,7 @@
         <commonCommands:CloseApplicationCommand x:Key="CloseAppCommand"/>
         <commonCommands:AddNewTaskGroupIntoListCommand x:Key="AddNewTaskGroupCommand"/>
         <commonCommands:DeleteTaskGroupCommand x:Key="DeleteTaskGroupCommand"/>
+        <commonCommands:DeleteTaskGroup_ShowRequestWindowCommand x:Key="DeleteGroupRequestWindowCommand"/>
         <mainWindowCommands:AddNewTaskGroup_ShowWindowCommand x:Key="ShowChildWindowOfNewTaskGroupCommand"/>
         <groupsContext:MainWindowViewModel x:Key="mainWindowVM"/>
     </Application.Resources>

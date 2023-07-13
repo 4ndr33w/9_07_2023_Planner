@@ -15,6 +15,30 @@ namespace _9_07_2023_Planner.ViewModels
         #region FIELDS
         //_9_07_2023_Planner.Data.TextData TextData = new Data.TextData();
 
+        #region REQUEST WINDOW USER-CONTROL VISIBILITY
+        private string _deleteGroupRequestWindowUserControlVisibility = "Collapsed";
+        private string _deleteTaskRequestWindowUserControlVisibility = "Collapsed";
+
+        public string DeleteGroupRequestWindowUserControlVisibility
+        {
+            get => _deleteGroupRequestWindowUserControlVisibility;
+            set 
+            { 
+                Set(ref _deleteGroupRequestWindowUserControlVisibility, value);
+                if (value == "Visible") DeleteTaskRequestWindowUserControlVisibility = "Collapsed";
+            }
+        }
+        public string DeleteTaskRequestWindowUserControlVisibility
+        {
+            get => _deleteTaskRequestWindowUserControlVisibility;
+            set
+            {
+                Set(ref _deleteTaskRequestWindowUserControlVisibility, value);
+                if (value == "Visible") DeleteGroupRequestWindowUserControlVisibility = "Collapsed";
+            }
+        }
+        #endregion
+
         #region ЗАГОЛОВОК ОКНА
 
         /// <summary>Заголовок окна </summary>

@@ -19,19 +19,19 @@ namespace _9_07_2023_Planner.Infrastructure.Commands
 
         public override void Execute(object parameter)
         {
-            var groupWindow = (Window)parameter;
+            var addGroupWindow = (Window)parameter;
 
-            var _groupColor = (groupWindow as AddNewTaskGroupWindow).colorTextBox.Text;
-            var _groupName = (groupWindow as AddNewTaskGroupWindow).groupNameTextBox.Text;
+            var _groupColor = (addGroupWindow as AddNewTaskGroupWindow).colorTextBox.Text;
+            var _groupName = (addGroupWindow as AddNewTaskGroupWindow).groupNameTextBox.Text;
 
-            (((groupWindow as AddNewTaskGroupWindow).
+            (((addGroupWindow as AddNewTaskGroupWindow).
                 taskGroupListBox as ListBox).
                 DataContext as MainWindowViewModel).
                 GroupList.Add(new TaskGroupTemplate(_groupColor, _groupName));
-            ((groupWindow as AddNewTaskGroupWindow).
+            ((addGroupWindow as AddNewTaskGroupWindow).
                 taskGroupListBox as ListBox).SelectedIndex = -1;
 
-            groupWindow.Hide();
+            addGroupWindow.Hide();
         }
     }
 }

@@ -10,12 +10,16 @@ namespace _9_07_2023_Planner.Models
 {
     internal class TaskGroupModel //: ViewModelBase
     {
+        protected long _groupId;
+        protected string _complexId;
         protected string _color = Colors.LawnGreen.ToString();
         protected string _group_name = "Default Group";
         protected string _execution_of = "Me";
         protected int _counter = 0;
         protected string _userIdentifier = "abc123";
 
+        public long GroupId { get => _groupId; set => _groupId = value; }
+        public string ComplexId { get => _complexId; set => _complexId = value; }
         public string GroupColor { get => _color; set { _color = value;/* OnPropertyChanged("GroupColor"); */} }
         public string ExecutionOf { get => _execution_of; set { _execution_of = value;/* OnPropertyChanged("ExecutionOf"); */} }
         public int Counter { get => _counter; set { _counter = value;/* OnPropertyChanged("Counter"); */} }
