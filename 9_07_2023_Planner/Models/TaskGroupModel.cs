@@ -57,6 +57,13 @@ namespace _9_07_2023_Planner.Models
             _execution_of = executor;
             _counter = counter;
         }
+        public TaskGroupModel(string color, string groupName)
+        {
+            _color = color;
+            _group_name = groupName;
+            _execution_of = "Me";
+            _counter = 0;
+        }
 
         public bool GroupEquals(TaskGroupModel compareData)
         {

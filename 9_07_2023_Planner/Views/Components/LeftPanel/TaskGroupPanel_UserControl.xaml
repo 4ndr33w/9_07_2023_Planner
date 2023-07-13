@@ -8,13 +8,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="350" d:DesignWidth="290" Background="White">
     <UserControl.DataContext>
-        <dataContext:MainWindowViewModel></dataContext:MainWindowViewModel>
+        <dataContext:MainWindowViewModel/>
     </UserControl.DataContext>
     <Grid>
         <Expander IsEnabled="True"
                   IsExpanded="True"
                   Background="Transparent"
-                  Header="Group of My tasks"
+                  Header="Executor"
                   Foreground="Black"
                   BorderBrush="White"
                   BorderThickness="1">
@@ -27,17 +27,18 @@
                     <!--<Button x:Name="DeleteTaskGroupButton" Content="Delete Group" Background="Transparent" Foreground="White" BorderBrush="White" BorderThickness="0"
                             HorizontalAlignment="Center" Width="85" Margin="1,0,1,0"  Command="{Binding ShowDeleteGroupRequestWindowCommand}"/>-->
                 </StackPanel>
-                <ListBox Background="Transparent" x:Name="TaskGroupListBox"  Tag="AncestorLevel 1"
-                         ItemsSource="{Binding GroupList, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedGroup}"
+                <ListBox Background="Transparent" x:Name="TaskGroupListBox" Tag="AncestorLevel 1"
+                         SelectedItem="{Binding SelectedGroup}" ItemsSource="{Binding GroupList, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                          SelectionMode="Single" SelectionChanged="TaskGroupListBox_SelectionChanged">
+                    <!--ItemsSource="{Binding GroupList, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"-->
                     <ListBox.ItemTemplate>
                         <DataTemplate x:Name="dataTemplateItem">
                             <DockPanel LastChildFill="True" Background="Transparent">
 
                                 <StackPanel Orientation="Horizontal" DockPanel.Dock="Left" Background="Transparent" Width="200">
                                     <Button Visibility="{Binding DeleteButtonVisibility}" Background="DimGray"
-                                                    Command="ApplicationCommands.Delete"
-                                            CommandParameter="{Binding SelectedItem}" CommandTarget="{Binding ElementName=dataTemplateItem}">
+                                            Command="{StaticResource DeleteTaskGroupCommand}"
+                                            CommandParameter="{Binding ElementName=TaskGroupListBox}" CommandTarget="{Binding ElementName=dataTemplateItem}">
                                         <Label BorderBrush="Red" BorderThickness="1" Content=" X " Foreground="Red"  FontSize="10"
                                                HorizontalContentAlignment="Center" Width="30" Height="18" Background="DarkSlateGray"
                                                VerticalContentAlignment="Center" Padding="0"/>
@@ -48,7 +49,7 @@
                                     <TextBox Background="Transparent" VerticalAlignment="Center" IsEnabled="False"
                                              BorderBrush="Transparent" HorizontalAlignment="Right"
                                              HorizontalContentAlignment="Center" Foreground="Black"
-                                             Margin="10,0,0,0" Text="{Binding GroupName}"/>
+                                             Margin="10,0,0,0" Text="{Binding Path=GroupName}"/>
                                 </StackPanel>
                                 <TextBlock Text=" "/>
                                 <TextBox DockPanel.Dock="Right" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"

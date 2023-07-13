@@ -6,20 +6,21 @@
         xmlns:local="clr-namespace:_9_07_2023_Planner.Views.Windows.ChildWindows"
         xmlns:dataContext="clr-namespace:_9_07_2023_Planner.ViewModels"
         mc:Ignorable="d"
-        Title="AddNewTaskGroupWindow" Height="200" Width="340" WindowStyle="None">
+        Title="AddNewTaskGroupWindow" Height="200" Width="340" WindowStyle="None"
+        x:Name="addNewTaskGroupWindow">
     <Grid>
         <StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
                 <Button Content="Close" Width="70" IsCancel="True"/>
-                <Button Content="OK" Width="70"/>
+                <Button Content="OK" Width="70" Command="{StaticResource AddNewTaskGroupCommand}" CommandParameter="{Binding ElementName=addNewTaskGroupWindow}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Label Width="150" Content="Color" HorizontalContentAlignment="Center"/>
                 <Label Width="150" Content="Group Name" HorizontalContentAlignment="Center"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="10,0" HorizontalAlignment="Center">
-                <TextBox Width="150" Height="20"/>
-                <TextBox Width="150" Height="20"/>
+                <TextBox Width="150" Height="20" x:Name="colorTextBox"/>
+                <TextBox Width="150" Height="20" x:Name="groupNameTextBox"/>
             </StackPanel>
         </StackPanel>
        

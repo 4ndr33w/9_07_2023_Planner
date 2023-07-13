@@ -30,16 +30,17 @@ namespace _9_07_2023_Planner.ViewModels
 
         public TaskGroupTemplate SelectedGroup
         {
-            get { return _selectedGroup; }
+            get => _selectedGroup;
             set
             {
                 foreach (var item in GroupList)
                 {
                     item.DeleteButtonVisibility = "Collapsed";
                 }
-                _selectedGroup = value;
+                Set(ref _selectedGroup, value);
+                //_selectedGroup = value;
                 if (GroupList.IndexOf(SelectedGroup) > -1) GroupList[GroupList.IndexOf(SelectedGroup)].DeleteButtonVisibility = "Visible";
-                OnPropertyChanged(nameof(SelectedGroup));
+                //OnPropertyChanged(nameof(SelectedGroup));
             }
         }
         #endregion
@@ -47,10 +48,7 @@ namespace _9_07_2023_Planner.ViewModels
         #region СПИСОК ГРУПП
         private ObservableCollection<TaskGroupTemplate> _groupList = new ObservableCollection<TaskGroupTemplate>();
         public ObservableCollection<TaskGroupTemplate> GroupList
-        {
-            get { return _groupList; }
-            set { _groupList = value; OnPropertyChanged(nameof(GroupList)); }
-        }
+        { get => _groupList; set => Set(ref _groupList, value); }
         #endregion
 
 
@@ -61,6 +59,8 @@ namespace _9_07_2023_Planner.ViewModels
         #region CTOR
 
         public MainWindowViewModel() { OnStartup();  }
+
+        public MainWindowViewModel(ObservableCollection<TaskGroupTemplate> groupList) { OnStartup(); GroupList = groupList; }
 
         #endregion
 

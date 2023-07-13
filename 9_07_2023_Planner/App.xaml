@@ -2,11 +2,15 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:_9_07_2023_Planner"
+             xmlns:groupsContext="clr-namespace:_9_07_2023_Planner.ViewModels"
              xmlns:commonCommands="clr-namespace:_9_07_2023_Planner.Infrastructure.Commands"
              xmlns:mainWindowCommands="clr-namespace:_9_07_2023_Planner.Infrastructure.Commands.MainWindowCommands"
     StartupUri="Views/Windows/MainWindow.xaml">
     <Application.Resources>
         <commonCommands:CloseApplicationCommand x:Key="CloseAppCommand"/>
+        <commonCommands:AddNewTaskGroupIntoListCommand x:Key="AddNewTaskGroupCommand"/>
+        <commonCommands:DeleteTaskGroupCommand x:Key="DeleteTaskGroupCommand"/>
         <mainWindowCommands:AddNewTaskGroup_ShowWindowCommand x:Key="ShowChildWindowOfNewTaskGroupCommand"/>
+        <groupsContext:MainWindowViewModel x:Key="mainWindowVM"/>
     </Application.Resources>
 </Application>

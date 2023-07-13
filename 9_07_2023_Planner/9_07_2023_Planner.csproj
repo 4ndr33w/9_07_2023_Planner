@@ -95,8 +95,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Data\TextData.cs" />
+    <Compile Include="Infrastructure\Commands\AddNewTaskGroupIntoListCommand.cs" />
     <Compile Include="Infrastructure\Commands\Base\CommandBase.cs" />
     <Compile Include="Infrastructure\Commands\CloseApplicationCommand.cs" />
+    <Compile Include="Infrastructure\Commands\DeleteTaskGroupCommand.cs" />
     <Compile Include="Infrastructure\Commands\MainWindowCommands\AddNewTaskGroup_ShowWindowCommand.cs" />
     <Compile Include="Infrastructure\RelayCommand.cs" />
     <Compile Include="Infrastructure\SetWindowOwnerSetPositionAndShow.cs" />

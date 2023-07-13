@@ -62,7 +62,9 @@
                             <Calendar/>
                             <taskGroupPanel:InformativeButton_UserControl Margin="10,5,10,1"/>
                             <taskGroupPanel:InformativeButton_UserControl Margin="10,1,10,5"/>
-                            <taskGroupPanel:TaskGroupPanel_UserControl/>
+                            <taskGroupPanel:TaskGroupPanel_UserControl>
+                                
+                            </taskGroupPanel:TaskGroupPanel_UserControl>
                             <taskGroupPanel:TaskGroupPanel_UserControl/>
                             <taskGroupPanel:InformativeButton_UserControl Margin="10,5,10,1"/>
                             <taskGroupPanel:InformativeButton_UserControl Margin="10,1,10,5"/>
