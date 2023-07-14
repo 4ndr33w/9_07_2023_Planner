@@ -29,7 +29,7 @@
                 </StackPanel>
                 <ListBox Background="Transparent" x:Name="TaskGroupListBox" Tag="AncestorLevel 1"
                          SelectedItem="{Binding SelectedGroup}" ItemsSource="{Binding GroupList, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                         SelectionMode="Single" SelectionChanged="TaskGroupListBox_SelectionChanged">
+                         SelectionMode="Single" SelectionChanged="TaskGroupListBox_SelectionChanged" SelectedIndex="{Binding SelectedIndex}">
                     <!--ItemsSource="{Binding GroupList, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"-->
                     <ListBox.ItemTemplate>
                         <DataTemplate x:Name="dataTemplateItem">
@@ -38,7 +38,8 @@
                                 <StackPanel Orientation="Horizontal" DockPanel.Dock="Left" Background="Transparent" Width="200">
                                     <Button Visibility="{Binding DeleteButtonVisibility}" Background="Transparent"
                                             Command="{StaticResource DeleteGroupRequestWindowCommand}"
-                                            CommandParameter="{Binding ElementName=TaskGroupListBox}" CommandTarget="{Binding ElementName=dataTemplateItem}">
+                                            CommandParameter="{Binding ElementName=TaskGroupListBox}">
+                                        <!--CommandTarget="{Binding ElementName=dataTemplateItem}"-->
                                         <Label BorderBrush="Red" BorderThickness="1" Content=" X " Foreground="Red"  FontSize="10"
                                                HorizontalContentAlignment="Center" Width="30" Height="18" Background="Transparent"
                                                VerticalContentAlignment="Center" Padding="0"/>

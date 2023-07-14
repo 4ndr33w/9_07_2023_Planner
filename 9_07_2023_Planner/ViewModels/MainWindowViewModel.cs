@@ -69,6 +69,11 @@ namespace _9_07_2023_Planner.ViewModels
         }
         #endregion
 
+        #region SELECTED INDEX
+        private int _selectedIndex = -1;
+        public int SelectedIndex { get => _selectedIndex; set => Set(ref _selectedIndex, value); }
+        #endregion
+
         #region СПИСОК ГРУПП
         private ObservableCollection<TaskGroupTemplate> _groupList = new ObservableCollection<TaskGroupTemplate>();
         public ObservableCollection<TaskGroupTemplate> GroupList

@@ -6,6 +6,9 @@
              xmlns:local="clr-namespace:_9_07_2023_Planner.Views.Components.RequestWindowComponents"
              xmlns:dataContext="clr-namespace:_9_07_2023_Planner.ViewModels"
              mc:Ignorable="d" x:Name="deleteTaskGroupRequestWindow_UserControl">
+    <UserControl.DataContext>
+        <dataContext:MainWindowViewModel/>
+    </UserControl.DataContext>
     <Grid>
         <StackPanel>
             <TextBlock Text="Удалить группу со всеми входящими в неё задачами?" Foreground="Black" HorizontalAlignment="Center" Margin="10,20,10,20"/>
@@ -14,6 +17,7 @@
                 <Button x:Name="Btn_OK" Width="80" Content="OK" Background="Transparent" Foreground="Black" Margin="10,15,0,30" Padding="10,5,10,5"
                         Command="{StaticResource DeleteTaskGroupCommand}" CommandParameter="{Binding ElementName=deleteTaskGroupRequestWindow_UserControl}"/>
             </StackPanel>
+            <ListBox Visibility="Collapsed" x:Name="testListBox" DataContext="{Binding}"></ListBox>
         </StackPanel>
     </Grid>
 </UserControl>

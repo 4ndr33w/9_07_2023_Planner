@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _9_07_2023_Planner.Views.Components.RequestWindowComponents;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,16 +20,19 @@ namespace _9_07_2023_Planner.Views.Windows.RequestWindows
     /// </summary>
     public partial class RequestWindow : Window
     {
-        public ListBox _listBox = new ListBox();
         public object _parameter;
         public RequestWindow()
         {
             InitializeComponent();
+            DeleteTaskGroupRequest_UserControl deleteTaskGroupRequest_UserControl = new DeleteTaskGroupRequest_UserControl(this);
+            //MessageBox.Show(this.ToString());
         }
         public RequestWindow(object parameter)
         {
             InitializeComponent();
             _parameter = parameter;
+            //DeleteTaskGroupRequest_UserControl deleteTaskGroupRequest_UserControl = new DeleteTaskGroupRequest_UserControl(this);
+            //MessageBox.Show(this.ToString());
         }
     }
 }
