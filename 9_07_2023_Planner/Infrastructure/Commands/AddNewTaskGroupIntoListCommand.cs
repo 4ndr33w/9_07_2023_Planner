@@ -36,6 +36,7 @@ namespace _9_07_2023_Planner.Infrastructure.Commands
             var groupList = mainVM.GroupList;
 
             groupList.Add(new TaskGroupTemplate(_groupColor, _groupName));
+            groupList = new System.Collections.ObjectModel.ObservableCollection<TaskGroupTemplate>(groupList);
 
             groupListBox.SelectedIndex = -1;
 

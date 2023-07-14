@@ -11,6 +11,9 @@
         <commonCommands:AddNewTaskGroupIntoListCommand x:Key="AddNewTaskGroupCommand"/>
         <commonCommands:DeleteTaskGroupCommand x:Key="DeleteTaskGroupCommand"/>
         <commonCommands:DeleteTaskGroup_ShowRequestWindowCommand x:Key="DeleteGroupRequestWindowCommand"/>
+        <commonCommands:AddNewTask_ShowWindowComand x:Key="ShowChildWindowOfNewTaskCommand"/>
+
+
         <mainWindowCommands:AddNewTaskGroup_ShowWindowCommand x:Key="ShowChildWindowOfNewTaskGroupCommand"/>
         <groupsContext:MainWindowViewModel x:Key="mainWindowVM"/>
     </Application.Resources>

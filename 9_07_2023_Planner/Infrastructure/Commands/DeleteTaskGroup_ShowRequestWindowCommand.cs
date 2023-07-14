@@ -28,7 +28,7 @@ namespace _9_07_2023_Planner.Infrastructure.Commands
             var dataContext = listBox.DataContext as MainWindowViewModel;
             //MessageBox.Show(dataContext.Title);
             dataContext.DeleteGroupRequestWindowUserControlVisibility = "Visible";
-            SetWindowOwnerSetPositionAndShow.SetPositionAndShowModalWindow(requestWindow);
+            SetWindowOwnerSetPositionAndShow.ShowModalWindow(requestWindow);
 
             
 

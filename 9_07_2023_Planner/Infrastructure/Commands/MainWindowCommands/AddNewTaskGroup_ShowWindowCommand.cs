@@ -16,13 +16,8 @@ namespace _9_07_2023_Planner.Infrastructure.Commands.MainWindowCommands
 
         public override void Execute(object parameter)
         {
-            //SetWindowOwnerSetPositionAndShow setWindowOwnerSetPositionAndShow = new SetWindowOwnerSetPositionAndShow();
-            //AddNewTaskGroupWindow newTaskGroupWindow = new AddNewTaskGroupWindow(parameter as ListBox);
-            //setWindowOwnerSetPositionAndShow.SetPositionAndShowModalWindow(newTaskGroupWindow);
-
-            //SetWindowOwnerSetPositionAndShow setWindowOwnerSetPositionAndShow = new SetWindowOwnerSetPositionAndShow();
             AddNewTaskGroupWindow newTaskGroupWindow = new AddNewTaskGroupWindow(parameter as ListBox);
-            SetWindowOwnerSetPositionAndShow.SetPositionAndShowModalWindow(newTaskGroupWindow);
+            SetWindowOwnerSetPositionAndShow.ShowModalWindow(newTaskGroupWindow);
         }
     }
 }

@@ -16,9 +16,8 @@
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                     <Button Content="+ Create Task" Background="Transparent"
                             Foreground="White" BorderBrush="White"
-                            BorderThickness="2" Width="150"/>
-                    <Button Content="Genetate Test List" Background="Transparent" BorderBrush="White" BorderThickness="2"
-                            Command="{Binding GenerateTaskListCommand}"/>
+                            BorderThickness="2" Width="150"
+                            Command="{StaticResource ShowChildWindowOfNewTaskCommand}"/>
                 </StackPanel>
                 <StackPanel>
                     <Expander Header="Task Bar" IsExpanded="True" Foreground="White">

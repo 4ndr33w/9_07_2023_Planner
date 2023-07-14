@@ -99,11 +99,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DataHandlers\DataSerializer.cs" />
+    <Compile Include="Infrastructure\Commands\AddNewTask_ShowWindowComand.cs" />
     <Compile Include="Infrastructure\Commands\DeleteTaskGroup_ShowRequestWindowCommand.cs" />
     <Compile Include="Models\TaskModel.cs" />
     <Compile Include="Models\ViewPanelTemplate\TaskTemplate.cs" />
     <Compile Include="Views\Components\RequestWindowComponents\DeleteTaskGroupRequest_UserControl.xaml.cs">
       <DependentUpon>DeleteTaskGroupRequest_UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\ChildWindows\AddNewTaskWindow.xaml.cs">
+      <DependentUpon>AddNewTaskWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Windows\RequestWindows\RequestWindow.xaml.cs">
       <DependentUpon>RequestWindow.xaml</DependentUpon>
@@ -129,6 +133,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Windows\ChildWindows\AddNewTaskGroupWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Windows\ChildWindows\AddNewTaskWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -70,7 +70,7 @@ namespace _9_07_2023_Planner.ViewModels
                 }
                 Set(ref _selectedGroup, value);
                 //_selectedGroup = value;
-                if (GroupList.IndexOf(SelectedGroup) > -1) GroupList[GroupList.IndexOf(SelectedGroup)].DeleteButtonVisibility = "Visible";
+                if (SelectedGroupIndex > -1) GroupList[SelectedGroupIndex].DeleteButtonVisibility = "Visible";
                 //OnPropertyChanged(nameof(SelectedGroup));
             }
         }
@@ -84,7 +84,23 @@ namespace _9_07_2023_Planner.ViewModels
         #region СПИСОК ГРУПП
         private ObservableCollection<TaskGroupTemplate> _groupList = new ObservableCollection<TaskGroupTemplate>();
         public ObservableCollection<TaskGroupTemplate> GroupList
-        { get => _groupList; set => Set(ref _groupList, value); }
+        { 
+            get => _groupList;
+            set => _groupList = value;
+            //{
+            //    Set(ref _groupList, value);
+            //    if (SelectedGroupIndex > -1)
+            //    {
+            //        foreach (var item in GroupList)
+            //        {
+            //            item.DeleteButtonVisibility = "Collapsed";
+            //        }
+            //        GroupList[SelectedGroupIndex].DeleteButtonVisibility = "Visible";
+                    
+            //    }
+            //}
+
+        }
         #endregion
 
         #region СПИСОК ЗАДАЧ
@@ -122,9 +138,6 @@ namespace _9_07_2023_Planner.ViewModels
         public int SelectedTaskIndex { get => _selectedTaskIndex; set => Set(ref _selectedTaskIndex, value); }
         #endregion
 
-
-
-
         #endregion
 
         #region CTOR
@@ -140,7 +153,7 @@ namespace _9_07_2023_Planner.ViewModels
         {
             //GenerateGroupList();
             //GenerateTaskListMethod();
-            GenerateTaskListCommand = new RelayCommand(TestMethod);
+            //GenerateTaskListCommand = new RelayCommand(TestMethod);
             TryToDeserializeData();
         }
 
@@ -186,11 +199,6 @@ namespace _9_07_2023_Planner.ViewModels
         #endregion
 
         #region COMMANDS
-        public ICommand GenerateTaskListCommand { get; private set; }
-        private void TestMethod(object parameter)
-        {
-            MessageBox.Show(SelectedTaskIndex.ToString());
-        }
 
        
         #endregion

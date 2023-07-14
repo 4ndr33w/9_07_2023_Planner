@@ -29,7 +29,7 @@
                 </StackPanel>
                 <ListBox Background="Transparent" x:Name="TaskGroupListBox" Tag="AncestorLevel 1"
                          SelectedItem="{Binding SelectedGroup}" ItemsSource="{Binding GroupList, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                         SelectionMode="Single" SelectionChanged="TaskGroupListBox_SelectionChanged" SelectedIndex="{Binding SelectedGroupIndex}">
+                         SelectionMode="Single" SelectedIndex="{Binding SelectedGroupIndex}" SelectionChanged="TaskGroupListBox_SelectionChanged">
                     <!--ItemsSource="{Binding GroupList, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"-->
                     <ListBox.ItemTemplate>
                         <DataTemplate x:Name="dataTemplateItem">
