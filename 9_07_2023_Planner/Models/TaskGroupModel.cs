@@ -10,7 +10,8 @@ namespace _9_07_2023_Planner.Models
 {
     internal class TaskGroupModel //: ViewModelBase
     {
-        protected long _groupId;
+        //protected DateTime _id;
+        protected DateTime _groupId;
         protected string _complexId;
         protected string _color = Colors.LawnGreen.ToString();
         protected string _group_name = "Default Group";
@@ -18,7 +19,7 @@ namespace _9_07_2023_Planner.Models
         protected int _counter = 0;
         protected string _userIdentifier = "abc123";
 
-        public long GroupId { get => _groupId; set => _groupId = value; }
+        public DateTime GroupId { get => _groupId; set => _groupId = value; }
         public string ComplexId { get => _complexId; set => _complexId = value; }
         public string GroupColor { get => _color; set { _color = value;/* OnPropertyChanged("GroupColor"); */} }
         public string ExecutionOf { get => _execution_of; set { _execution_of = value;/* OnPropertyChanged("ExecutionOf"); */} }
@@ -28,10 +29,10 @@ namespace _9_07_2023_Planner.Models
             get { return _group_name; }
             set
             {
-                if (value.Length <= 13) { _group_name = value; }
+                if (value.Length <= 19) { _group_name = value; }
                 else
                 {
-                    _group_name = value.Substring(0, 12) + '.';
+                    _group_name = value.Substring(0, 18) + '.';
                     //OnPropertyChanged("GroupName");
                 }
             }
@@ -40,6 +41,7 @@ namespace _9_07_2023_Planner.Models
 
         public TaskGroupModel()
         {
+            _groupId = DateTime.UtcNow;
             _color = Colors.LawnGreen.ToString();
             _group_name = "Default Group";
             _execution_of = "Me";
@@ -48,6 +50,7 @@ namespace _9_07_2023_Planner.Models
 
         public TaskGroupModel(TaskGroupModel group)
         {
+            _groupId = group.GroupId;
             _color = group.GroupColor;
             _group_name = group.GroupName;
             _execution_of = group.ExecutionOf;
@@ -56,6 +59,7 @@ namespace _9_07_2023_Planner.Models
 
         public TaskGroupModel(string color, string groupName, string executor, int counter)
         {
+            _groupId = DateTime.UtcNow;
             _color = color;
             _group_name = groupName;
             _execution_of = executor;
@@ -63,6 +67,7 @@ namespace _9_07_2023_Planner.Models
         }
         public TaskGroupModel(string color, string groupName)
         {
+            _groupId = DateTime.UtcNow;
             _color = color;
             _group_name = groupName;
             _execution_of = "Me";

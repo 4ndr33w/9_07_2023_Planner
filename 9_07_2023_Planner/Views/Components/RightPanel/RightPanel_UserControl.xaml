@@ -7,17 +7,17 @@
              xmlns:dataContext="clr-namespace:_9_07_2023_Planner.ViewModels"
              xmlns:groupModel="clr-namespace:_9_07_2023_Planner.Models"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Background="White">
+             d:DesignHeight="450" d:DesignWidth="800" Background="Transparent">
     <UserControl.DataContext>
         <dataContext:MainWindowViewModel></dataContext:MainWindowViewModel>
     </UserControl.DataContext>
     <Grid>
-        <DataGrid ItemsSource="{Binding GroupList}">
+        <DataGrid ItemsSource="{Binding GroupList}" Background="Transparent">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="{Binding GroupList.Count}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate DataType="groupModel:TaskGroupModel">
-                            <DatePicker DisplayDate=""/>
+                            <DatePicker DisplayDate="" Background="Transparent"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

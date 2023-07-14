@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:_9_07_2023_Planner.Views.Components.LeftPanel"
              xmlns:dataContext="clr-namespace:_9_07_2023_Planner.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="350" d:DesignWidth="290" Background="White">
+             d:DesignHeight="350" d:DesignWidth="290" Background="Transparent">
     <UserControl.DataContext>
         <dataContext:MainWindowViewModel/>
     </UserControl.DataContext>
@@ -15,21 +15,21 @@
                   IsExpanded="True"
                   Background="Transparent"
                   Header="Executor"
-                  Foreground="Black"
+                  Foreground="White"
                   BorderBrush="White"
                   BorderThickness="1">
             <StackPanel Background="Transparent">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button x:Name="AddTaskGroupButton" Content="+ Add Group" Background="Transparent" Foreground="Black" BorderBrush="White" BorderThickness="0"
+                    <Button x:Name="AddTaskGroupButton" Content="+ Add Group" Background="Transparent" Foreground="White" BorderBrush="White" BorderThickness="0"
                             HorizontalAlignment="Center" Width="85" Margin="1,0,1,0" Command="{StaticResource ShowChildWindowOfNewTaskGroupCommand}" CommandParameter="{Binding ElementName=TaskGroupListBox}"/>
-                    <Button x:Name="EditTaskGroupButton" Content="Edit Group" Background="Transparent" Foreground="Black" BorderBrush="White" BorderThickness="0"
+                    <Button x:Name="EditTaskGroupButton" Content="Edit Group" Background="Transparent" Foreground="White" BorderBrush="White" BorderThickness="0"
                             HorizontalAlignment="Center" Width="70" Margin="1,0,1,0" Command="{Binding EditGroupCommand}" CommandParameter="{Binding SelectedGroup}"/>
                     <!--<Button x:Name="DeleteTaskGroupButton" Content="Delete Group" Background="Transparent" Foreground="White" BorderBrush="White" BorderThickness="0"
                             HorizontalAlignment="Center" Width="85" Margin="1,0,1,0"  Command="{Binding ShowDeleteGroupRequestWindowCommand}"/>-->
                 </StackPanel>
                 <ListBox Background="Transparent" x:Name="TaskGroupListBox" Tag="AncestorLevel 1"
                          SelectedItem="{Binding SelectedGroup}" ItemsSource="{Binding GroupList, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                         SelectionMode="Single" SelectionChanged="TaskGroupListBox_SelectionChanged" SelectedIndex="{Binding SelectedIndex}">
+                         SelectionMode="Single" SelectionChanged="TaskGroupListBox_SelectionChanged" SelectedIndex="{Binding SelectedGroupIndex}">
                     <!--ItemsSource="{Binding GroupList, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"-->
                     <ListBox.ItemTemplate>
                         <DataTemplate x:Name="dataTemplateItem">
@@ -46,10 +46,10 @@
                                         <!--Command="ApplicationCommands.Delete"-->
                                     </Button>
                                     <Label x:Name="GroupColorLabel" Background="{Binding Path=GroupColor}"
-                                           VerticalAlignment="Center" BorderThickness="2" BorderBrush="Gray" Margin="10,0,0,0" Width="30" Height="18"/>
+                                           VerticalAlignment="Center" BorderThickness="2" BorderBrush="Gray" Margin="10,0,0,0" Width="25" Height="15"/>
                                     <TextBox Background="Transparent" VerticalAlignment="Center" IsEnabled="False"
                                              BorderBrush="Transparent" HorizontalAlignment="Right"
-                                             HorizontalContentAlignment="Center" Foreground="Black"
+                                             HorizontalContentAlignment="Center" Foreground="White"
                                              Margin="10,0,0,0" Text="{Binding Path=GroupName}"/>
                                 </StackPanel>
                                 <TextBlock Text=" "/>
@@ -57,7 +57,7 @@
                                          VerticalContentAlignment="Center" Background="Transparent"
                                          BorderBrush="Gray" BorderThickness="2" IsEnabled="False"
                                          Margin="10,0,-10,0" Width="40" Height="18"
-                                         Foreground="Black" Text="{Binding Counter, Mode=OneWay}"/>
+                                         Foreground="White" Text="{Binding Counter, Mode=OneWay}"/>
                             </DockPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>

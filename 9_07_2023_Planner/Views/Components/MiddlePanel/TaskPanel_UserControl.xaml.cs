@@ -24,5 +24,10 @@ namespace _9_07_2023_Planner.Views.Components.MiddlePanel
         {
             InitializeComponent();
         }
+
+        private void TaskGroupListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            TaskGroupListBox.Items.Refresh();
+        }
     }
 }

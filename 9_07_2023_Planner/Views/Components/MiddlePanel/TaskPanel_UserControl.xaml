@@ -4,9 +4,176 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:_9_07_2023_Planner.Views.Components.MiddlePanel"
+             xmlns:dataContext="clr-namespace:_9_07_2023_Planner.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="600" d:DesignWidth="600">
+    <UserControl.DataContext>
+        <dataContext:MainWindowViewModel></dataContext:MainWindowViewModel>
+    </UserControl.DataContext>
     <Grid>
-            
+        <ScrollViewer VerticalScrollBarVisibility="Auto" MinHeight="400" MaxHeight="900">
+            <StackPanel Margin="5">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                    <Button Content="+ Create Task" Background="Transparent"
+                            Foreground="White" BorderBrush="White"
+                            BorderThickness="2" Width="150"/>
+                    <Button Content="Genetate Test List" Background="Transparent" BorderBrush="White" BorderThickness="2"
+                            Command="{Binding GenerateTaskListCommand}"/>
+                </StackPanel>
+                <StackPanel>
+                    <Expander Header="Task Bar" IsExpanded="True" Foreground="White">
+                        <ListBox Background="Transparent" SelectionMode="Single" 
+                                 ItemsSource="{Binding TaskList, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                 SelectedItem="{Binding SelectedTask, UpdateSourceTrigger=PropertyChanged}"
+                                 SelectedIndex="{Binding SelectedTaskIndex, UpdateSourceTrigger=PropertyChanged}"
+                                 SelectionChanged="TaskGroupListBox_SelectionChanged"
+                                 x:Name="TaskGroupListBox">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
+                                        <Border BorderBrush="White" BorderThickness="1" Width="450" MinHeight="50" Background="{Binding GroupColor}">
+
+                                            <StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <DockPanel>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <Border BorderBrush="{Binding Foreground}" BorderThickness="1" CornerRadius="5"
+                                                                    Margin="10,5,10,0">
+                                                                <StackPanel>
+                                                                    <TextBlock Text="{Binding Time}" Margin="5,1,5,1"
+                                                                               HorizontalAlignment="Center" Foreground="{Binding Foreground}"/>
+                                                                    <TextBlock Text="{Binding DayAndMonth}" Margin="5,1,5,1"
+                                                                               HorizontalAlignment="Center" Foreground="{Binding Foreground}"/>
+                                                                </StackPanel>
+                                                            </Border>
+                                                            <TextBlock Text="{Binding Header}" FontSize="15" Foreground="{Binding Foreground}"
+                                                                        HorizontalAlignment="Center" Margin="50,2,50,0" VerticalAlignment="Center"/>
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <StackPanel>
+                                                                    <TextBlock Text="{Binding Status, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Center" Margin="5,2,5,2" FontSize="14" FontStyle="Oblique" Foreground="{Binding Foreground}" FontStretch="ExtraExpanded"/>
+                                                                    <TextBlock Text="{Binding Expired, UpdateSourceTrigger=PropertyChanged}" Foreground="White" FontSize="14" FontStyle="Oblique" FontStretch="ExtraExpanded"/>
+                                                                </StackPanel>
+                                                                <StackPanel>
+                                                                    <Button x:Name="HideExpiredOrCompleteTaskButton" Width="65" Height="35"
+                                                                        Foreground="White"
+                                                                        BorderBrush="Transparent"
+                                                                        BorderThickness="0"
+                                                                        Background="Transparent"
+                                                                        Visibility="{Binding CompletedOrExpiredTaskButtonVisibility, UpdateSourceTrigger=PropertyChanged}"
+                                                                        DockPanel.Dock="Right">
+                                                                        <Border BorderBrush="White" BorderThickness="3"
+                                                                            Width="60" Height="30"
+                                                                            CornerRadius="5" Background="Transparent"
+                                                                            Margin="0" HorizontalAlignment="Stretch"
+                                                                            VerticalAlignment="Stretch">
+                                                                            <TextBlock Text="Hide" Foreground="White" HorizontalAlignment="Center"/>
+                                                                        </Border>
+                                                                    </Button>
+                                                                    <Button x:Name="Btn_complete_task" 
+                                                                        Visibility="{Binding CompleteTaskMarkVisibility, UpdateSourceTrigger=PropertyChanged}"
+                                                                        Margin="10,5,5,1" 
+                                                                        Width="65"
+                                                                        Height="35"
+                                                                        HorizontalContentAlignment="Center"
+                                                                        Opacity="55"
+                                                                            BorderBrush="Transparent"
+                                                                        Background="Transparent"
+                                                                        HorizontalAlignment="Right"
+                                                                        VerticalContentAlignment="Top" Padding="0">
+                                                                        <Border BorderThickness="1" BorderBrush="Black" CornerRadius="5">
+                                                                            <TextBlock Text="Complete Task" TextAlignment="Center" Padding="3,0,3,3" TextWrapping="Wrap" HorizontalAlignment="Center"/>
+                                                                        </Border>
+
+                                                                    </Button>
+                                                                </StackPanel>
+
+
+
+                                                            </StackPanel>
+
+                                                        </StackPanel>
+                                                        <StackPanel DockPanel.Dock="Left" Margin="5,1,10,1">
+
+                                                        </StackPanel>
+                                                        <StackPanel>
+
+                                                        </StackPanel>
+
+
+                                                    </DockPanel>
+                                                </StackPanel>
+
+                                                <StackPanel Orientation="Vertical">
+                                                    <DockPanel>
+                                                        <TextBlock Text="Who: " Foreground="{Binding Foreground}" Margin="10,1,0,1"/>
+                                                        <TextBlock Text="{Binding Executor}" Foreground="{Binding Foreground}" Margin="5,1,5,1"/>
+                                                        <StackPanel DockPanel.Dock="Right">
+
+                                                        </StackPanel>
+                                                    </DockPanel>
+
+                                                    <TextBlock DockPanel.Dock="Bottom" HorizontalAlignment="Center" Margin="0,1,0,1" Padding="2,3,2,0">
+                                                                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="3" MinWidth="150">
+                                                                        <TextBlock Text="{Binding Note}" 
+                                                                                   Margin="10,1,10,5" 
+                                                                                   Padding="2,3,2,0" 
+                                                                                   TextWrapping="Wrap" 
+                                                                                   HorizontalAlignment="Center" 
+                                                                                   VerticalAlignment="Center"/>
+                                                                    </Border>
+                                                                </TextBlock>
+                                                </StackPanel>
+                                                <!-- -->
+                                                <!-- -->
+                                                <!-- -->
+                                            </StackPanel>
+                                        </Border>
+                                        <StackPanel HorizontalAlignment="Center" Margin="5">
+                                            <Button x:Name="Btn_edit_note"
+                                                    Content="Edit Task"
+                                                    Background="Transparent"
+                                                    Foreground="White"
+                                                    Height="22"
+                                                    BorderBrush="White"
+                                                    Margin="10"
+                                                    Width="70"
+                                                    HorizontalAlignment="Center"
+                                                    HorizontalContentAlignment="Center"
+                                                    Visibility="{Binding EditButtonVisibility}"/>
+
+                                            <Button x:Name="Btn_Delete_note"
+                                                    Margin="10"
+                                                    Background="Transparent"
+                                                    Foreground="White"
+                                                    BorderBrush="White"
+                                                    Width="70"
+                                                    Height="22"
+                                                    Content="Delete Task"
+                                                    Visibility="{Binding DeleteButtonVisibility}"/>
+                                        </StackPanel>
+                                        <!-- -->
+                                        <!-- -->
+                                        <!-- -->
+                                        <!--<Button x:Name="Btn_edit_note"
+                                                            Content="Edit Task"
+                                                            Visibility="{Binding Edit_Btn_Visibility}"
+                                                            Style="{StaticResource Style_Note_Window_Btn_edit_delete}"/>
+
+                                        <Button x:Name="Btn_Delete_note"
+                                                            Content="Delete Task"
+                                                            Style="{StaticResource Style_Note_Window_Btn_edit_delete}"
+                                                            Visibility="{Binding Delete_Btn_Visibility}"
+                                                            Click="Btn_Delete_note_Click"/>-->
+                                        <!-- -->
+                                        <!-- -->
+                                        <!-- -->
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Expander>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </UserControl>

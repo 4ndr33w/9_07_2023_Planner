@@ -1,19 +1,26 @@
 ﻿using _9_07_2023_Planner.Data;
+using _9_07_2023_Planner.DataHandlers;
+using _9_07_2023_Planner.Infrastructure;
+using _9_07_2023_Planner.Models;
 using _9_07_2023_Planner.Models.ViewPanelTemplate;
 using _9_07_2023_Planner.ViewModels.Base;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 
 namespace _9_07_2023_Planner.ViewModels
 {
     internal class MainWindowViewModel : ViewModelBase
     {
         #region FIELDS
-        //_9_07_2023_Planner.Data.TextData TextData = new Data.TextData();
+
+        string langCode = "en-GB";
 
         #region REQUEST WINDOW USER-CONTROL VISIBILITY
         private string _deleteGroupRequestWindowUserControlVisibility = "Collapsed";
@@ -69,9 +76,9 @@ namespace _9_07_2023_Planner.ViewModels
         }
         #endregion
 
-        #region SELECTED INDEX
-        private int _selectedIndex = -1;
-        public int SelectedIndex { get => _selectedIndex; set => Set(ref _selectedIndex, value); }
+        #region SELECTED GROUP INDEX
+        private int _selectedGroupIndex = -1;
+        public int SelectedGroupIndex { get => _selectedGroupIndex; set => Set(ref _selectedGroupIndex, value); }
         #endregion
 
         #region СПИСОК ГРУПП
@@ -80,14 +87,49 @@ namespace _9_07_2023_Planner.ViewModels
         { get => _groupList; set => Set(ref _groupList, value); }
         #endregion
 
+        #region СПИСОК ЗАДАЧ
+        private ObservableCollection<TaskTemplate> _taskList = new ObservableCollection<TaskTemplate>();
+        public ObservableCollection<TaskTemplate> TaskList { get => _taskList; set => _taskList = value; }
+        #endregion
 
+        #region SELECTED TASK
+        private TaskTemplate _selectedTask;
+        public TaskTemplate SelectedTask 
+        { 
+            get => _selectedTask; 
+            set
+            {
+                foreach(var item in TaskList)
+                {
+                    item.DeleteButtonVisibility = "Collapsed";
+                    item.CompleteTaskMarkVisibility = "Collapsed";
+                    item.EditButtonVisibility = "Collapsed";
+                    item.CompletedOrExpiredTaskButtonVisibility = "Collapsed";
+                }
+                Set(ref _selectedTask, value);
+                if (TaskList[SelectedTaskIndex] != null)
+                {
+                    TaskList[SelectedTaskIndex].DeleteButtonVisibility = "Visible";
+                    TaskList[SelectedTaskIndex].CompleteTaskMarkVisibility = "Visible";
+                    TaskList[SelectedTaskIndex].EditButtonVisibility = "Visible";
+                }
+            }
+        }
+        #endregion
+
+        #region SELECTED TASK INDEX
+        private int _selectedTaskIndex = -1;
+        public int SelectedTaskIndex { get => _selectedTaskIndex; set => Set(ref _selectedTaskIndex, value); }
         #endregion
 
 
 
+
+        #endregion
+
         #region CTOR
 
-        public MainWindowViewModel() { OnStartup();  }
+        public MainWindowViewModel() { OnStartup(); }
 
         public MainWindowViewModel(ObservableCollection<TaskGroupTemplate> groupList) { OnStartup(); GroupList = groupList; }
 
@@ -96,20 +138,61 @@ namespace _9_07_2023_Planner.ViewModels
         #region METHODS
         private void OnStartup()
         {
-            GenerateGroupList();
+            //GenerateGroupList();
+            //GenerateTaskListMethod();
+            GenerateTaskListCommand = new RelayCommand(TestMethod);
+            TryToDeserializeData();
         }
 
+        #region Генерирование дефолтных списков... Для разработки
         private void GenerateGroupList()
         {
             GroupList = new ObservableCollection<TaskGroupTemplate>
             {
-                new TaskGroupTemplate("Red", "Red Group", "Me", 0),
-                new TaskGroupTemplate("LawnGreen", "Green Group", "Me", 0),
-                new TaskGroupTemplate("Blue", "Blue Group", "Me", 0),
-                new TaskGroupTemplate("Yellow", "Yellow Group", "Me", 0),
-                new TaskGroupTemplate("White", "White Group", "Me", 0)
+                new TaskGroupTemplate("OrangeRed", "Orange Red Group", "Me", 0),
+                new TaskGroupTemplate("DarkOrange", "Dark Orande Group", "Me", 0),
+                new TaskGroupTemplate("Orange", "Orange Group", "Me", 0),
+                new TaskGroupTemplate("#FFF66B4C", "Green Group", "Me", 0),
+                new TaskGroupTemplate("#FF8A2BE2", "Purple Group", "Me", 0)
             };
         }
+        private void GenerateTaskListMethod()
+        {
+            TaskList = new ObservableCollection<TaskTemplate>
+            {
+                 new TaskTemplate(DateTime.Now, "SampleTask1", "Sample Header 1", "Me", DateTime.Now, "Urgent", true, new TaskGroupModel(GroupList[0])),
+                new TaskTemplate(DateTime.Now.AddDays(9), "Sample Task 2", "Sample Header 2", "Me", DateTime.Now, "Urgent", true, GroupList[1]),
+                new TaskTemplate(DateTime.Now.AddDays(11), "Sample Task 3", "Sample Header 3", "Me", DateTime.Now, "Urgent", true, GroupList[2]),
+                new TaskTemplate(DateTime.Now.AddDays(12), "Sample Task 4", "Sample Header 4", "Me", DateTime.Now, "Urgent", true, GroupList[3]),
+
+
+                new TaskTemplate(DateTime.Now.AddDays(13), "Sample Task 5", "Sample Header 5", "Me", DateTime.Now, "Urgent", true, GroupList[4])
+            };
+        }
+        #endregion
+
+        private void TryToDeserializeData()
+        {
+            if (File.Exists(TextData.directory + "\\" + Properties.Resources.GroupListFileName))
+            {
+                if (GroupList.Count < 1)
+                {
+                    DataSerializer Serialize = new DataSerializer();
+                    GroupList = Serialize.JsonDeserialization(TextData.directory);
+                }
+            }
+        }
+
+        #endregion
+
+        #region COMMANDS
+        public ICommand GenerateTaskListCommand { get; private set; }
+        private void TestMethod(object parameter)
+        {
+            MessageBox.Show(SelectedTaskIndex.ToString());
+        }
+
+       
         #endregion
     }
 }

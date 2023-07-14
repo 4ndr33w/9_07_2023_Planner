@@ -9,6 +9,7 @@
         mc:Ignorable="d"
         xmlns:taskGroupPanel="clr-namespace:_9_07_2023_Planner.Views.Components.LeftPanel"
         xmlns:rightPanel="clr-namespace:_9_07_2023_Planner.Views.Components.RightPanel"
+        xmlns:taskPanel="clr-namespace:_9_07_2023_Planner.Views.Components.MiddlePanel"
         Title="{Binding Path=Title}" Height="710" Width="1200" x:Name="mainWindow">
     <Window.DataContext>
         <dataContext:MainWindowViewModel></dataContext:MainWindowViewModel>
@@ -16,31 +17,65 @@
     <Window.InputBindings>
         <KeyBinding Modifiers="Ctrl" Key="Q" Command="{StaticResource CloseAppCommand}"/>
     </Window.InputBindings>
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
+            <GradientStop Color="#FF1D1D1D"/>
+            <GradientStop Color="#FF424242" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
     <DockPanel>
         <DockPanel.DataContext>
             <dataContext:MainWindowViewModel></dataContext:MainWindowViewModel>
         </DockPanel.DataContext>
         <Menu DockPanel.Dock="Top">
-            <MenuItem Header="File">
-                <MenuItem Header="Exit" Command="{StaticResource CloseAppCommand}"/>
+            <Menu.Background>
+                <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
+                    <GradientStop Color="#FF1D1D1D"/>
+                    <GradientStop Color="#FF424242" Offset="1"/>
+                </LinearGradientBrush>
+            </Menu.Background>
+            <MenuItem Header="File" Foreground="White">
+                <MenuItem Header="Exit" Command="{StaticResource CloseAppCommand}" Foreground="White">
+                    <MenuItem.Background>
+                        <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
+                            <GradientStop Color="#FF1D1D1D"/>
+                            <GradientStop Color="#FF424242" Offset="1"/>
+                        </LinearGradientBrush>
+                    </MenuItem.Background>
+                </MenuItem>
             </MenuItem>
-            <MenuItem Header="Settings">
-                <MenuItem Header="Language"></MenuItem>
+            <MenuItem Header="Settings" Foreground="White">
+                <MenuItem Header="Language" Foreground="White">
+                    MenuItem Header="Exit" Command="{StaticResource CloseAppCommand}" Foreground="White">
+                    <MenuItem.Background>
+                        <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
+                            <GradientStop Color="#FF1D1D1D"/>
+                            <GradientStop Color="#FF424242" Offset="1"/>
+                        </LinearGradientBrush>
+                    </MenuItem.Background>
+                </MenuItem>
             </MenuItem>
-            <MenuItem Header="Help">
-                <MenuItem Header="Info"></MenuItem>
+            <MenuItem Header="Help" Foreground="White">
+                <MenuItem Header="Info">
+                    <MenuItem.Background>
+                        <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
+                            <GradientStop Color="#FF1D1D1D"/>
+                            <GradientStop Color="#FF424242" Offset="1"/>
+                        </LinearGradientBrush>
+                    </MenuItem.Background>
+                </MenuItem>
             </MenuItem>
         </Menu>
-        <StatusBar DockPanel.Dock="Bottom">
+        <StatusBar DockPanel.Dock="Bottom" Background="Transparent">
             <StatusBarItem>
-                <TextBlock Text="Progress: "/>
+                <TextBlock Text="Progress: " Foreground="White"/>
                 
             </StatusBarItem>
             <StatusBarItem>
-                <TextBlock Text="30%"/>
+                <TextBlock Text="30%" Foreground="White"/>
             </StatusBarItem>
             <StatusBarItem>
-                <ProgressBar Value="30" Width="150" Height="14"/>
+                <ProgressBar Value="30" Width="150" Height="14" Background="Transparent"/>
             </StatusBarItem>
         </StatusBar>
         <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
@@ -50,7 +85,7 @@
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="300"/>
-                    <ColumnDefinition Width="450"/>
+                    <ColumnDefinition Width="590"/>
                     <ColumnDefinition/>
 
                 </Grid.ColumnDefinitions>
@@ -72,7 +107,9 @@
                     </ScrollViewer>
                     
                 </Border>
-                <Border Grid.Column="1" Grid.Row="0" BorderBrush="DimGray" BorderThickness="2" Margin="5"></Border>
+                <Border Grid.Column="1" Grid.Row="0" BorderBrush="DimGray" BorderThickness="2" Margin="5">
+                    <taskPanel:TaskPanel_UserControl/>
+                </Border>
                 <Border Grid.Column="2" Grid.Row="0" BorderBrush="DimGray" BorderThickness="2" Margin="5" HorizontalAlignment="Stretch">
                     <rightPanel:RightPanel_UserControl/>
                 </Border>
