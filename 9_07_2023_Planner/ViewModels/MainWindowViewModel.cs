@@ -22,6 +22,33 @@ namespace _9_07_2023_Planner.ViewModels
 
         string langCode = "en-GB";
 
+        #region TodayTasksButton
+        private InformativeButtonTemplate _todayButton = new InformativeButtonTemplate();
+        public InformativeButtonTemplate TodayButton 
+        {
+            get { return _todayButton; }
+            set
+            {
+                _todayButton.Title = "Today: " + DateTime.Now.ToString("d MMMM, ddd");
+                _todayButton.Counter = "100";
+                OnPropertyChanged(nameof(TodayButton));
+            }
+        }
+        #endregion
+        #region AllTasksButton
+        private InformativeButtonTemplate _showAllTasksButton = new InformativeButtonTemplate();
+        public InformativeButtonTemplate ShowAllTasksButton
+        {
+            get { return _showAllTasksButton; }
+            set
+            {
+                _showAllTasksButton.Title = "Total tasks: ";
+                _showAllTasksButton.Counter = "100";
+                OnPropertyChanged(nameof(ShowAllTasksButton));
+            }
+        }
+        #endregion
+
         #region REQUEST WINDOW USER-CONTROL VISIBILITY
         private string _deleteGroupRequestWindowUserControlVisibility = "Collapsed";
         private string _deleteTaskRequestWindowUserControlVisibility = "Collapsed";
@@ -58,20 +85,28 @@ namespace _9_07_2023_Planner.ViewModels
 
         #region SELECTED GROUP В LISTBOX
         private TaskGroupTemplate _selectedGroup;
-
         public TaskGroupTemplate SelectedGroup
         {
             get => _selectedGroup;
             set
             {
-                foreach (var item in GroupList)
+                foreach (var item in MyGroupList)
+                {
+                    item.DeleteButtonVisibility = "Collapsed";
+                }
+                foreach (var item in DelegatedGroupList)
                 {
                     item.DeleteButtonVisibility = "Collapsed";
                 }
                 Set(ref _selectedGroup, value);
-                //_selectedGroup = value;
-                if (SelectedGroupIndex > -1) GroupList[SelectedGroupIndex].DeleteButtonVisibility = "Visible";
-                //OnPropertyChanged(nameof(SelectedGroup));
+                if (MyGroupList.Contains(SelectedGroup))
+                {
+                    MyGroupList[SelectedGroupIndex].DeleteButtonVisibility = "Visible";
+                }
+                if (DelegatedGroupList.Contains(SelectedGroup))
+                {
+                    DelegatedGroupList[SelectedGroupIndex].DeleteButtonVisibility = "Visible";
+                }
             }
         }
         #endregion
@@ -81,40 +116,47 @@ namespace _9_07_2023_Planner.ViewModels
         public int SelectedGroupIndex { get => _selectedGroupIndex; set => Set(ref _selectedGroupIndex, value); }
         #endregion
 
-        #region СПИСОК ГРУПП
-        private ObservableCollection<TaskGroupTemplate> _groupList = new ObservableCollection<TaskGroupTemplate>();
-        public ObservableCollection<TaskGroupTemplate> GroupList
-        { 
-            get => _groupList;
-            set => _groupList = value;
-            //{
-            //    Set(ref _groupList, value);
-            //    if (SelectedGroupIndex > -1)
-            //    {
-            //        foreach (var item in GroupList)
-            //        {
-            //            item.DeleteButtonVisibility = "Collapsed";
-            //        }
-            //        GroupList[SelectedGroupIndex].DeleteButtonVisibility = "Visible";
-                    
-            //    }
-            //}
+        #region СПИСКИ ГРУПП
 
-        }
+        #region общий список
+        private ObservableCollection<TaskGroupTemplate> _groupList = new ObservableCollection<TaskGroupTemplate>();
+        public ObservableCollection<TaskGroupTemplate> GroupList { get => _groupList; set => _groupList = value; }
+        #endregion
+
+        #region My GroupList
+        //public ViewModels.Groups.GroupPanelViewModel GroupPanelView = new Groups.GroupPanelViewModel();
+        private ObservableCollection<TaskGroupTemplate> _myGroupList = new ObservableCollection<TaskGroupTemplate>();
+        public ObservableCollection<TaskGroupTemplate> MyGroupList { get => _myGroupList; set => _myGroupList = value; }
+
+        #endregion
+
+        #region Delegated GroupList
+        //public ViewModels.Groups.GroupPanelViewModel GroupPanelView = new Groups.GroupPanelViewModel();
+        private ObservableCollection<TaskGroupTemplate> _delegatedGroupList = new ObservableCollection<TaskGroupTemplate>();
+        public ObservableCollection<TaskGroupTemplate> DelegatedGroupList { get => _delegatedGroupList; set => _delegatedGroupList = value; }
+
+        #endregion
+
         #endregion
 
         #region СПИСОК ЗАДАЧ
         private ObservableCollection<TaskTemplate> _taskList = new ObservableCollection<TaskTemplate>();
-        public ObservableCollection<TaskTemplate> TaskList { get => _taskList; set => _taskList = value; }
+        public ObservableCollection<TaskTemplate> TaskList 
+        { 
+            get => _taskList; 
+            set => _taskList = value; 
+          
+        }
         #endregion
 
         #region SELECTED TASK
-        private TaskTemplate _selectedTask;
+        private TaskTemplate _selectedTask = new TaskTemplate();
         public TaskTemplate SelectedTask 
         { 
             get => _selectedTask; 
             set
             {
+                //MessageBox.Show(value.GroupName);
                 foreach(var item in TaskList)
                 {
                     item.DeleteButtonVisibility = "Collapsed";
@@ -122,13 +164,31 @@ namespace _9_07_2023_Planner.ViewModels
                     item.EditButtonVisibility = "Collapsed";
                     item.CompletedOrExpiredTaskButtonVisibility = "Collapsed";
                 }
-                Set(ref _selectedTask, value);
-                if (TaskList[SelectedTaskIndex] != null)
+                //Set(ref _selectedTask, value);
+                //if (SelectedTaskIndex > -1)
+                //{
+                //    TaskList[SelectedTaskIndex].DeleteButtonVisibility = "Visible";
+                //    TaskList[SelectedTaskIndex].CompleteTaskMarkVisibility = "Visible";
+                //    TaskList[SelectedTaskIndex].EditButtonVisibility = "Visible";
+                //}
+                _selectedTask = value;
+                //OnPropertyChanged(nameof(SelectedTask));
+                
+                //Set(ref _selectedTask, value);
+                if (_selectedTask != null)
                 {
-                    TaskList[SelectedTaskIndex].DeleteButtonVisibility = "Visible";
-                    TaskList[SelectedTaskIndex].CompleteTaskMarkVisibility = "Visible";
-                    TaskList[SelectedTaskIndex].EditButtonVisibility = "Visible";
+                    //MessageBox.Show(SelectedTask.GroupName);
+                    SelectedTask.DeleteButtonVisibility = "Visible";
+                    SelectedTask.CompleteTaskMarkVisibility = "Visible";
+                    SelectedTask.EditButtonVisibility = "Visible";
+                    TaskList[SelectedTaskIndex] = SelectedTask;
+                    OnPropertyChanged(nameof(SelectedTask));
+                    OnPropertyChanged(nameof(TaskList));
                 }
+                
+                
+                //OnPropertyChanged(nameof(TaskList));
+
             }
         }
         #endregion
@@ -151,10 +211,36 @@ namespace _9_07_2023_Planner.ViewModels
         #region METHODS
         private void OnStartup()
         {
-            //GenerateGroupList();
-            //GenerateTaskListMethod();
-            //GenerateTaskListCommand = new RelayCommand(TestMethod);
             TryToDeserializeData();
+            //GenerateGroupList();
+            GenerateTaskListMethod();
+            //GenerateTaskListCommand = new RelayCommand(TestMethod);
+            TodayButton.Title = "Today: " + DateTime.Now.ToString("d MMMM, ddd");
+            TodayButton.Counter = (100).ToString();
+            OnPropertyChanged(nameof(TodayButton));
+            ShowAllTasksButton.Title = "Total Tasks:";
+            ShowAllTasksButton.Counter = (100).ToString();
+            OnPropertyChanged(nameof(ShowAllTasksButton));
+
+        }
+
+        private void TryToDeserializeData()
+        {
+            if (File.Exists(TextData.directory + "\\" + Properties.Resources.GroupListFileName))
+            {
+                if (GroupList.Count < 1)
+                {
+                    DataSerializer Serialize = new DataSerializer();
+                    GroupList = Serialize.JsonDeserialization(TextData.directory);
+                }
+
+                foreach (var group in GroupList) 
+                { 
+                    if (group.ExecutionOf == "Delegated") DelegatedGroupList.Add((group));
+                    else MyGroupList.Add(group);
+                }
+                //MyGroupList = (ObservableCollection<TaskGroupTemplate>)GroupList.Where(c => c.ExecutionOf == "Me") as ObservableCollection<TaskGroupTemplate>;
+            }
         }
 
         #region Генерирование дефолтных списков... Для разработки
@@ -179,22 +265,12 @@ namespace _9_07_2023_Planner.ViewModels
                 new TaskTemplate(DateTime.Now.AddDays(12), "Sample Task 4", "Sample Header 4", "Me", DateTime.Now, "Urgent", true, GroupList[3]),
 
 
-                new TaskTemplate(DateTime.Now.AddDays(13), "Sample Task 5", "Sample Header 5", "Me", DateTime.Now, "Urgent", true, GroupList[4])
+                new TaskTemplate(DateTime.Now.AddDays(13), "Sample Task 5", "Sample Header 5", "Me", DateTime.Now, "Urgent", true, GroupList[0])
             };
         }
         #endregion
 
-        private void TryToDeserializeData()
-        {
-            if (File.Exists(TextData.directory + "\\" + Properties.Resources.GroupListFileName))
-            {
-                if (GroupList.Count < 1)
-                {
-                    DataSerializer Serialize = new DataSerializer();
-                    GroupList = Serialize.JsonDeserialization(TextData.directory);
-                }
-            }
-        }
+       
 
         #endregion
 

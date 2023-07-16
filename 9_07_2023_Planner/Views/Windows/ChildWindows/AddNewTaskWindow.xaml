@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:_9_07_2023_Planner.Views.Windows.ChildWindows"
         xmlns:dataContext="clr-namespace:_9_07_2023_Planner.ViewModels"
         mc:Ignorable="d"
-        Title="AddNewTaskWindow" Height="400" Width="500">
+        Title="AddNewTaskWindow" Height="400" Width="500" x:Name="addNewTaskWindow">
     <Window.DataContext>
         <dataContext:MainWindowViewModel/>
     </Window.DataContext>
@@ -34,29 +34,31 @@
                         Width="60"
                         Content="OK" 
                         Foreground="White" 
-                        Margin="15,5,0,5"/>
+                        Margin="15,5,0,5"
+                        Command="{StaticResource addNewTaskIntoTaskListCommand}"
+                        CommandParameter="{Binding ElementName=addNewTaskWindow}"/>
             </StackPanel>
-            <TabControl x:Name="Tab_Ctrl_new_note" Width="500" Margin="5,5,5,5">
+            <TabControl x:Name="NewNoteControlTab" Width="500" Margin="5,5,5,5">
                 <TabControl.Background>
                     <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
                         <GradientStop Color="#FF0E0E0E"/>
                         <GradientStop Color="#FF2B2B2B" Offset="0.747"/>
                     </LinearGradientBrush>
                 </TabControl.Background>
-                <TabItem Header="Properties" Background="Transparent" Foreground="Black">
+                <TabItem Header="Properties" Background="Transparent" Foreground="Black" DataContext="{Binding SelectedTask, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}">
                     <StackPanel Orientation="Vertical">
                         <StackPanel Orientation="Horizontal" Margin="50,50,50,10">
-                            <CheckBox x:Name="UrgencyCheckBox" VerticalAlignment="Center"/>
+                            <CheckBox x:Name="UrgencyCheckBox" VerticalAlignment="Center" Content="{Binding Urgency}"/>
                             <Label Foreground="White" Content="Urgency" VerticalAlignment="Top"/>
                         </StackPanel>
 
                         <TextBox x:Name="HeaderNameTextBox" 
-                                 Text="Enter Header"
+                                 Text="{Binding Header}"
                                  Margin="50,10,50,10" 
                                  Background="#FF545454" 
                                  CaretBrush="White" 
                                  Foreground="White"/>
-                        <DatePicker x:Name="date_picker" Background="Transparent" Margin="50, 10"/>
+                        <DatePicker x:Name="DatePicker" Background="Transparent" Margin="50, 10" Text="{Binding ExpirationDate}"/>
                         <StackPanel Orientation="Horizontal" Margin="50,10">
                             <ComboBox x:Name="time_picker" Width=" 250" Foreground="Black" Background="White">
                                 <!--<DataTemplate>-->
@@ -82,13 +84,16 @@
                             </ComboBox>
                         </StackPanel>
 
-                        <TextBox x:Name="txtBx_Executor" 
-                                 Text="Enter Executor" 
+                        <TextBox x:Name="ExecutorTextBox" 
+                                 Text="{Binding ExecutionOf}" 
                                  Margin="50,5"
                                  Background="#FF545454" 
                                  CaretBrush="White" 
                                  Foreground="White"/>
-                        <ComboBox x:Name="CmbBox_Task_Groups" Margin="50, 10" ItemsSource="{Binding}">
+                        <ComboBox x:Name="TaskGroupComboBox" Margin="50, 10" ItemsSource="{Binding GroupList}" SelectedItem="{Binding SelectedGroup, UpdateSourceTrigger=PropertyChanged}" SelectedIndex="{Binding SelectedGroupIndex, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}">
+                            <ComboBox.DataContext>
+                                <dataContext:MainWindowViewModel/>
+                            </ComboBox.DataContext>
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">

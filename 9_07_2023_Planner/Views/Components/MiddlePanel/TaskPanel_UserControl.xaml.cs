@@ -25,9 +25,18 @@ namespace _9_07_2023_Planner.Views.Components.MiddlePanel
             InitializeComponent();
         }
 
+        #region  LISTBOX SELECTION CHANGED
+        /// <summary>
+        /// не получается уведомлять View об изменении выбранного элемента ЛистБокса... 
+        /// не смотря на использование INotifyPropertyChanged
+        /// Пришлось использовать этот "костыль"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TaskGroupListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             TaskGroupListBox.Items.Refresh();
         }
+        #endregion
     }
 }

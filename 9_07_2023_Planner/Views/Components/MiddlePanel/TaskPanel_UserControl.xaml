@@ -16,14 +16,15 @@
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                     <Button Content="+ Create Task" Background="Transparent"
                             Foreground="White" BorderBrush="White"
-                            BorderThickness="2" Width="150"
-                            Command="{StaticResource ShowChildWindowOfNewTaskCommand}"/>
+                            BorderThickness="2" Width="150"/>
+
+                    <!--Command="{StaticResource ShowChildWindowOfNewTaskCommand}"-->
                 </StackPanel>
                 <StackPanel>
                     <Expander Header="Task Bar" IsExpanded="True" Foreground="White">
                         <ListBox Background="Transparent" SelectionMode="Single" 
                                  ItemsSource="{Binding TaskList, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                                 SelectedItem="{Binding SelectedTask, UpdateSourceTrigger=PropertyChanged}"
+                                 SelectedItem="{Binding SelectedTask, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
                                  SelectedIndex="{Binding SelectedTaskIndex, UpdateSourceTrigger=PropertyChanged}"
                                  SelectionChanged="TaskGroupListBox_SelectionChanged"
                                  x:Name="TaskGroupListBox">

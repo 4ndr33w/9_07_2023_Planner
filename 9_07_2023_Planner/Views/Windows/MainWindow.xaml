@@ -10,12 +10,16 @@
         xmlns:taskGroupPanel="clr-namespace:_9_07_2023_Planner.Views.Components.LeftPanel"
         xmlns:rightPanel="clr-namespace:_9_07_2023_Planner.Views.Components.RightPanel"
         xmlns:taskPanel="clr-namespace:_9_07_2023_Planner.Views.Components.MiddlePanel"
+        xmlns:commands="clr-namespace:_9_07_2023_Planner.Infrastructure.Commands"
         Title="{Binding Path=Title}" Height="710" Width="1200" x:Name="mainWindow">
     <Window.DataContext>
         <dataContext:MainWindowViewModel></dataContext:MainWindowViewModel>
     </Window.DataContext>
+    <Window.Resources>
+        <commands:CloseApplicationCommand x:Key="CloseAppCmd"/>
+    </Window.Resources>
     <Window.InputBindings>
-        <KeyBinding Modifiers="Ctrl" Key="Q" Command="{StaticResource CloseAppCommand}"/>
+        <KeyBinding Modifiers="Ctrl" Key="Q" Command="{StaticResource CloseAppCmd}"/>
     </Window.InputBindings>
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
@@ -35,7 +39,7 @@
                 </LinearGradientBrush>
             </Menu.Background>
             <MenuItem Header="File" Foreground="White">
-                <MenuItem Header="Exit" Command="{StaticResource CloseAppCommand}" Foreground="White">
+                <MenuItem Header="Exit" Command="{StaticResource CloseAppCmd}" Foreground="White">
                     <MenuItem.Background>
                         <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
                             <GradientStop Color="#FF1D1D1D"/>
@@ -93,14 +97,16 @@
                 <GridSplitter BorderBrush="DimGray" BorderThickness="0" Grid.Column="1" MinWidth="200" Background="Transparent"/>
                 <Border Grid.Column="0" Grid.Row="0" BorderBrush="DimGray" BorderThickness="2" Margin="5" Background="Transparent">
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
-                        <StackPanel>
+                        <StackPanel x:Name="leftPanelStackPanel">
                             <Calendar/>
-                            <taskGroupPanel:InformativeButton_UserControl Margin="10,5,10,1"/>
-                            <taskGroupPanel:InformativeButton_UserControl Margin="10,1,10,5"/>
-                            <taskGroupPanel:TaskGroupPanel_UserControl>
+                            <taskGroupPanel:InformativeButton_UserControl Margin="10,5,10,1" x:Name="totalTasksButonPanel"/>
+                            <taskGroupPanel:InformativeButton_UserControl Margin="10,1,10,5" x:Name="todayButtonPanel"/>
+                            
+                            <taskGroupPanel:TaskGroupPanel_UserControl x:Name="myGroupsPanel">
                                 
                             </taskGroupPanel:TaskGroupPanel_UserControl>
-                            <taskGroupPanel:TaskGroupPanel_UserControl/>
+                            <taskGroupPanel:TaskGroupPanel_UserControl  x:Name="delegatedGroupsPanel">
+                            </taskGroupPanel:TaskGroupPanel_UserControl>
                             <taskGroupPanel:InformativeButton_UserControl Margin="10,5,10,1"/>
                             <taskGroupPanel:InformativeButton_UserControl Margin="10,1,10,5"/>
                         </StackPanel>

@@ -26,13 +26,10 @@ namespace _9_07_2023_Planner.Views.Components.LeftPanel
         public TaskGroupPanel_UserControl()
         {
             InitializeComponent();
-            DataContext = new MainWindowViewModel();
         }
 
         private void TaskGroupListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //(DataContext).TaskList = /*ObservableCollection<TaskPanelModel>*/
-            //   ((DataContext).FullTaskList.Where(c => c.GroupColor == (TaskGroupListBox.SelectedItem as TaskGroupModel).GroupColor)) as ObservableCollection<TaskPanelModel>;
             TaskGroupListBox.Items.Refresh();
         }
     }

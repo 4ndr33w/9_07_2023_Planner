@@ -23,14 +23,14 @@
             <Button x:Name="InformativeButton" Background="Transparent">
                 <DockPanel LastChildFill="False"
                            HorizontalAlignment="Stretch"
-                           Width="200">
+                           Width="260">
                     <TextBlock Foreground="LightGray"
                                DockPanel.Dock="Left"
                                Margin="15,1,1,1"
                                x:Name="InformativeButtonTitleTextBlock"
-                               Text="{Binding TodayButton.Title, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                               Text="{Binding Path=Title, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBox x:Name="InformativeButtonCounterTextBox"
-                             Style="{StaticResource InformativeButtonCounterStyle}" Text="{Binding TodayButton.Counter}"/>
+                             Style="{StaticResource InformativeButtonCounterStyle}" Text="{Binding Counter}"/>
                     <!--Text="{Binding Path=Counter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
                 </DockPanel>
             </Button>

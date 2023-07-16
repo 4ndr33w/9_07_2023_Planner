@@ -99,10 +99,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DataHandlers\DataSerializer.cs" />
+    <Compile Include="Infrastructure\Commands\AddNewTaskIntoTaskListCommand.cs" />
     <Compile Include="Infrastructure\Commands\AddNewTask_ShowWindowComand.cs" />
     <Compile Include="Infrastructure\Commands\DeleteTaskGroup_ShowRequestWindowCommand.cs" />
+    <Compile Include="Infrastructure\Commands\TaskGroupPanelSelectionChangedCommand.cs" />
     <Compile Include="Models\TaskModel.cs" />
+    <Compile Include="Models\ViewPanelTemplate\InformativeButtonTemplate.cs" />
     <Compile Include="Models\ViewPanelTemplate\TaskTemplate.cs" />
+    <Compile Include="ViewModels\Groups\GroupPanelViewModel.cs" />
     <Compile Include="Views\Components\RequestWindowComponents\DeleteTaskGroupRequest_UserControl.xaml.cs">
       <DependentUpon>DeleteTaskGroupRequest_UserControl.xaml</DependentUpon>
     </Compile>

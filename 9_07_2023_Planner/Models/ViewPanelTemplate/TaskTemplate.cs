@@ -32,7 +32,11 @@ namespace _9_07_2023_Planner.Models.ViewPanelTemplate
         public string Time { get { return ExpirationDate.ToString("HH' ':' ' mm"); } /*set { _time = value; OnPropertyChanged(nameof(Time)); }*/ }
         public string DayAndMonth { get { return ExpirationDate.ToString("d MMMM"/*, CultureInfo.CreateSpecificCulture(Properties.Settings.Default.languageCode)*/); } /*set { _dayAndMonth = value; OnPropertyChanged(nameof(DayAndMonth)); }*/ }
 
-        public TaskTemplate(DateTime date, string note, string header, string executor, DateTime creationDate, string status, bool urgency, TaskGroupModel group) :
+        public TaskTemplate() :
+           base()
+        { 
+        }
+            public TaskTemplate(DateTime date, string note, string header, string executor, DateTime creationDate, string status, bool urgency, TaskGroupModel group) :
            base(date, note, header, executor, creationDate, status, urgency, group)
         {
             _date = date;
