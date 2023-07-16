@@ -99,8 +99,12 @@
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel x:Name="leftPanelStackPanel">
                             <Calendar/>
-                            <taskGroupPanel:InformativeButton_UserControl Margin="10,5,10,1" x:Name="totalTasksButonPanel"/>
-                            <taskGroupPanel:InformativeButton_UserControl Margin="10,1,10,5" x:Name="todayButtonPanel"/>
+                            <taskGroupPanel:InformativeButton_UserControl Margin="10,5,10,1" 
+                                                                          x:Name="totalTasksButonPanel" 
+                                                                          DataContext="{Binding ShowTotalTasksButton, UpdateSourceTrigger=PropertyChanged}"/>
+                            <taskGroupPanel:InformativeButton_UserControl Margin="10,1,10,5" 
+                                                                          x:Name="todayButtonPanel" 
+                                                                          DataContext="{Binding TodayButton, UpdateSourceTrigger=PropertyChanged}"/>
                             
                             <taskGroupPanel:TaskGroupPanel_UserControl x:Name="myGroupsPanel">
                                 

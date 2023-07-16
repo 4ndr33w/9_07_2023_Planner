@@ -38,9 +38,7 @@ namespace _9_07_2023_Planner.ViewModels.Groups
                     item.DeleteButtonVisibility = "Collapsed";
                 }
                 Set(ref _selectedGroup, value);
-                //_selectedGroup = value;
                 if (SelectedGroupIndex > -1) GroupList[SelectedGroupIndex].DeleteButtonVisibility = "Visible";
-                //OnPropertyChanged(nameof(SelectedGroup));
             }
         }
         #endregion

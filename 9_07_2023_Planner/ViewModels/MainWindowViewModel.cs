@@ -37,14 +37,14 @@ namespace _9_07_2023_Planner.ViewModels
         #endregion
         #region AllTasksButton
         private InformativeButtonTemplate _showAllTasksButton = new InformativeButtonTemplate();
-        public InformativeButtonTemplate ShowAllTasksButton
+        public InformativeButtonTemplate ShowTotalTasksButton
         {
             get { return _showAllTasksButton; }
             set
             {
                 _showAllTasksButton.Title = "Total tasks: ";
                 _showAllTasksButton.Counter = "100";
-                OnPropertyChanged(nameof(ShowAllTasksButton));
+                OnPropertyChanged(nameof(ShowTotalTasksButton));
             }
         }
         #endregion
@@ -218,9 +218,9 @@ namespace _9_07_2023_Planner.ViewModels
             TodayButton.Title = "Today: " + DateTime.Now.ToString("d MMMM, ddd");
             TodayButton.Counter = (100).ToString();
             OnPropertyChanged(nameof(TodayButton));
-            ShowAllTasksButton.Title = "Total Tasks:";
-            ShowAllTasksButton.Counter = (100).ToString();
-            OnPropertyChanged(nameof(ShowAllTasksButton));
+            ShowTotalTasksButton.Title = "Total Tasks:";
+            ShowTotalTasksButton.Counter = (100).ToString();
+            OnPropertyChanged(nameof(ShowTotalTasksButton));
 
         }
 

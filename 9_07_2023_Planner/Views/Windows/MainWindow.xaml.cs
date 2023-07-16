@@ -38,8 +38,6 @@ namespace _9_07_2023_Planner.Views.Windows
             SetContextOfGroupPanels();
             SetSourceOfMyGroupPanel();
             SetSourceOfDelegatedGroupPanel();
-            SetContextOfTodayButton();
-            SetContextOfTotalTasksButton();
         }
 
         #region METHODS
@@ -56,14 +54,6 @@ namespace _9_07_2023_Planner.Views.Windows
         {
             (delegatedGroupsPanel as TaskGroupPanel_UserControl).TaskGroupListBox.ItemsSource =
               (DataContext as MainWindowViewModel).DelegatedGroupList;
-        }
-        private void SetContextOfTodayButton()
-        {
-            (todayButtonPanel as InformativeButton_UserControl).DataContext = (DataContext as MainWindowViewModel).TodayButton;
-        }
-        private void SetContextOfTotalTasksButton()
-        {
-            (totalTasksButonPanel as InformativeButton_UserControl).DataContext = (DataContext as MainWindowViewModel).ShowAllTasksButton;
         }
         #endregion
     }
