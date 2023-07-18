@@ -65,6 +65,14 @@ namespace _9_07_2023_Planner.Models
             _execution_of = executor;
             _counter = counter;
         }
+        public TaskGroupModel(string color, string groupName, string executor)
+        {
+            _groupId = DateTime.UtcNow;
+            _color = color;
+            _group_name = groupName;
+            _execution_of = executor;
+            _counter = 0;
+        }
         public TaskGroupModel(string color, string groupName)
         {
             _groupId = DateTime.UtcNow;

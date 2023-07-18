@@ -22,32 +22,67 @@ namespace _9_07_2023_Planner.ViewModels
 
         string langCode = "en-GB";
 
+        #region INFORMATIVE BUTTONS INITIALIZE
+
         #region TodayTasksButton
         private InformativeButtonTemplate _todayButton = new InformativeButtonTemplate();
-        public InformativeButtonTemplate TodayButton 
+        public InformativeButtonTemplate TodayButton
         {
             get { return _todayButton; }
             set
             {
-                _todayButton.Title = "Today: " + DateTime.Now.ToString("d MMMM, ddd");
-                _todayButton.Counter = "100";
+                //_todayButton.Title = "Today: " + "   " + DateTime.Now.ToString("d MMMM, ddd");
+                _todayButton.Counter = value.Counter;
                 OnPropertyChanged(nameof(TodayButton));
             }
         }
         #endregion
-        #region AllTasksButton
+
+        #region ShowTotalTasksButton
         private InformativeButtonTemplate _showAllTasksButton = new InformativeButtonTemplate();
         public InformativeButtonTemplate ShowTotalTasksButton
         {
             get { return _showAllTasksButton; }
             set
             {
-                _showAllTasksButton.Title = "Total tasks: ";
-                _showAllTasksButton.Counter = "100";
+                //_showAllTasksButton.Title = "Total tasks: ";
+                _showAllTasksButton.Counter = value.Counter;
                 OnPropertyChanged(nameof(ShowTotalTasksButton));
             }
         }
         #endregion
+
+        #region ExpiredTasksButton
+        private InformativeButtonTemplate _showExpiredTasksButton = new InformativeButtonTemplate();
+        public InformativeButtonTemplate ShowExpiredTasksButton
+        {
+            get { return _showExpiredTasksButton; }
+            set
+            {
+                //_showExpiredTasksButton.Title = "Expired Tasks:";
+                _showExpiredTasksButton.Counter = value.Counter;
+                OnPropertyChanged(nameof(ShowExpiredTasksButton));
+            }
+        }
+        #endregion
+
+        #region CompletedTasksButton
+        private InformativeButtonTemplate _showCompletedTasksButton = new InformativeButtonTemplate();
+        public InformativeButtonTemplate ShowCompletedTasksButton
+        {
+            get { return _showCompletedTasksButton; }
+            set
+            {
+                //_showCompletedTasksButton.Title = "Completed Tasks:";
+                _showCompletedTasksButton.Counter = value.Counter;
+                OnPropertyChanged(nameof(ShowCompletedTasksButton));
+            }
+        }
+        #endregion
+
+        #endregion
+
+
 
         #region REQUEST WINDOW USER-CONTROL VISIBILITY
         private string _deleteGroupRequestWindowUserControlVisibility = "Collapsed";
@@ -124,22 +159,32 @@ namespace _9_07_2023_Planner.ViewModels
         #endregion
 
         #region My GroupList
-        //public ViewModels.Groups.GroupPanelViewModel GroupPanelView = new Groups.GroupPanelViewModel();
         private ObservableCollection<TaskGroupTemplate> _myGroupList = new ObservableCollection<TaskGroupTemplate>();
         public ObservableCollection<TaskGroupTemplate> MyGroupList { get => _myGroupList; set => _myGroupList = value; }
 
         #endregion
 
         #region Delegated GroupList
-        //public ViewModels.Groups.GroupPanelViewModel GroupPanelView = new Groups.GroupPanelViewModel();
         private ObservableCollection<TaskGroupTemplate> _delegatedGroupList = new ObservableCollection<TaskGroupTemplate>();
         public ObservableCollection<TaskGroupTemplate> DelegatedGroupList { get => _delegatedGroupList; set => _delegatedGroupList = value; }
+        private List<TaskGroupTemplate> test = new List<TaskGroupTemplate>();
 
         #endregion
 
         #endregion
 
         #region СПИСОК ЗАДАЧ
+
+        #region FullTaskList
+        private ObservableCollection<TaskTemplate> _fullTaskList = new ObservableCollection<TaskTemplate>();
+        public ObservableCollection<TaskTemplate> FullTaskList
+        {
+            get => _fullTaskList;
+            set => _fullTaskList = value;
+
+        }
+        #endregion
+
         private ObservableCollection<TaskTemplate> _taskList = new ObservableCollection<TaskTemplate>();
         public ObservableCollection<TaskTemplate> TaskList 
         { 
@@ -212,15 +257,15 @@ namespace _9_07_2023_Planner.ViewModels
         private void OnStartup()
         {
             TryToDeserializeData();
-            //GenerateGroupList();
             GenerateTaskListMethod();
-            //GenerateTaskListCommand = new RelayCommand(TestMethod);
-            TodayButton.Title = "Today: " + DateTime.Now.ToString("d MMMM, ddd");
-            TodayButton.Counter = (100).ToString();
-            OnPropertyChanged(nameof(TodayButton));
-            ShowTotalTasksButton.Title = "Total Tasks:";
-            ShowTotalTasksButton.Counter = (100).ToString();
-            OnPropertyChanged(nameof(ShowTotalTasksButton));
+            _todayButton.Title = Languages.Lang.Today + "   " +  DateTime.Now.ToString("d MMMM, ddd");
+            TodayButton.Counter = TaskList.Where(c => c.ExpirationDate.Date == DateTime.Today).ToList().Count.ToString();
+            _showAllTasksButton.Title = Languages.Lang.TotalTasksString;
+            ShowTotalTasksButton.Counter = TaskList.Count.ToString();
+            _showExpiredTasksButton.Title = "Expired Tasks:";
+            ShowExpiredTasksButton.Counter = (10).ToString();
+           _showCompletedTasksButton.Title = "Completed Tasks:";
+            ShowCompletedTasksButton.Counter = (10).ToString();
 
         }
 
@@ -257,7 +302,7 @@ namespace _9_07_2023_Planner.ViewModels
         }
         private void GenerateTaskListMethod()
         {
-            TaskList = new ObservableCollection<TaskTemplate>
+            FullTaskList = new ObservableCollection<TaskTemplate>
             {
                  new TaskTemplate(DateTime.Now, "SampleTask1", "Sample Header 1", "Me", DateTime.Now, "Urgent", true, new TaskGroupModel(GroupList[0])),
                 new TaskTemplate(DateTime.Now.AddDays(9), "Sample Task 2", "Sample Header 2", "Me", DateTime.Now, "Urgent", true, GroupList[1]),
@@ -267,6 +312,7 @@ namespace _9_07_2023_Planner.ViewModels
 
                 new TaskTemplate(DateTime.Now.AddDays(13), "Sample Task 5", "Sample Header 5", "Me", DateTime.Now, "Urgent", true, GroupList[0])
             };
+            //TaskList = new ObservableCollection<TaskTemplate>(FullTaskList);
         }
         #endregion
 

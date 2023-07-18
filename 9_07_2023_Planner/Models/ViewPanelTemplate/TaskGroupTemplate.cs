@@ -49,6 +49,14 @@ namespace _9_07_2023_Planner.Models.ViewPanelTemplate
             Counter = 0;
             DeleteButtonVisibility = "Collapsed";
         }
+        public TaskGroupTemplate(string color, string groupName, string executor) : base(color, groupName, executor)
+        {
+            GroupColor = color;
+            GroupName = groupName;
+            ExecutionOf = executor;
+            Counter = 0;
+            DeleteButtonVisibility = "Collapsed";
+        }
 
         public TaskGroupTemplate(TaskGroupModel group)
         {

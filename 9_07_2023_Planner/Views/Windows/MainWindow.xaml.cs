@@ -47,13 +47,17 @@ namespace _9_07_2023_Planner.Views.Windows
         }
         private void SetSourceOfMyGroupPanel()
         {
-            (myGroupsPanel as TaskGroupPanel_UserControl).TaskGroupListBox.ItemsSource =
+            var myGroups = myGroupsPanel as TaskGroupPanel_UserControl;
+            myGroups.TaskGroupListBox.ItemsSource =
                (DataContext as MainWindowViewModel).MyGroupList;
+            myGroups.taskGroupExpander.Header = "My Tasks";
         }
         private void SetSourceOfDelegatedGroupPanel()
         {
-            (delegatedGroupsPanel as TaskGroupPanel_UserControl).TaskGroupListBox.ItemsSource =
+            var delegatedGroups = delegatedGroupsPanel as TaskGroupPanel_UserControl;
+            delegatedGroups.TaskGroupListBox.ItemsSource =
               (DataContext as MainWindowViewModel).DelegatedGroupList;
+            delegatedGroups.taskGroupExpander.Header = "Delegated Tasks";
         }
         #endregion
     }

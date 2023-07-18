@@ -5,18 +5,23 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:_9_07_2023_Planner.Views.Components.MiddlePanel"
              xmlns:dataContext="clr-namespace:_9_07_2023_Planner.ViewModels"
+             xmlns:commands="clr-namespace:_9_07_2023_Planner.Infrastructure.Commands"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="600">
     <UserControl.DataContext>
         <dataContext:MainWindowViewModel></dataContext:MainWindowViewModel>
     </UserControl.DataContext>
+    <UserControl.Resources>
+        <commands:AddNewTask_ShowWindowComand x:Key="showWindowOfAddingNewTaskCommand"/>
+    </UserControl.Resources>
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Auto" MinHeight="400" MaxHeight="900">
             <StackPanel Margin="5">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                     <Button Content="+ Create Task" Background="Transparent"
                             Foreground="White" BorderBrush="White"
-                            BorderThickness="2" Width="150"/>
+                            BorderThickness="2" Width="150"
+                            Command="{StaticResource showWindowOfAddingNewTaskCommand}"/>
 
                     <!--Command="{StaticResource ShowChildWindowOfNewTaskCommand}"-->
                 </StackPanel>
@@ -27,7 +32,7 @@
                                  SelectedItem="{Binding SelectedTask, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
                                  SelectedIndex="{Binding SelectedTaskIndex, UpdateSourceTrigger=PropertyChanged}"
                                  SelectionChanged="TaskGroupListBox_SelectionChanged"
-                                 x:Name="TaskGroupListBox">
+                                 x:Name="TaskListBox">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">

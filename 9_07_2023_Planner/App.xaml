@@ -4,13 +4,13 @@
              xmlns:local="clr-namespace:_9_07_2023_Planner"
              xmlns:mainWindowCommands="clr-namespace:_9_07_2023_Planner.Infrastructure.Commands.MainWindowCommands"
              xmlns:groupsContext="clr-namespace:_9_07_2023_Planner.ViewModels"
+             
              xmlns:commonCommands="clr-namespace:_9_07_2023_Planner.Infrastructure.Commands">
-
     <!--StartupUri="Views/Windows/MainWindow.xaml">-->
     <Application.Resources>
         <mainWindowCommands:AddNewTaskGroup_ShowWindowCommand x:Key="ShowChildWindowOfNewTaskGroupCommand"/>
         <groupsContext:MainWindowViewModel x:Key="mainWindowVM"/>
-        
+
         <commonCommands:CloseApplicationCommand x:Key="CloseAppCommand"/>
         <commonCommands:AddNewTaskGroupIntoListCommand x:Key="AddNewTaskGroupCommand"/>
         <commonCommands:DeleteTaskGroupCommand x:Key="DeleteTaskGroupCommand"/>
@@ -18,5 +18,6 @@
         <commonCommands:AddNewTask_ShowWindowComand x:Key="ShowChildWindowOfNewTaskCommand"/>
         <commonCommands:AddNewTaskIntoTaskListCommand x:Key="addNewTaskIntoTaskListCommand"/>
         <commonCommands:TaskGroupPanelSelectionChangedCommand x:Key="taskGroupPanelSelectionChangedCommand"/>
+        <commonCommands:ShowTodayTasksCommand x:Key="showTodayTasksButtonCommand"/>
     </Application.Resources>
 </Application>

@@ -8,9 +8,13 @@
              xmlns:mainWindowCommands="clr-namespace:_9_07_2023_Planner.Infrastructure.Commands.MainWindowCommands"
              mc:Ignorable="d" 
              d:DesignHeight="350" d:DesignWidth="290" Background="Transparent" x:Name="groupWindow_UC">
+    <UserControl.Resources>
+        <mainWindowCommands:AddNewTaskGroup_ShowWindowCommand x:Key="showChildWindowCommand"/>
+    </UserControl.Resources>
     <Grid>
         <Expander IsEnabled="True"
                   IsExpanded="True"
+                  x:Name="taskGroupExpander"
                   Background="Transparent"
                   Header="Executor"
                   Foreground="White"
@@ -19,13 +23,9 @@
             <StackPanel Background="Transparent">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button x:Name="AddTaskGroupButton" Content="+ Add Group" Background="Transparent" Foreground="White" BorderBrush="White" BorderThickness="0"
-                            HorizontalAlignment="Center" Width="85" Margin="1,0,1,0" CommandParameter="{Binding ElementName=groupWindow_UC}">
-                        <Button.Command>
-                            <mainWindowCommands:AddNewTaskGroup_ShowWindowCommand/>
-                        </Button.Command>
+                            HorizontalAlignment="Center" Width="85" Margin="1,0,1,0" CommandParameter="{Binding ElementName=groupWindow_UC}"
+                        Command="{StaticResource showChildWindowCommand}">
                     </Button>
-                            <!--Command="{StaticResource ShowChildWindowOfNewTaskGroupCommand}"/>-->
-                    <!--Command="{StaticResource ShowChildWindowOfNewTaskGroupCommand}"-->
                     <Button x:Name="EditTaskGroupButton" Content="Edit Group" Background="Transparent" Foreground="White" BorderBrush="White" BorderThickness="0"
                             HorizontalAlignment="Center" Width="70" Margin="1,0,1,0" CommandParameter="{Binding SelectedGroup}"/>
                     <!--Command="{Binding EditGroupCommand}"-->

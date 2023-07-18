@@ -4,6 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:_9_07_2023_Planner.Views.Components.LeftPanel"
+             xmlns:mainVM="clr-namespace:_9_07_2023_Planner.ViewModels"
+             xmlns:commands="clr-namespace:_9_07_2023_Planner.Infrastructure.Commands"
+             x:Name="InformativeButtonFormUC"
              mc:Ignorable="d">
     <UserControl.Resources>
         <Style x:Key="InformativeButtonCounterStyle">
@@ -17,20 +20,26 @@
             <Setter Property="TextBox.IsEnabled" Value="False"/>
             <Setter Property="TextBox.HorizontalContentAlignment" Value="Center"/>
         </Style>
+
+        <mainVM:MainWindowViewModel x:Key="mainVMDataContext"/>
+        <commands:ShowTodayTasksCommand x:Key="showTodayTasksButtonCommand_001"/>
+
     </UserControl.Resources>
     <Grid>
         <StackPanel x:Name="InformativeButtonStackPanel">
-            <Button x:Name="InformativeButton" Background="Transparent">
+            <Button x:Name="InformativeButton" Background="Transparent"
+                Command="{StaticResource showTodayTasksButtonCommand_001}"
+                    CommandParameter="{Binding ElementName=InformativeButtonFormUC}">
                 <DockPanel LastChildFill="False"
                            HorizontalAlignment="Stretch"
-                           Width="260">
+                           Width="257">
                     <TextBlock Foreground="LightGray"
                                DockPanel.Dock="Left"
                                Margin="15,1,1,1"
                                x:Name="InformativeButtonTitleTextBlock"
                                Text="{Binding Path=Title, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBox x:Name="InformativeButtonCounterTextBox"
-                             Style="{StaticResource InformativeButtonCounterStyle}" Text="{Binding Counter}"/>
+                             Style="{StaticResource InformativeButtonCounterStyle}" Text="{Binding Counter, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
                     <!--Text="{Binding Path=Counter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
                 </DockPanel>
             </Button>

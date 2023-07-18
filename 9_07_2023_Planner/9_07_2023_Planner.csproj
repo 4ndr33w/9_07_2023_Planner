@@ -102,7 +102,15 @@
     <Compile Include="Infrastructure\Commands\AddNewTaskIntoTaskListCommand.cs" />
     <Compile Include="Infrastructure\Commands\AddNewTask_ShowWindowComand.cs" />
     <Compile Include="Infrastructure\Commands\DeleteTaskGroup_ShowRequestWindowCommand.cs" />
+    <Compile Include="Infrastructure\Commands\ShowTodayTasksCommand.cs" />
+    <Compile Include="Infrastructure\Commands\ShowTotalTasksCommand.cs" />
     <Compile Include="Infrastructure\Commands\TaskGroupPanelSelectionChangedCommand.cs" />
+    <Compile Include="Languages\Lang.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Lang.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ObservableList.cs" />
     <Compile Include="Models\TaskModel.cs" />
     <Compile Include="Models\ViewPanelTemplate\InformativeButtonTemplate.cs" />
     <Compile Include="Models\ViewPanelTemplate\TaskTemplate.cs" />
@@ -202,6 +210,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Languages\Lang.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Lang.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -217,7 +229,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Configuration\" />
-    <Folder Include="Languages\" />
     <Folder Include="Styles\" />
     <Folder Include="Views\Components\ChildWindowComponents\" />
   </ItemGroup>
