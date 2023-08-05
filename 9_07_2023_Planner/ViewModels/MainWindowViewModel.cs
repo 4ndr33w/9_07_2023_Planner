@@ -118,7 +118,39 @@ namespace _9_07_2023_Planner.ViewModels
         /// <summary>Заголовок окна</summary>
         #endregion
 
-        #region SELECTED GROUP В LISTBOX
+        #region SELECTED GROUPS IN GROUPLISTS
+
+        #region SELECTED MYGROUP
+        private TaskGroupTemplate _mySelectedGroup;
+        public TaskGroupTemplate MySelectedGroup
+        {
+            get => _mySelectedGroup;
+            set
+            {
+                foreach (var item in MyGroupList)
+                {
+                    item.DeleteButtonVisibility = "Collapsed";
+                }
+                foreach (var item in DelegatedGroupList)
+                {
+                    item.DeleteButtonVisibility = "Collapsed";
+                }
+                Set(ref _selectedGroup, value);
+                if (MyGroupList.Contains(SelectedGroup))
+                {
+                    MyGroupList[SelectedMyGroupIndex].DeleteButtonVisibility = "Visible";
+                }
+                if (DelegatedGroupList.Contains(SelectedGroup))
+                {
+                    DelegatedGroupList[SelectedGroupIndex].DeleteButtonVisibility = "Visible";
+                }
+            }
+        }
+        #endregion
+
+            #endregion
+
+            #region SELECTED GROUP В LISTBOX
         private TaskGroupTemplate _selectedGroup;
         public TaskGroupTemplate SelectedGroup
         {
@@ -136,7 +168,7 @@ namespace _9_07_2023_Planner.ViewModels
                 Set(ref _selectedGroup, value);
                 if (MyGroupList.Contains(SelectedGroup))
                 {
-                    MyGroupList[SelectedGroupIndex].DeleteButtonVisibility = "Visible";
+                    MyGroupList[SelectedMyGroupIndex].DeleteButtonVisibility = "Visible";
                 }
                 if (DelegatedGroupList.Contains(SelectedGroup))
                 {
@@ -146,9 +178,19 @@ namespace _9_07_2023_Planner.ViewModels
         }
         #endregion
 
-        #region SELECTED GROUP INDEX
+        #region SELECTED GROUPS INDEXEX
+
+        #region SELECTED MYGROUP INDEX
+        private int _selectedMyGroupIndex = -1;
+        public int SelectedMyGroupIndex { get => _selectedMyGroupIndex; set => Set(ref _selectedMyGroupIndex, value); }
+        #endregion
+
+        #region COMMON SELECTED INDEX
         private int _selectedGroupIndex = -1;
         public int SelectedGroupIndex { get => _selectedGroupIndex; set => Set(ref _selectedGroupIndex, value); }
+        #endregion
+
+
         #endregion
 
         #region СПИСКИ ГРУПП
