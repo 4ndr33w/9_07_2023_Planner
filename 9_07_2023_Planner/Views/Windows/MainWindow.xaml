@@ -109,9 +109,12 @@
                             </StackPanel>
                            
                             
-                            <taskGroupPanel:TaskGroupPanel_UserControl x:Name="myGroupsPanel">
+                            <!--<taskGroupPanel:TaskGroupPanel_UserControl x:Name="myGroupsPanel">
                                 
-                            </taskGroupPanel:TaskGroupPanel_UserControl>
+                            </taskGroupPanel:TaskGroupPanel_UserControl>-->
+                            <taskGroupPanel:MyGroupsPanel_UserControl x:Name="myGroupsPanel">
+                                
+                            </taskGroupPanel:MyGroupsPanel_UserControl>
                             <taskGroupPanel:TaskGroupPanel_UserControl  x:Name="delegatedGroupsPanel">
                             </taskGroupPanel:TaskGroupPanel_UserControl>
                             <StackPanel Margin="5,10">

@@ -115,6 +115,9 @@
     <Compile Include="Models\ViewPanelTemplate\InformativeButtonTemplate.cs" />
     <Compile Include="Models\ViewPanelTemplate\TaskTemplate.cs" />
     <Compile Include="ViewModels\Groups\GroupPanelViewModel.cs" />
+    <Compile Include="Views\Components\LeftPanel\MyGroupsPanel_UserControl.xaml.cs">
+      <DependentUpon>MyGroupsPanel_UserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Components\RequestWindowComponents\DeleteTaskGroupRequest_UserControl.xaml.cs">
       <DependentUpon>DeleteTaskGroupRequest_UserControl.xaml</DependentUpon>
     </Compile>
@@ -125,6 +128,10 @@
       <DependentUpon>RequestWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\Components\LeftPanel\InformativeButton_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Components\LeftPanel\MyGroupsPanel_UserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

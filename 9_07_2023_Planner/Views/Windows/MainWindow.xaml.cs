@@ -43,14 +43,14 @@ namespace _9_07_2023_Planner.Views.Windows
         #region METHODS
         private void SetContextOfGroupPanels()
         {
-            (myGroupsPanel as TaskGroupPanel_UserControl).DataContext = new MainWindowViewModel();
+            //(myGroupsPanel as TaskGroupPanel_UserControl).DataContext = new MainWindowViewModel();
         }
         private void SetSourceOfMyGroupPanel()
         {
-            var myGroups = myGroupsPanel as TaskGroupPanel_UserControl;
-            myGroups.TaskGroupListBox.ItemsSource =
-               (DataContext as MainWindowViewModel).MyGroupList;
-            myGroups.taskGroupExpander.Header = "My Tasks";
+            //var myGroups = myGroupsPanel as TaskGroupPanel_UserControl;
+            //myGroups.TaskGroupListBox.ItemsSource =
+            //   (DataContext as MainWindowViewModel).MyGroupList;
+            //myGroups.taskGroupExpander.Header = "My Tasks";
         }
         private void SetSourceOfDelegatedGroupPanel()
         {
