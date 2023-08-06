@@ -115,8 +115,11 @@
                             <taskGroupPanel:MyGroupsPanel_UserControl x:Name="myGroupsPanel">
                                 
                             </taskGroupPanel:MyGroupsPanel_UserControl>
-                            <taskGroupPanel:TaskGroupPanel_UserControl  x:Name="delegatedGroupsPanel">
-                            </taskGroupPanel:TaskGroupPanel_UserControl>
+                            <taskGroupPanel:DelegatedGroupPanel_UserControl  x:Name="delegatedGroupsPanel">
+                                
+                            </taskGroupPanel:DelegatedGroupPanel_UserControl>
+                            <!--<taskGroupPanel:TaskGroupPanel_UserControl  x:Name="delegatedGroupsPanel">
+                            </taskGroupPanel:TaskGroupPanel_UserControl>-->
                             <StackPanel Margin="5,10">
                                 <taskGroupPanel:InformativeButton_UserControl Margin="10,5,10,1"
                                                                               DataContext="{Binding ShowExpiredTasksButton, UpdateSourceTrigger=PropertyChanged}"/>

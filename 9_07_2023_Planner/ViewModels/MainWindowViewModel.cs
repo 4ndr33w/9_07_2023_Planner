@@ -135,22 +135,50 @@ namespace _9_07_2023_Planner.ViewModels
                 {
                     item.DeleteButtonVisibility = "Collapsed";
                 }
-                Set(ref _selectedGroup, value);
-                if (MyGroupList.Contains(SelectedGroup))
+                Set(ref _mySelectedGroup, value);
+                if (MyGroupList.Contains(MySelectedGroup))
                 {
                     MyGroupList[SelectedMyGroupIndex].DeleteButtonVisibility = "Visible";
+                    SelectedDelegatedGroupIndex = -1;
                 }
-                if (DelegatedGroupList.Contains(SelectedGroup))
+                //if (DelegatedGroupList.Contains(SelectedGroup))
+                //{
+                //    DelegatedGroupList[SelectedDelegatedGroupIndex].DeleteButtonVisibility = "Visible";
+                //}
+            }
+        }
+        #endregion
+
+        #region SELECTED DELEGATED GROUP
+        private TaskGroupTemplate _delegatedSelectedGroup;
+        public TaskGroupTemplate DelegatedSelectedGroup
+        {
+            get => _delegatedSelectedGroup;
+            set
+            {
+                foreach (var item in MyGroupList)
                 {
-                    DelegatedGroupList[SelectedGroupIndex].DeleteButtonVisibility = "Visible";
+                    item.DeleteButtonVisibility = "Collapsed";
+                }
+                foreach (var item in DelegatedGroupList)
+                {
+                    item.DeleteButtonVisibility = "Collapsed";
+                }
+                Set(ref _delegatedSelectedGroup, value);
+                //if (MyGroupList.Contains(SelectedGroup))
+                //{
+                //    MyGroupList[SelectedMyGroupIndex].DeleteButtonVisibility = "Visible";
+                //}
+                if (DelegatedGroupList.Contains(DelegatedSelectedGroup))
+                {
+                    DelegatedGroupList[SelectedDelegatedGroupIndex].DeleteButtonVisibility = "Visible";
+                    SelectedMyGroupIndex = -1;
                 }
             }
         }
         #endregion
 
-            #endregion
-
-            #region SELECTED GROUP В LISTBOX
+        #region COMMON SELECTED GROUP IN LISTBOX
         private TaskGroupTemplate _selectedGroup;
         public TaskGroupTemplate SelectedGroup
         {
@@ -178,6 +206,10 @@ namespace _9_07_2023_Planner.ViewModels
         }
         #endregion
 
+        #endregion
+
+
+
         #region SELECTED GROUPS INDEXEX
 
         #region SELECTED MYGROUP INDEX
@@ -189,6 +221,12 @@ namespace _9_07_2023_Planner.ViewModels
         private int _selectedGroupIndex = -1;
         public int SelectedGroupIndex { get => _selectedGroupIndex; set => Set(ref _selectedGroupIndex, value); }
         #endregion
+
+        #region SELECTED DELEGATEDGROUP INDEX
+        private int _selectedDelegatedGroupIndex = -1;
+        public int SelectedDelegatedGroupIndex { get => _selectedDelegatedGroupIndex; set => Set(ref _selectedDelegatedGroupIndex, value); }
+        #endregion
+
 
 
         #endregion

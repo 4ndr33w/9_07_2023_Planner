@@ -115,6 +115,9 @@
     <Compile Include="Models\ViewPanelTemplate\InformativeButtonTemplate.cs" />
     <Compile Include="Models\ViewPanelTemplate\TaskTemplate.cs" />
     <Compile Include="ViewModels\Groups\GroupPanelViewModel.cs" />
+    <Compile Include="Views\Components\LeftPanel\DelegatedGroupPanel_UserControl.xaml.cs">
+      <DependentUpon>DelegatedGroupPanel_UserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Components\LeftPanel\MyGroupsPanel_UserControl.xaml.cs">
       <DependentUpon>MyGroupsPanel_UserControl.xaml</DependentUpon>
     </Compile>
@@ -127,6 +130,10 @@
     <Compile Include="Views\Windows\RequestWindows\RequestWindow.xaml.cs">
       <DependentUpon>RequestWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\Components\LeftPanel\DelegatedGroupPanel_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Components\LeftPanel\InformativeButton_UserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

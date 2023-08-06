@@ -54,10 +54,10 @@ namespace _9_07_2023_Planner.Views.Windows
         }
         private void SetSourceOfDelegatedGroupPanel()
         {
-            var delegatedGroups = delegatedGroupsPanel as TaskGroupPanel_UserControl;
-            delegatedGroups.TaskGroupListBox.ItemsSource =
-              (DataContext as MainWindowViewModel).DelegatedGroupList;
-            delegatedGroups.taskGroupExpander.Header = "Delegated Tasks";
+            //var delegatedGroups = delegatedGroupsPanel as TaskGroupPanel_UserControl;
+            //delegatedGroups.TaskGroupListBox.ItemsSource =
+            //  (DataContext as MainWindowViewModel).DelegatedGroupList;
+            //delegatedGroups.taskGroupExpander.Header = "Delegated Tasks";
         }
         #endregion
     }
