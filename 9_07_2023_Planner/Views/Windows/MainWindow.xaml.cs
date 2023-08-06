@@ -35,9 +35,9 @@ namespace _9_07_2023_Planner.Views.Windows
         private void OnStartup()
         {
             DataContext = new MainWindowViewModel();
-            SetContextOfGroupPanels();
-            SetSourceOfMyGroupPanel();
-            SetSourceOfDelegatedGroupPanel();
+            //SetContextOfGroupPanels();
+            //SetSourceOfMyGroupPanel();
+            //SetSourceOfDelegatedGroupPanel();
         }
 
         #region METHODS
@@ -60,5 +60,17 @@ namespace _9_07_2023_Planner.Views.Windows
             //delegatedGroups.taskGroupExpander.Header = "Delegated Tasks";
         }
         #endregion
+
+        private void myGroupsPanel_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if ((delegatedGroupsPanel as DelegatedGroupPanel_UserControl).TaskGroupListBox.SelectedIndex > -1)
+                (delegatedGroupsPanel as DelegatedGroupPanel_UserControl).TaskGroupListBox.SelectedIndex = -1;
+        }
+
+        private void delegatedGroupsPanel_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if ((myGroupsPanel as MyGroupsPanel_UserControl).TaskGroupListBox.SelectedIndex > -1)
+                (myGroupsPanel as MyGroupsPanel_UserControl).TaskGroupListBox.SelectedIndex = -1;
+        }
     }
 }

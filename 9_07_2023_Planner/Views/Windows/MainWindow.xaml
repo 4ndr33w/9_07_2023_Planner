@@ -112,10 +112,10 @@
                             <!--<taskGroupPanel:TaskGroupPanel_UserControl x:Name="myGroupsPanel">
                                 
                             </taskGroupPanel:TaskGroupPanel_UserControl>-->
-                            <taskGroupPanel:MyGroupsPanel_UserControl x:Name="myGroupsPanel">
+                            <taskGroupPanel:MyGroupsPanel_UserControl x:Name="myGroupsPanel" Selector.SelectionChanged="myGroupsPanel_SelectionChanged">
                                 
                             </taskGroupPanel:MyGroupsPanel_UserControl>
-                            <taskGroupPanel:DelegatedGroupPanel_UserControl  x:Name="delegatedGroupsPanel">
+                            <taskGroupPanel:DelegatedGroupPanel_UserControl  x:Name="delegatedGroupsPanel" Selector.SelectionChanged="delegatedGroupsPanel_SelectionChanged">
                                 
                             </taskGroupPanel:DelegatedGroupPanel_UserControl>
                             <!--<taskGroupPanel:TaskGroupPanel_UserControl  x:Name="delegatedGroupsPanel">

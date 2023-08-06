@@ -214,7 +214,7 @@ namespace _9_07_2023_Planner.ViewModels
 
         #region SELECTED MYGROUP INDEX
         private int _selectedMyGroupIndex = -1;
-        public int SelectedMyGroupIndex { get => _selectedMyGroupIndex; set => Set(ref _selectedMyGroupIndex, value); }
+        public int SelectedMyGroupIndex { get => _selectedMyGroupIndex; set { Set(ref _selectedMyGroupIndex, value);  } }
         #endregion
 
         #region COMMON SELECTED INDEX
@@ -224,7 +224,7 @@ namespace _9_07_2023_Planner.ViewModels
 
         #region SELECTED DELEGATEDGROUP INDEX
         private int _selectedDelegatedGroupIndex = -1;
-        public int SelectedDelegatedGroupIndex { get => _selectedDelegatedGroupIndex; set => Set(ref _selectedDelegatedGroupIndex, value); }
+        public int SelectedDelegatedGroupIndex { get => _selectedDelegatedGroupIndex; set { Set(ref _selectedDelegatedGroupIndex, value); } }
         #endregion
 
 

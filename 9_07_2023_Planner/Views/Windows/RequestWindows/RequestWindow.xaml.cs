@@ -24,7 +24,7 @@ namespace _9_07_2023_Planner.Views.Windows.RequestWindows
         public RequestWindow()
         {
             InitializeComponent();
-            DeleteTaskGroupRequest_UserControl deleteTaskGroupRequest_UserControl = new DeleteTaskGroupRequest_UserControl(this);
+            //DeleteTaskGroupRequest_UserControl deleteTaskGroupRequest_UserControl = new DeleteTaskGroupRequest_UserControl(this);
             //MessageBox.Show(this.ToString());
         }
         public RequestWindow(object parameter)

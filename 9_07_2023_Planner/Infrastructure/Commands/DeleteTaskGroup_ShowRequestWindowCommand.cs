@@ -1,4 +1,5 @@
 ﻿using _9_07_2023_Planner.Infrastructure.Commands.Base;
+using _9_07_2023_Planner.Models.ViewPanelTemplate;
 using _9_07_2023_Planner.ViewModels;
 using _9_07_2023_Planner.Views.Components.RequestWindowComponents;
 using _9_07_2023_Planner.Views.Windows.RequestWindows;
@@ -18,15 +19,16 @@ namespace _9_07_2023_Planner.Infrastructure.Commands
 
         public override void Execute(object parameter)
         {
-            //MessageBox.Show()
+            //MessageBox.Show($"{((parameter as ListBox).SelectedItem as TaskGroupTemplate).GroupName}");
             RequestWindow requestWindow = new RequestWindow();
-            requestWindow.deleteGroupShow_UK.Visibility = System.Windows.Visibility.Visible;
+            requestWindow.ShowDialog();
+            //requestWindow.deleteGroupShow_UK.Visibility = System.Windows.Visibility.Visible;
 
-            DeleteTaskGroupRequest_UserControl deleteGroup_UK = new DeleteTaskGroupRequest_UserControl(parameter);
+            ////DeleteTaskGroupRequest_UserControl deleteGroup_UK = new DeleteTaskGroupRequest_UserControl(parameter);
 
             var listBox = parameter as ListBox;
             var dataContext = listBox.DataContext as MainWindowViewModel;
-            //MessageBox.Show(dataContext.Title);
+            //////MessageBox.Show(dataContext.Title);
             dataContext.DeleteGroupRequestWindowUserControlVisibility = "Visible";
             SetWindowOwnerSetPositionAndShow.ShowModalWindow(requestWindow);
 
