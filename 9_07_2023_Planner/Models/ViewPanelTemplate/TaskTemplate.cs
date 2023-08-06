@@ -62,5 +62,10 @@ namespace _9_07_2023_Planner.Models.ViewPanelTemplate
             _counter = group.Counter;
             _userIdentifier = group.UserIdentifier;
         }
+
+        public override string ToString()
+        {
+            return $"{GroupName} {GroupColor}\n{UserIdentifier}\nexpiration: {ExpirationDate.Date}\nToday: {DateTime.Now.Date}";
+        }
     }
 }

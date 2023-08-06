@@ -18,6 +18,7 @@ using _9_07_2023_Planner;
 using _9_07_2023_Planner.ViewModels;
 using _9_07_2023_Planner.Infrastructure.Commands;
 using _9_07_2023_Planner.Views.Components.LeftPanel;
+using _9_07_2023_Planner.Views.Components.MiddlePanel;
 
 namespace _9_07_2023_Planner.Views.Windows
 {
@@ -61,16 +62,67 @@ namespace _9_07_2023_Planner.Views.Windows
         }
         #endregion
 
-        private void myGroupsPanel_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if ((delegatedGroupsPanel as DelegatedGroupPanel_UserControl).TaskGroupListBox.SelectedIndex > -1)
-                (delegatedGroupsPanel as DelegatedGroupPanel_UserControl).TaskGroupListBox.SelectedIndex = -1;
-        }
-
         private void delegatedGroupsPanel_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if ((myGroupsPanel as MyGroupsPanel_UserControl).TaskGroupListBox.SelectedIndex > -1)
+            {
                 (myGroupsPanel as MyGroupsPanel_UserControl).TaskGroupListBox.SelectedIndex = -1;
+                //(taskPanel as TaskPanel_UserControl).TaskListBox.SelectedIndex = -1;
+                //(taskPanel as TaskPanel_UserControl).TaskListBox.SelectedItem = null;
+            }
+            else if (((DataContext as MainWindowViewModel).SelectedTask != null))
+            {
+                //foreach (var item in (DataContext as MainWindowViewModel).TaskList)
+                //{
+                //    item.DeleteButtonVisibility = "Collapsed";
+                //    item.CompleteTaskMarkVisibility = "Collapsed";
+                //    item.EditButtonVisibility = "Collapsed";
+                //    item.CompletedOrExpiredTaskButtonVisibility = "Collapsed";
+                //}
+                //(DataContext as MainWindowViewModel).SelectedTask = null;
+                (DataContext as MainWindowViewModel).SelectedTaskIndex = -1;
+                (taskPanel as TaskPanel_UserControl).TaskListBox.Items.Refresh();
+            }
+                
+        }
+        private void myGroupsPanel_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+            if ((delegatedGroupsPanel as DelegatedGroupPanel_UserControl).TaskGroupListBox.SelectedIndex > -1)
+            {
+                (delegatedGroupsPanel as DelegatedGroupPanel_UserControl).TaskGroupListBox.SelectedIndex = -1;
+                //(taskPanel as TaskPanel_UserControl).TaskListBox.SelectedIndex = -1;
+                //(taskPanel as TaskPanel_UserControl).TaskListBox.SelectedItem = null;
+            }
+                
+        }
+
+        private void taskTanel_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            (delegatedGroupsPanel as DelegatedGroupPanel_UserControl).TaskGroupListBox.SelectedIndex = -1;
+            (myGroupsPanel as MyGroupsPanel_UserControl).TaskGroupListBox.SelectedIndex = -1;
+        }
+
+        private void todayButtonPanel_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            (delegatedGroupsPanel as DelegatedGroupPanel_UserControl).TaskGroupListBox.SelectedIndex = -1;
+            (myGroupsPanel as MyGroupsPanel_UserControl).TaskGroupListBox.SelectedIndex = -1;
+            //MessageBox.Show(todayButtonPanel.ToString());
+            //(todayButtonPanel as TaskPanel_UserControl).TaskListBox.Items.Refresh();
+        }
+
+        private void todayButtonPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            (delegatedGroupsPanel as DelegatedGroupPanel_UserControl).TaskGroupListBox.SelectedIndex = -1;
+            (myGroupsPanel as MyGroupsPanel_UserControl).TaskGroupListBox.SelectedIndex = -1;
+            //MessageBox.Show(todayButtonPanel.ToString());
+        }
+
+        private void totalTasksButonPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            (delegatedGroupsPanel as DelegatedGroupPanel_UserControl).TaskGroupListBox.SelectedIndex = -1;
+            (myGroupsPanel as MyGroupsPanel_UserControl).TaskGroupListBox.SelectedIndex = -1;
+            //MessageBox.Show("test");
         }
     }
 }

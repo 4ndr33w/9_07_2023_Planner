@@ -102,6 +102,7 @@
     <Compile Include="Infrastructure\Commands\AddNewTaskIntoTaskListCommand.cs" />
     <Compile Include="Infrastructure\Commands\AddNewTask_ShowWindowComand.cs" />
     <Compile Include="Infrastructure\Commands\DeleteTaskGroup_ShowRequestWindowCommand.cs" />
+    <Compile Include="Infrastructure\Commands\ShowDefaultTaskListCommand.cs" />
     <Compile Include="Infrastructure\Commands\ShowTodayTasksCommand.cs" />
     <Compile Include="Infrastructure\Commands\ShowTotalTasksCommand.cs" />
     <Compile Include="Infrastructure\Commands\TaskGroupPanelSelectionChangedCommand.cs" />

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _9_07_2023_Planner.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace _9_07_2023_Planner.Views.Components.MiddlePanel
     {
         public TaskPanel_UserControl()
         {
+            DataContext = new MainWindowViewModel();
             InitializeComponent();
         }
 

@@ -4,6 +4,7 @@ using _9_07_2023_Planner.Infrastructure;
 using _9_07_2023_Planner.Models;
 using _9_07_2023_Planner.Models.ViewPanelTemplate;
 using _9_07_2023_Planner.ViewModels.Base;
+using _9_07_2023_Planner.Views.Components.LeftPanel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace _9_07_2023_Planner.ViewModels
@@ -31,7 +33,6 @@ namespace _9_07_2023_Planner.ViewModels
             get { return _todayButton; }
             set
             {
-                //_todayButton.Title = "Today: " + "   " + DateTime.Now.ToString("d MMMM, ddd");
                 _todayButton.Counter = value.Counter;
                 OnPropertyChanged(nameof(TodayButton));
             }
@@ -260,17 +261,17 @@ namespace _9_07_2023_Planner.ViewModels
         public ObservableCollection<TaskTemplate> FullTaskList
         {
             get => _fullTaskList;
-            set => _fullTaskList = value;
+            set { _fullTaskList = value; OnPropertyChanged(); }
 
         }
         #endregion
 
-        private ObservableCollection<TaskTemplate> _taskList = new ObservableCollection<TaskTemplate>();
+        private ObservableCollection<TaskTemplate> _taskList;// = new ObservableCollection<TaskTemplate>();
         public ObservableCollection<TaskTemplate> TaskList 
         { 
-            get => _taskList; 
-            set => _taskList = value; 
-          
+            get => _taskList;
+            set { _taskList = value; OnPropertyChanged(); InformativeButtonsUpdate(); }
+
         }
         #endregion
 
@@ -282,13 +283,17 @@ namespace _9_07_2023_Planner.ViewModels
             set
             {
                 //MessageBox.Show(value.GroupName);
-                foreach(var item in TaskList)
+                if (TaskList != null)
                 {
-                    item.DeleteButtonVisibility = "Collapsed";
-                    item.CompleteTaskMarkVisibility = "Collapsed";
-                    item.EditButtonVisibility = "Collapsed";
-                    item.CompletedOrExpiredTaskButtonVisibility = "Collapsed";
+                    foreach (var item in TaskList)
+                    {
+                        item.DeleteButtonVisibility = "Collapsed";
+                        item.CompleteTaskMarkVisibility = "Collapsed";
+                        item.EditButtonVisibility = "Collapsed";
+                        item.CompletedOrExpiredTaskButtonVisibility = "Collapsed";
+                    }
                 }
+                
                 //Set(ref _selectedTask, value);
                 //if (SelectedTaskIndex > -1)
                 //{
@@ -297,23 +302,20 @@ namespace _9_07_2023_Planner.ViewModels
                 //    TaskList[SelectedTaskIndex].EditButtonVisibility = "Visible";
                 //}
                 _selectedTask = value;
-                //OnPropertyChanged(nameof(SelectedTask));
+                OnPropertyChanged(nameof(SelectedTask));
                 
                 //Set(ref _selectedTask, value);
-                if (_selectedTask != null)
+                if (SelectedTask != null && SelectedTaskIndex > -1)
                 {
                     //MessageBox.Show(SelectedTask.GroupName);
                     SelectedTask.DeleteButtonVisibility = "Visible";
                     SelectedTask.CompleteTaskMarkVisibility = "Visible";
                     SelectedTask.EditButtonVisibility = "Visible";
-                    TaskList[SelectedTaskIndex] = SelectedTask;
+                    //TaskList[SelectedTaskIndex] = SelectedTask;
                     OnPropertyChanged(nameof(SelectedTask));
-                    OnPropertyChanged(nameof(TaskList));
+                    //OnPropertyChanged(nameof(TaskList));
                 }
-                
-                
-                //OnPropertyChanged(nameof(TaskList));
-
+                OnPropertyChanged(nameof(TaskList));
             }
         }
         #endregion
@@ -338,15 +340,23 @@ namespace _9_07_2023_Planner.ViewModels
         {
             TryToDeserializeData();
             GenerateTaskListMethod();
-            _todayButton.Title = Languages.Lang.Today + "   " +  DateTime.Now.ToString("d MMMM, ddd");
-            TodayButton.Counter = TaskList.Where(c => c.ExpirationDate.Date == DateTime.Today).ToList().Count.ToString();
-            _showAllTasksButton.Title = Languages.Lang.TotalTasksString;
-            ShowTotalTasksButton.Counter = TaskList.Count.ToString();
-            _showExpiredTasksButton.Title = "Expired Tasks:";
-            ShowExpiredTasksButton.Counter = (10).ToString();
-           _showCompletedTasksButton.Title = "Completed Tasks:";
-            ShowCompletedTasksButton.Counter = (10).ToString();
+            InformativeButtonTitles();
+            InformativeButtonsUpdate();
+        }
 
+        private void InformativeButtonsUpdate()
+        {
+            TodayButton.Counter = TaskList == null? "0" : TaskList.Where(c => c.ExpirationDate.Date == DateTime.Today).ToList().Count.ToString();
+            ShowTotalTasksButton.Counter = TaskList == null ? "0" : TaskList.Count.ToString();
+            ShowExpiredTasksButton.Counter = (10).ToString();
+            ShowCompletedTasksButton.Counter = (10).ToString();
+        }
+        private void InformativeButtonTitles()
+        {
+            _todayButton.Title = Languages.Lang.Today + "   " + DateTime.Now.ToString("d MMMM, ddd");
+            _showAllTasksButton.Title = Languages.Lang.TotalTasksString;
+            _showExpiredTasksButton.Title = "Expired Tasks:";
+            _showCompletedTasksButton.Title = "Completed Tasks:";
         }
 
         private void TryToDeserializeData()
@@ -396,13 +406,74 @@ namespace _9_07_2023_Planner.ViewModels
         }
         #endregion
 
-       
+
 
         #endregion
 
         #region COMMANDS
 
-       
+        #region SHOW DEFAULT TASKLIST COMMAND
+        private RelayCommand _showDefaultTaskList;
+        public RelayCommand ShowDefaultTaskListCommand
+        {
+            get
+            {
+                return _showDefaultTaskList ?? new RelayCommand(obj =>
+                {
+                    ShowDefaultTaskListMethod(obj);
+                });
+            }
+        }
+        private void ShowDefaultTaskListMethod(object parameter)
+        {
+            TaskList = new ObservableCollection<TaskTemplate>(FullTaskList);
+            InformativeButtonsUpdate();
+        }
+        #endregion
+
+        #region SHOW TODAY TASKS COMMAND
+        private RelayCommand _informativeButtonsCommand;
+        public RelayCommand InformativeButtonsCommand
+        {
+            get
+            {
+                return _informativeButtonsCommand ?? new RelayCommand(obj => 
+                {
+                    InformativeButtonsMethod(obj);
+                });
+            }
+        }
+        public void InformativeButtonsMethod(object parameter) 
+        {
+            var infoButtonContext = (parameter as InformativeButton_UserControl).DataContext;
+            var InfoButtonTitle = (parameter as InformativeButton_UserControl).InformativeButtonTitleTextBlock.Text;
+
+            if (InfoButtonTitle == TodayButton.Title)
+            {
+                MessageBox.Show(FullTaskList.Where(c => c.ExpirationDate.Date == DateTime.Today).ToList().Count.ToString());
+                TaskList = new ObservableCollection<TaskTemplate>(FullTaskList.Where(c => c.ExpirationDate.Date == DateTime.Now.Date).ToList());
+                InformativeButtonsUpdate();
+                //OnPropertyChanged(nameof(TaskList));
+            }
+            if (InfoButtonTitle == ShowTotalTasksButton.Title)
+            {
+                MessageBox.Show(FullTaskList.Count.ToString());
+                TaskList = new ObservableCollection<TaskTemplate>(FullTaskList);
+                InformativeButtonsUpdate();
+                //OnPropertyChanged(nameof(TaskList));
+            }
+
+            //MessageBox.Show((parameter as InformativeButton_UserControl).InformativeButtonTitleTextBlock.Text);
+            //if (infoButtonContext == TodayButton)
+            //{
+            //    TaskList = new ObservableCollection<TaskTemplate>(TaskList.Where(c => c.ExpirationDate.Date == DateTime.Today).ToList());
+            //         //new ObservableCollection<TaskTemplate>(mainVM.TaskList.Where(c => c.ExpirationDate.Date == DateTime.Today).ToList());
+            //}
+        }
+        #endregion
+
+
+
         #endregion
     }
 }

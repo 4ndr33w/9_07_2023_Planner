@@ -30,18 +30,18 @@ namespace _9_07_2023_Planner.Views.Components.RequestWindowComponents
             InitializeComponent();
             //MessageBox.Show(this.ToString());
         }
-        public DeleteTaskGroupRequest_UserControl(object parameter)
-        {
-            InitializeComponent();
-            //MessageBox.Show(this.ToString());
-            Parameter = parameter;
-        }
-        public DeleteTaskGroupRequest_UserControl(Window window)
-        {
-            InitializeComponent();
-            //MessageBox.Show(window.ToString());
-            Window = window;
-        }
+        //public DeleteTaskGroupRequest_UserControl(object parameter)
+        //{
+        //    InitializeComponent();
+        //    //MessageBox.Show(this.ToString());
+        //    Parameter = parameter;
+        //}
+        //public DeleteTaskGroupRequest_UserControl(Window window)
+        //{
+        //    InitializeComponent();
+        //    //MessageBox.Show(window.ToString());
+        //    Window = window;
+        //}
 
         //public event PropertyChangedEventHandler PropertyChanged;
 

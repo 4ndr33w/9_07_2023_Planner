@@ -20,10 +20,11 @@
     </Window.Background>
     <Grid>
         <StackPanel>
-            <deleteGroup:DeleteTaskGroupRequest_UserControl 
-                x:Name="deleteGroupShow_UK" 
-                Visibility="{Binding DeleteGroupRequestWindowUserControlVisibility, UpdateSourceTrigger=PropertyChanged}">
-            </deleteGroup:DeleteTaskGroupRequest_UserControl>
+            <deleteGroup:DeleteTaskGroupRequest_UserControl></deleteGroup:DeleteTaskGroupRequest_UserControl>
+            <!--<deleteGroup:DeleteTaskGroupRequest_UserControl 
+                x:Name="deleteGroupShow_UK">
+                --><!--Visibility="{Binding DeleteGroupRequestWindowUserControlVisibility, UpdateSourceTrigger=PropertyChanged}">--><!--
+            </deleteGroup:DeleteTaskGroupRequest_UserControl>-->
         </StackPanel>
     </Grid>
 </Window>

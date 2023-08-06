@@ -7,9 +7,11 @@
              xmlns:mainWindowCommands="clr-namespace:_9_07_2023_Planner.Infrastructure.Commands.MainWindowCommands"
              xmlns:local="clr-namespace:_9_07_2023_Planner.Views.Components.LeftPanel"
              mc:Ignorable="d" 
+             xmlns:commonCommands="clr-namespace:_9_07_2023_Planner.Infrastructure.Commands"
              d:DesignHeight="350" d:DesignWidth="290" Background="Transparent" x:Name="myGroupsWindow_UC">
     <UserControl.Resources>
         <mainWindowCommands:AddNewTaskGroup_ShowWindowCommand x:Key="showChildWindowCommand"/>
+        <commonCommands:DeleteTaskGroup_ShowRequestWindowCommand x:Key="DeleteGroupRequestWindowCommand"/>
     </UserControl.Resources>
     <UserControl.DataContext>
         <dataContext:MainWindowViewModel/>
@@ -30,7 +32,7 @@
                         Command="{StaticResource showChildWindowCommand}">
                     </Button>
                     <Button x:Name="EditTaskGroupButton" Content="Edit Group" Background="Transparent" Foreground="White" BorderBrush="White" BorderThickness="0"
-                            HorizontalAlignment="Center" Width="70" Margin="1,0,1,0" CommandParameter="{Binding SelectedGroup}"/>
+                            HorizontalAlignment="Center" Width="70" Margin="1,0,1,0" CommandParameter="{Binding MySelectedGroup}"/>
                     <!--Command="{Binding EditGroupCommand}"-->
                     <!--<Button x:Name="DeleteTaskGroupButton" Content="Delete Group" Background="Transparent" Foreground="White" BorderBrush="White" BorderThickness="0"
                             HorizontalAlignment="Center" Width="85" Margin="1,0,1,0"  Command="{Binding ShowDeleteGroupRequestWindowCommand}"/>-->
@@ -47,7 +49,8 @@
 
                                 <StackPanel Orientation="Horizontal" DockPanel.Dock="Left" Background="Transparent" Width="200">
                                     <Button Visibility="{Binding Path=DeleteButtonVisibility}" Background="Transparent"
-                                            
+                                            Command="{StaticResource DeleteGroupRequestWindowCommand}"
+                                            CommandTarget="{Binding ElementName=dataTemplateItem}"
                                             CommandParameter="{Binding ElementName=TaskGroupListBox}">
                                         <!--Command="{StaticResource DeleteGroupRequestWindowCommand}"-->
                                         <!--CommandTarget="{Binding ElementName=dataTemplateItem}"-->

@@ -27,12 +27,12 @@ namespace _9_07_2023_Planner.Views.Windows.RequestWindows
             //DeleteTaskGroupRequest_UserControl deleteTaskGroupRequest_UserControl = new DeleteTaskGroupRequest_UserControl(this);
             //MessageBox.Show(this.ToString());
         }
-        public RequestWindow(object parameter)
-        {
-            InitializeComponent();
-            _parameter = parameter;
-            //DeleteTaskGroupRequest_UserControl deleteTaskGroupRequest_UserControl = new DeleteTaskGroupRequest_UserControl(this);
-            //MessageBox.Show(this.ToString());
-        }
+        //public RequestWindow(object parameter)
+        //{
+        //    InitializeComponent();
+        //    _parameter = parameter;
+        //    //DeleteTaskGroupRequest_UserControl deleteTaskGroupRequest_UserControl = new DeleteTaskGroupRequest_UserControl(this);
+        //    MessageBox.Show(parameter.ToString());
+        //}
     }
 }

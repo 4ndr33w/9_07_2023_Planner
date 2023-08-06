@@ -13,6 +13,7 @@
     </UserControl.DataContext>
     <UserControl.Resources>
         <commands:AddNewTask_ShowWindowComand x:Key="showWindowOfAddingNewTaskCommand"/>
+        <commands:ShowDefaultTaskListCommand x:Key="showDefaultTaskListCommand"/>
     </UserControl.Resources>
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Auto" MinHeight="400" MaxHeight="900">
@@ -24,11 +25,15 @@
                             Command="{StaticResource showWindowOfAddingNewTaskCommand}"/>
 
                     <!--Command="{StaticResource ShowChildWindowOfNewTaskCommand}"-->
+                    <Button Content="Show Default Tasks" Background="Transparent" Foreground="White" BorderBrush="White"
+                            Width="200" BorderThickness="2" Command="{Binding ShowDefaultTaskListCommand}"/>
+                    <!--Command="{StaticResource showDefaultTaskListCommand}"/>-->
+                    <!--CommandTarget="{Binding ElementName=TaskListBox}"/>-->
                 </StackPanel>
                 <StackPanel>
                     <Expander Header="Task Bar" IsExpanded="True" Foreground="White">
                         <ListBox Background="Transparent" SelectionMode="Single" 
-                                 ItemsSource="{Binding TaskList, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                 ItemsSource="{Binding TaskList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                  SelectedItem="{Binding SelectedTask, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
                                  SelectedIndex="{Binding SelectedTaskIndex, UpdateSourceTrigger=PropertyChanged}"
                                  SelectionChanged="TaskGroupListBox_SelectionChanged"

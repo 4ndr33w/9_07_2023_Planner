@@ -101,25 +101,21 @@
                             <Calendar/>
                             <StackPanel Margin="5,10">
                                 <taskGroupPanel:InformativeButton_UserControl Margin="10,5,10,1" 
-                                                                          x:Name="totalTasksButonPanel" 
-                                                                          DataContext="{Binding ShowTotalTasksButton, UpdateSourceTrigger=PropertyChanged}"/>
+                                                                              x:Name="totalTasksButonPanel" 
+                                                                              DataContext="{Binding ShowTotalTasksButton, UpdateSourceTrigger=PropertyChanged}"
+                                                                              MouseLeftButtonDown="totalTasksButonPanel_MouseLeftButtonDown"/>
                                 <taskGroupPanel:InformativeButton_UserControl Margin="10,1,10,5" 
-                                                                          x:Name="todayButtonPanel" 
-                                                                          DataContext="{Binding TodayButton, UpdateSourceTrigger=PropertyChanged}"/>
+                                                                              x:Name="todayButtonPanel" 
+                                                                              DataContext="{Binding TodayButton, UpdateSourceTrigger=PropertyChanged}"
+                                                                              MouseLeftButtonDown="todayButtonPanel_MouseLeftButtonDown"/>
                             </StackPanel>
                            
                             
                             <!--<taskGroupPanel:TaskGroupPanel_UserControl x:Name="myGroupsPanel">
                                 
                             </taskGroupPanel:TaskGroupPanel_UserControl>-->
-                            <taskGroupPanel:MyGroupsPanel_UserControl x:Name="myGroupsPanel" Selector.SelectionChanged="myGroupsPanel_SelectionChanged">
-                                
-                            </taskGroupPanel:MyGroupsPanel_UserControl>
-                            <taskGroupPanel:DelegatedGroupPanel_UserControl  x:Name="delegatedGroupsPanel" Selector.SelectionChanged="delegatedGroupsPanel_SelectionChanged">
-                                
-                            </taskGroupPanel:DelegatedGroupPanel_UserControl>
-                            <!--<taskGroupPanel:TaskGroupPanel_UserControl  x:Name="delegatedGroupsPanel">
-                            </taskGroupPanel:TaskGroupPanel_UserControl>-->
+                            <taskGroupPanel:MyGroupsPanel_UserControl x:Name="myGroupsPanel" Selector.SelectionChanged="myGroupsPanel_SelectionChanged"/>
+                            <taskGroupPanel:DelegatedGroupPanel_UserControl  x:Name="delegatedGroupsPanel" Selector.SelectionChanged="delegatedGroupsPanel_SelectionChanged"/>
                             <StackPanel Margin="5,10">
                                 <taskGroupPanel:InformativeButton_UserControl Margin="10,5,10,1"
                                                                               DataContext="{Binding ShowExpiredTasksButton, UpdateSourceTrigger=PropertyChanged}"/>
@@ -132,7 +128,7 @@
                     
                 </Border>
                 <Border Grid.Column="1" Grid.Row="0" BorderBrush="DimGray" BorderThickness="2" Margin="5">
-                    <taskPanel:TaskPanel_UserControl/>
+                    <taskPanel:TaskPanel_UserControl x:Name="taskPanel" Selector.SelectionChanged="taskTanel_SelectionChanged"/>
                 </Border>
                 <Border Grid.Column="2" Grid.Row="0" BorderBrush="DimGray" BorderThickness="2" Margin="5" HorizontalAlignment="Stretch">
                     <rightPanel:RightPanel_UserControl/>

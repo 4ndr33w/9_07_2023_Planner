@@ -21,15 +21,15 @@ namespace _9_07_2023_Planner.Infrastructure.Commands
         {
             //MessageBox.Show($"{((parameter as ListBox).SelectedItem as TaskGroupTemplate).GroupName}");
             RequestWindow requestWindow = new RequestWindow();
-            requestWindow.ShowDialog();
+            //requestWindow.ShowDialog();
             //requestWindow.deleteGroupShow_UK.Visibility = System.Windows.Visibility.Visible;
 
             ////DeleteTaskGroupRequest_UserControl deleteGroup_UK = new DeleteTaskGroupRequest_UserControl(parameter);
 
-            var listBox = parameter as ListBox;
-            var dataContext = listBox.DataContext as MainWindowViewModel;
+            //var listBox = parameter as ListBox;
+            //var dataContext = listBox.DataContext as MainWindowViewModel;
             //////MessageBox.Show(dataContext.Title);
-            dataContext.DeleteGroupRequestWindowUserControlVisibility = "Visible";
+            //dataContext.DeleteGroupRequestWindowUserControlVisibility = "Visible";
             SetWindowOwnerSetPositionAndShow.ShowModalWindow(requestWindow);
 
             
