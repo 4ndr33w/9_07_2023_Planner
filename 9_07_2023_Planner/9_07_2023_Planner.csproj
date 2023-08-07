@@ -119,6 +119,9 @@
     <Compile Include="Views\Components\LeftPanel\DelegatedGroupPanel_UserControl.xaml.cs">
       <DependentUpon>DelegatedGroupPanel_UserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Components\LeftPanel\InformativeButtons\TodayTasksInformativeButton_UserControl.xaml.cs">
+      <DependentUpon>TodayTasksInformativeButton_UserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Components\LeftPanel\MyGroupsPanel_UserControl.xaml.cs">
       <DependentUpon>MyGroupsPanel_UserControl.xaml</DependentUpon>
     </Compile>
@@ -132,6 +135,10 @@
       <DependentUpon>RequestWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\Components\LeftPanel\DelegatedGroupPanel_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Components\LeftPanel\InformativeButtons\TodayTasksInformativeButton_UserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

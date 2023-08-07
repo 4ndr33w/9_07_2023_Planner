@@ -2,6 +2,7 @@
 using _9_07_2023_Planner.Models.ViewPanelTemplate;
 using _9_07_2023_Planner.ViewModels;
 using _9_07_2023_Planner.Views.Components.LeftPanel;
+using _9_07_2023_Planner.Views.Components.MiddlePanel;
 using _9_07_2023_Planner.Views.Windows;
 using System;
 using System.Collections.Generic;
@@ -19,27 +20,13 @@ namespace _9_07_2023_Planner.Infrastructure.Commands
 
         public override void Execute(object parameter)
         {
-            var informativeButton = parameter as InformativeButton_UserControl;
-            var dataContext = informativeButton.DataContext as InformativeButtonTemplate;
+            //var informativeButton = parameter as InformativeButton_UserControl;
+            //var dataContext = informativeButton.DataContext as InformativeButtonTemplate;
 
-            var mainVM = new MainWindowViewModel();
-            mainVM.InformativeButtonsMethod(parameter);
-
-            //if (dataContext.Title == Languages.Lang.Today + "   " + DateTime.Now.ToString("d MMMM, ddd"))
-            //{
-            //    var taskList = mainVM.TaskList = new ObservableCollection<TaskTemplate>(mainVM.TaskList.Where(c => c.ExpirationDate.Date == DateTime.Today).ToList());
-            //    //var test = mainVM.TaskList;
-            //    ViewRefreshMethod(taskList);
-            //    //MessageBox.Show(test.Count.ToString());
-
-
-            //}
-            //if (dataContext.Title == Languages.Lang.TotalTasksString)
-            //{
-            //    //mainVM.TaskList = new System.Collections.ObjectModel.ObservableCollection<TaskTemplate>(mainVM.FullTaskList);
-            //    //MessageBox.Show(mainVM.TaskList.Count.ToString());
-            //}
-            
+            ////var mainVM = new MainWindowViewModel();
+            //TaskPanel_UserControl taskPanel_UserControl = new TaskPanel_UserControl();
+            //taskPanel_UserControl.Test("123");
+            //MessageBox.Show(taskPanel_UserControl.TaskListBox.Items.Count.ToString());
         }
 
         private void ViewRefreshMethod(ObservableCollection<TaskTemplate> taskList)

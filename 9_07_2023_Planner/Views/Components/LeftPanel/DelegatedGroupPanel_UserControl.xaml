@@ -21,7 +21,7 @@
                   IsExpanded="True"
                   x:Name="taskGroupExpander"
                   Background="Transparent"
-                  Header="Executor"
+                  Header="Delegated Tasks"
                   Foreground="White"
                   BorderBrush="White"
                   BorderThickness="1">

@@ -12,8 +12,8 @@ namespace _9_07_2023_Planner.Models.ViewPanelTemplate
         private string _title;
         private string _counter;
 
-        public string Counter { get { return _counter; } set { _counter = value; OnPropertyChanged(nameof(Counter)); } }
-        public string Title { get { return _title; } set { _title = value; OnPropertyChanged(nameof(Title)); } }
+        public string Counter { get => _counter; set => Set(ref _counter, value); } 
+        public string Title { get => _title; set => Set(ref _title, value); } 
 
         public InformativeButtonTemplate()
         {

@@ -5,12 +5,15 @@ using _9_07_2023_Planner.Models;
 using _9_07_2023_Planner.Models.ViewPanelTemplate;
 using _9_07_2023_Planner.ViewModels.Base;
 using _9_07_2023_Planner.Views.Components.LeftPanel;
+using _9_07_2023_Planner.Views.Components.MiddlePanel;
+using _9_07_2023_Planner.Views.Windows;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
@@ -241,14 +244,16 @@ namespace _9_07_2023_Planner.ViewModels
 
         #region My GroupList
         private ObservableCollection<TaskGroupTemplate> _myGroupList = new ObservableCollection<TaskGroupTemplate>();
-        public ObservableCollection<TaskGroupTemplate> MyGroupList { get => _myGroupList; set => _myGroupList = value; }
+        //public ObservableCollection<TaskGroupTemplate> MyGroupList { get => _myGroupList; set => _myGroupList = value; }
+        public ObservableCollection<TaskGroupTemplate> MyGroupList { get => _myGroupList; set => Set(ref _myGroupList, value); }
 
         #endregion
 
         #region Delegated GroupList
         private ObservableCollection<TaskGroupTemplate> _delegatedGroupList = new ObservableCollection<TaskGroupTemplate>();
-        public ObservableCollection<TaskGroupTemplate> DelegatedGroupList { get => _delegatedGroupList; set => _delegatedGroupList = value; }
-        private List<TaskGroupTemplate> test = new List<TaskGroupTemplate>();
+        //public ObservableCollection<TaskGroupTemplate> DelegatedGroupList { get => _delegatedGroupList; set => _delegatedGroupList = value; }
+        public ObservableCollection<TaskGroupTemplate> DelegatedGroupList { get => _delegatedGroupList; set => Set(ref _delegatedGroupList, value); }
+        //private List<TaskGroupTemplate> test = new List<TaskGroupTemplate>();
 
         #endregion
 
@@ -346,10 +351,28 @@ namespace _9_07_2023_Planner.ViewModels
 
         private void InformativeButtonsUpdate()
         {
-            TodayButton.Counter = TaskList == null? "0" : TaskList.Where(c => c.ExpirationDate.Date == DateTime.Today).ToList().Count.ToString();
-            ShowTotalTasksButton.Counter = TaskList == null ? "0" : TaskList.Count.ToString();
+            TodayButton.Counter = FullTaskList == null? "0" : FullTaskList.Where(c => c.ExpirationDate.Date == DateTime.Today).ToList().Count.ToString();
+            ShowTotalTasksButton.Counter = FullTaskList == null ? "0" : FullTaskList.Count.ToString();
             ShowExpiredTasksButton.Counter = (10).ToString();
             ShowCompletedTasksButton.Counter = (10).ToString();
+            if (FullTaskList != null)
+            {
+                foreach (var task in FullTaskList)
+                {
+                    foreach (var myGroup in MyGroupList)
+                    {
+                        if (myGroup.GroupColor == task.GroupColor && myGroup.GroupName == task.GroupName && myGroup.ExecutionOf == task.ExecutionOf) myGroup.Counter++;
+                        //if (myGroup.GroupId == task.GroupId) myGroup.Counter++;
+                    }
+                    foreach (var delegGroup in DelegatedGroupList)
+                    {
+                        if (delegGroup.GroupColor == task.GroupColor && delegGroup.GroupName == task.GroupName && delegGroup.ExecutionOf == task.ExecutionOf) delegGroup.Counter++;
+                        //if (delegGroup.GroupId == task.GroupId) delegGroup.Counter++;
+                    }
+                }
+            }
+
+          
         }
         private void InformativeButtonTitles()
         {
@@ -402,7 +425,7 @@ namespace _9_07_2023_Planner.ViewModels
 
                 new TaskTemplate(DateTime.Now.AddDays(13), "Sample Task 5", "Sample Header 5", "Me", DateTime.Now, "Urgent", true, GroupList[0])
             };
-            //TaskList = new ObservableCollection<TaskTemplate>(FullTaskList);
+            TaskList = new ObservableCollection<TaskTemplate>(FullTaskList);
         }
         #endregion
 
@@ -443,32 +466,34 @@ namespace _9_07_2023_Planner.ViewModels
                 });
             }
         }
+        private void SelectedGroupsHideDeleteButtons()
+        {
+            if (MySelectedGroup != null)
+            {
+                MySelectedGroup.DeleteButtonVisibility = "Collapsed";
+                MessageBox.Show(MySelectedGroup.DeleteButtonVisibility.ToString());
+            }
+            else if (DelegatedSelectedGroup != null)
+            {
+                DelegatedSelectedGroup.DeleteButtonVisibility = "Collapsed";
+            }
+            //MySelectedGroup.DeleteButtonVisibility = "Collapsed";
+            //DelegatedSelectedGroup.DeleteButtonVisibility = "Collapsed";
+            
+
+            //foreach (var group in MyGroupList)
+            //{
+            //    group.DeleteButtonVisibility = "Collapsed";
+            //}
+            //foreach (var group in DelegatedGroupList)
+            //{
+            //    group.DeleteButtonVisibility = "Collapsed";
+            //}
+        }
         public void InformativeButtonsMethod(object parameter) 
         {
-            var infoButtonContext = (parameter as InformativeButton_UserControl).DataContext;
-            var InfoButtonTitle = (parameter as InformativeButton_UserControl).InformativeButtonTitleTextBlock.Text;
-
-            if (InfoButtonTitle == TodayButton.Title)
-            {
-                MessageBox.Show(FullTaskList.Where(c => c.ExpirationDate.Date == DateTime.Today).ToList().Count.ToString());
-                TaskList = new ObservableCollection<TaskTemplate>(FullTaskList.Where(c => c.ExpirationDate.Date == DateTime.Now.Date).ToList());
-                InformativeButtonsUpdate();
-                //OnPropertyChanged(nameof(TaskList));
-            }
-            if (InfoButtonTitle == ShowTotalTasksButton.Title)
-            {
-                MessageBox.Show(FullTaskList.Count.ToString());
-                TaskList = new ObservableCollection<TaskTemplate>(FullTaskList);
-                InformativeButtonsUpdate();
-                //OnPropertyChanged(nameof(TaskList));
-            }
-
-            //MessageBox.Show((parameter as InformativeButton_UserControl).InformativeButtonTitleTextBlock.Text);
-            //if (infoButtonContext == TodayButton)
-            //{
-            //    TaskList = new ObservableCollection<TaskTemplate>(TaskList.Where(c => c.ExpirationDate.Date == DateTime.Today).ToList());
-            //         //new ObservableCollection<TaskTemplate>(mainVM.TaskList.Where(c => c.ExpirationDate.Date == DateTime.Today).ToList());
-            //}
+            TaskList = new ObservableCollection<TaskTemplate>(FullTaskList.Where(c => c.ExpirationDate.Date == DateTime.Now.Date));
+            InformativeButtonsUpdate();
         }
         #endregion
 

@@ -21,7 +21,7 @@
                   IsExpanded="True"
                   x:Name="taskGroupExpander"
                   Background="Transparent"
-                  Header="Executor"
+                  Header="My Tasks"
                   Foreground="White"
                   BorderBrush="White"
                   BorderThickness="1">
@@ -38,7 +38,7 @@
                             HorizontalAlignment="Center" Width="85" Margin="1,0,1,0"  Command="{Binding ShowDeleteGroupRequestWindowCommand}"/>-->
                 </StackPanel>
                 <ListBox Background="Transparent" x:Name="TaskGroupListBox" Tag="AncestorLevel 1"
-                         SelectedItem="{Binding MySelectedGroup}"
+                         SelectedItem="{Binding MySelectedGroup, UpdateSourceTrigger=PropertyChanged}"
                          SelectionMode="Single" SelectedIndex="{Binding SelectedMyGroupIndex}" SelectionChanged="TaskGroupListBox_SelectionChanged"
                          ItemsSource="{Binding MyGroupList}">
                     <!--ItemsSource="{Binding GroupList, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"-->

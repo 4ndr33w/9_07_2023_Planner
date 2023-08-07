@@ -11,12 +11,14 @@
         xmlns:rightPanel="clr-namespace:_9_07_2023_Planner.Views.Components.RightPanel"
         xmlns:taskPanel="clr-namespace:_9_07_2023_Planner.Views.Components.MiddlePanel"
         xmlns:commands="clr-namespace:_9_07_2023_Planner.Infrastructure.Commands"
+        xmlns:informativeButtons="clr-namespace:_9_07_2023_Planner.Views.Components.LeftPanel.InformativeButtons"
         Title="{Binding Path=Title}" Height="710" Width="1200" x:Name="mainWindow">
     <Window.DataContext>
         <dataContext:MainWindowViewModel></dataContext:MainWindowViewModel>
     </Window.DataContext>
     <Window.Resources>
         <commands:CloseApplicationCommand x:Key="CloseAppCmd"/>
+        <dataContext:MainWindowViewModel x:Key="mainVM_DataContext"/>
     </Window.Resources>
     <Window.InputBindings>
         <KeyBinding Modifiers="Ctrl" Key="Q" Command="{StaticResource CloseAppCmd}"/>
@@ -98,16 +100,18 @@
                 <Border Grid.Column="0" Grid.Row="0" BorderBrush="DimGray" BorderThickness="2" Margin="5" Background="Transparent">
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel x:Name="leftPanelStackPanel">
-                            <Calendar/>
+                            <Calendar x:Name="Calendar"/>
                             <StackPanel Margin="5,10">
                                 <taskGroupPanel:InformativeButton_UserControl Margin="10,5,10,1" 
                                                                               x:Name="totalTasksButonPanel" 
                                                                               DataContext="{Binding ShowTotalTasksButton, UpdateSourceTrigger=PropertyChanged}"
                                                                               MouseLeftButtonDown="totalTasksButonPanel_MouseLeftButtonDown"/>
-                                <taskGroupPanel:InformativeButton_UserControl Margin="10,1,10,5" 
+                                <informativeButtons:TodayTasksInformativeButton_UserControl Margin="10,1,10,5"
+                                                                                            x:Name="todayButtonPanel"/>
+                                <!--<taskGroupPanel:InformativeButton_UserControl Margin="10,1,10,5" 
                                                                               x:Name="todayButtonPanel" 
                                                                               DataContext="{Binding TodayButton, UpdateSourceTrigger=PropertyChanged}"
-                                                                              MouseLeftButtonDown="todayButtonPanel_MouseLeftButtonDown"/>
+                                                                              MouseLeftButtonDown="todayButtonPanel_MouseLeftButtonDown"/>-->
                             </StackPanel>
                            
                             
@@ -128,7 +132,7 @@
                     
                 </Border>
                 <Border Grid.Column="1" Grid.Row="0" BorderBrush="DimGray" BorderThickness="2" Margin="5">
-                    <taskPanel:TaskPanel_UserControl x:Name="taskPanel" Selector.SelectionChanged="taskTanel_SelectionChanged"/>
+                    <taskPanel:TaskPanel_UserControl x:Name="taskPanel" Selector.SelectionChanged="taskTanel_SelectionChanged" DataContext="{StaticResource mainVM_DataContext}"/>
                 </Border>
                 <Border Grid.Column="2" Grid.Row="0" BorderBrush="DimGray" BorderThickness="2" Margin="5" HorizontalAlignment="Stretch">
                     <rightPanel:RightPanel_UserControl/>

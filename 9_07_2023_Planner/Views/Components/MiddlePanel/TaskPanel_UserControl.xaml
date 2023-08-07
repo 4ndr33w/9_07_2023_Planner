@@ -26,14 +26,14 @@
 
                     <!--Command="{StaticResource ShowChildWindowOfNewTaskCommand}"-->
                     <Button Content="Show Default Tasks" Background="Transparent" Foreground="White" BorderBrush="White"
-                            Width="200" BorderThickness="2" Command="{Binding ShowDefaultTaskListCommand}"/>
+                            Width="200" BorderThickness="2" Command="{Binding InformativeButtonsCommand}"/>
                     <!--Command="{StaticResource showDefaultTaskListCommand}"/>-->
                     <!--CommandTarget="{Binding ElementName=TaskListBox}"/>-->
                 </StackPanel>
                 <StackPanel>
                     <Expander Header="Task Bar" IsExpanded="True" Foreground="White">
-                        <ListBox Background="Transparent" SelectionMode="Single" 
-                                 ItemsSource="{Binding TaskList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        <ListBox Background="Transparent" SelectionMode="Single"
+                                 ItemsSource="{Binding TaskList}"
                                  SelectedItem="{Binding SelectedTask, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
                                  SelectedIndex="{Binding SelectedTaskIndex, UpdateSourceTrigger=PropertyChanged}"
                                  SelectionChanged="TaskGroupListBox_SelectionChanged"

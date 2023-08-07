@@ -11,7 +11,7 @@ namespace _9_07_2023_Planner.Models
     internal class TaskGroupModel //: ViewModelBase
     {
         //protected DateTime _id;
-        protected DateTime _groupId;
+        protected static int _groupId;
         protected string _complexId;
         protected string _color = Colors.LawnGreen.ToString();
         protected string _group_name = "Default Group";
@@ -19,7 +19,7 @@ namespace _9_07_2023_Planner.Models
         protected int _counter = 0;
         protected string _userIdentifier = "abc123";
 
-        public DateTime GroupId { get => _groupId; set => _groupId = value; }
+        public static int GroupId { get => _groupId; set => _groupId = value; }
         public string ComplexId { get => _complexId; set => _complexId = value; }
         public string GroupColor { get => _color; set { _color = value;/* OnPropertyChanged("GroupColor"); */} }
         public string ExecutionOf { get => _execution_of; set { _execution_of = value;/* OnPropertyChanged("ExecutionOf"); */} }
@@ -41,7 +41,7 @@ namespace _9_07_2023_Planner.Models
 
         public TaskGroupModel()
         {
-            _groupId = DateTime.UtcNow;
+            _groupId ++;
             _color = Colors.LawnGreen.ToString();
             _group_name = "Default Group";
             _execution_of = "Me";
@@ -50,7 +50,7 @@ namespace _9_07_2023_Planner.Models
 
         public TaskGroupModel(TaskGroupModel group)
         {
-            _groupId = group.GroupId;
+            _groupId++;
             _color = group.GroupColor;
             _group_name = group.GroupName;
             _execution_of = group.ExecutionOf;
@@ -59,7 +59,7 @@ namespace _9_07_2023_Planner.Models
 
         public TaskGroupModel(string color, string groupName, string executor, int counter)
         {
-            _groupId = DateTime.UtcNow;
+            _groupId++;
             _color = color;
             _group_name = groupName;
             _execution_of = executor;
@@ -67,7 +67,8 @@ namespace _9_07_2023_Planner.Models
         }
         public TaskGroupModel(string color, string groupName, string executor)
         {
-            _groupId = DateTime.UtcNow;
+            _groupId++;
+            //_groupId = DateTime.UtcNow;
             _color = color;
             _group_name = groupName;
             _execution_of = executor;
@@ -75,7 +76,8 @@ namespace _9_07_2023_Planner.Models
         }
         public TaskGroupModel(string color, string groupName)
         {
-            _groupId = DateTime.UtcNow;
+            _groupId++;
+            //_groupId = DateTime.UtcNow;
             _color = color;
             _group_name = groupName;
             _execution_of = "Me";

@@ -1,4 +1,5 @@
-﻿using _9_07_2023_Planner.ViewModels;
+﻿using _9_07_2023_Planner.Infrastructure;
+using _9_07_2023_Planner.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,7 @@ namespace _9_07_2023_Planner.Views.Components.MiddlePanel
         {
             DataContext = new MainWindowViewModel();
             InitializeComponent();
+            //TaskListBox.Items.Refresh();
         }
 
         #region  LISTBOX SELECTION CHANGED
@@ -40,5 +42,6 @@ namespace _9_07_2023_Planner.Views.Components.MiddlePanel
             TaskListBox.Items.Refresh();
         }
         #endregion
+
     }
 }
