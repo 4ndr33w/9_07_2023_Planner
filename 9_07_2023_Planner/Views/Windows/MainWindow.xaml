@@ -102,22 +102,17 @@
                         <StackPanel x:Name="leftPanelStackPanel">
                             <Calendar x:Name="Calendar"/>
                             <StackPanel Margin="5,10">
-                                <taskGroupPanel:InformativeButton_UserControl Margin="10,5,10,1" 
+                                <informativeButtons:TotalTasksInformativeButton_UserControl Margin="10,5,10,1"
+                                                                                            x:Name="totalTasksButonPanel"
+                                                                                            DataContext="{StaticResource mainVM_DataContext}"/>
+                                <!--<taskGroupPanel:InformativeButton_UserControl Margin="10,5,10,1" 
                                                                               x:Name="totalTasksButonPanel" 
-                                                                              DataContext="{Binding ShowTotalTasksButton, UpdateSourceTrigger=PropertyChanged}"
-                                                                              MouseLeftButtonDown="totalTasksButonPanel_MouseLeftButtonDown"/>
+                                                                              DataContext="{Binding ShowTotalTasksButton}"
+                                                                              MouseLeftButtonDown="totalTasksButonPanel_MouseLeftButtonDown"/>-->
                                 <informativeButtons:TodayTasksInformativeButton_UserControl Margin="10,1,10,5"
-                                                                                            x:Name="todayButtonPanel"/>
-                                <!--<taskGroupPanel:InformativeButton_UserControl Margin="10,1,10,5" 
-                                                                              x:Name="todayButtonPanel" 
-                                                                              DataContext="{Binding TodayButton, UpdateSourceTrigger=PropertyChanged}"
-                                                                              MouseLeftButtonDown="todayButtonPanel_MouseLeftButtonDown"/>-->
+                                                                                            x:Name="todayButtonPanel" DataContext="{StaticResource mainVM_DataContext}"/>
                             </StackPanel>
-                           
                             
-                            <!--<taskGroupPanel:TaskGroupPanel_UserControl x:Name="myGroupsPanel">
-                                
-                            </taskGroupPanel:TaskGroupPanel_UserControl>-->
                             <taskGroupPanel:MyGroupsPanel_UserControl x:Name="myGroupsPanel" Selector.SelectionChanged="myGroupsPanel_SelectionChanged"/>
                             <taskGroupPanel:DelegatedGroupPanel_UserControl  x:Name="delegatedGroupsPanel" Selector.SelectionChanged="delegatedGroupsPanel_SelectionChanged"/>
                             <StackPanel Margin="5,10">

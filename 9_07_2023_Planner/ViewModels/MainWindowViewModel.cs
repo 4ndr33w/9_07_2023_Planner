@@ -298,14 +298,6 @@ namespace _9_07_2023_Planner.ViewModels
                         item.CompletedOrExpiredTaskButtonVisibility = "Collapsed";
                     }
                 }
-                
-                //Set(ref _selectedTask, value);
-                //if (SelectedTaskIndex > -1)
-                //{
-                //    TaskList[SelectedTaskIndex].DeleteButtonVisibility = "Visible";
-                //    TaskList[SelectedTaskIndex].CompleteTaskMarkVisibility = "Visible";
-                //    TaskList[SelectedTaskIndex].EditButtonVisibility = "Visible";
-                //}
                 _selectedTask = value;
                 OnPropertyChanged(nameof(SelectedTask));
                 
@@ -455,14 +447,14 @@ namespace _9_07_2023_Planner.ViewModels
         #endregion
 
         #region SHOW TODAY TASKS COMMAND
-        private RelayCommand _informativeButtonsCommand;
-        public RelayCommand InformativeButtonsCommand
+        private RelayCommand _showTodayTasksCommand;
+        public RelayCommand ShowTodayTasksCommand
         {
             get
             {
-                return _informativeButtonsCommand ?? new RelayCommand(obj => 
+                return _showTodayTasksCommand ?? new RelayCommand(obj => 
                 {
-                    InformativeButtonsMethod(obj);
+                    ShowTodayTasksMethod(obj);
                 });
             }
         }
@@ -477,22 +469,30 @@ namespace _9_07_2023_Planner.ViewModels
             {
                 DelegatedSelectedGroup.DeleteButtonVisibility = "Collapsed";
             }
-            //MySelectedGroup.DeleteButtonVisibility = "Collapsed";
-            //DelegatedSelectedGroup.DeleteButtonVisibility = "Collapsed";
-            
-
-            //foreach (var group in MyGroupList)
-            //{
-            //    group.DeleteButtonVisibility = "Collapsed";
-            //}
-            //foreach (var group in DelegatedGroupList)
-            //{
-            //    group.DeleteButtonVisibility = "Collapsed";
-            //}
         }
-        public void InformativeButtonsMethod(object parameter) 
+        public void ShowTodayTasksMethod(object parameter) 
         {
             TaskList = new ObservableCollection<TaskTemplate>(FullTaskList.Where(c => c.ExpirationDate.Date == DateTime.Now.Date));
+            InformativeButtonsUpdate();
+        }
+        #endregion
+
+        #region SHOW TOTALTASKS COMMAND
+        private RelayCommand _showTotalTasksCommand;
+        public RelayCommand ShowTotalTasksCommand
+        {
+            get
+            {
+                return _showTotalTasksCommand ?? new RelayCommand(obj =>
+                {
+                    ShowTotalTasksMethod(obj);
+                });
+            }
+        }
+
+        public void ShowTotalTasksMethod(object parameter)
+        {
+            TaskList = new ObservableCollection<TaskTemplate>(FullTaskList);
             InformativeButtonsUpdate();
         }
         #endregion

@@ -111,7 +111,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Lang.resx</DependentUpon>
     </Compile>
-    <Compile Include="Models\ObservableList.cs" />
     <Compile Include="Models\TaskModel.cs" />
     <Compile Include="Models\ViewPanelTemplate\InformativeButtonTemplate.cs" />
     <Compile Include="Models\ViewPanelTemplate\TaskTemplate.cs" />
@@ -121,6 +120,9 @@
     </Compile>
     <Compile Include="Views\Components\LeftPanel\InformativeButtons\TodayTasksInformativeButton_UserControl.xaml.cs">
       <DependentUpon>TodayTasksInformativeButton_UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Components\LeftPanel\InformativeButtons\TotalTasksInformativeButton_UserControl.xaml.cs">
+      <DependentUpon>TotalTasksInformativeButton_UserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Components\LeftPanel\MyGroupsPanel_UserControl.xaml.cs">
       <DependentUpon>MyGroupsPanel_UserControl.xaml</DependentUpon>
@@ -139,6 +141,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Components\LeftPanel\InformativeButtons\TodayTasksInformativeButton_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Components\LeftPanel\InformativeButtons\TotalTasksInformativeButton_UserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
