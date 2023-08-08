@@ -23,12 +23,8 @@
                             Foreground="White" BorderBrush="White"
                             BorderThickness="2" Width="150"
                             Command="{StaticResource showWindowOfAddingNewTaskCommand}"/>
-
-                    <!--Command="{StaticResource ShowChildWindowOfNewTaskCommand}"-->
                     <Button Content="Show Default Tasks" Background="Transparent" Foreground="White" BorderBrush="White"
-                            Width="200" BorderThickness="2" Command="{Binding InformativeButtonsCommand}"/>
-                    <!--Command="{StaticResource showDefaultTaskListCommand}"/>-->
-                    <!--CommandTarget="{Binding ElementName=TaskListBox}"/>-->
+                            Width="200" BorderThickness="2" Command="{Binding ShowDefaultTaskListCommand}"/>
                 </StackPanel>
                 <StackPanel>
                     <Expander Header="Task Bar" IsExpanded="True" Foreground="White">

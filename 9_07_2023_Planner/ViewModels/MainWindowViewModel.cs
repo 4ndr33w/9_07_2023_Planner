@@ -336,7 +336,7 @@ namespace _9_07_2023_Planner.ViewModels
         private void OnStartup()
         {
             TryToDeserializeData();
-            GenerateTaskListMethod();
+            //GenerateTaskListMethod();
             InformativeButtonTitles();
             InformativeButtonsUpdate();
         }
@@ -417,7 +417,7 @@ namespace _9_07_2023_Planner.ViewModels
 
                 new TaskTemplate(DateTime.Now.AddDays(13), "Sample Task 5", "Sample Header 5", "Me", DateTime.Now, "Urgent", true, GroupList[0])
             };
-            TaskList = new ObservableCollection<TaskTemplate>(FullTaskList);
+            //TaskList = new ObservableCollection<TaskTemplate>(FullTaskList);
         }
         #endregion
 
@@ -435,6 +435,8 @@ namespace _9_07_2023_Planner.ViewModels
             {
                 return _showDefaultTaskList ?? new RelayCommand(obj =>
                 {
+                    GenerateTaskListMethod();
+                    SelectedGroupsHideDeleteButtons();
                     ShowDefaultTaskListMethod(obj);
                 });
             }
@@ -469,10 +471,13 @@ namespace _9_07_2023_Planner.ViewModels
             {
                 DelegatedSelectedGroup.DeleteButtonVisibility = "Collapsed";
             }
+            SelectedTask = null;
+            SelectedTaskIndex = -1;
         }
         public void ShowTodayTasksMethod(object parameter) 
         {
             TaskList = new ObservableCollection<TaskTemplate>(FullTaskList.Where(c => c.ExpirationDate.Date == DateTime.Now.Date));
+            SelectedGroupsHideDeleteButtons();
             InformativeButtonsUpdate();
         }
         #endregion
@@ -493,7 +498,24 @@ namespace _9_07_2023_Planner.ViewModels
         public void ShowTotalTasksMethod(object parameter)
         {
             TaskList = new ObservableCollection<TaskTemplate>(FullTaskList);
+            SelectedGroupsHideDeleteButtons();
             InformativeButtonsUpdate();
+        }
+        #endregion
+
+        #region SHOW TASKS FROM SELECTED GROUP
+
+        private RelayCommand _showFilteredByGroupTasksCommand;
+        public RelayCommand ShowFilteredByGroupTasksCommand
+        {
+            get
+            {
+                return _showFilteredByGroupTasksCommand ?? new RelayCommand(obj => { });
+            }
+        }
+        private void ShowFilteredByGroupTasksMethod(object parameter)
+        {
+
         }
         #endregion
 

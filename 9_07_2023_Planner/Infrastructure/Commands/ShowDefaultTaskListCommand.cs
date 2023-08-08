@@ -21,12 +21,6 @@ namespace _9_07_2023_Planner.Infrastructure.Commands
         {
             MainWindowViewModel viewModel = new MainWindowViewModel();
             viewModel.TaskList = new ObservableCollection<TaskTemplate>(viewModel.FullTaskList);
-            //var taskList = new ObservableCollection<TaskTemplate>(viewModel.FullTaskList);
-            TaskPanel_UserControl taskPanel_UserControl = new TaskPanel_UserControl();
-            taskPanel_UserControl.TaskListBox.ItemsSource = viewModel.TaskList;
-            MessageBox.Show(taskPanel_UserControl.TaskListBox.Items.Count.ToString());
-            //throw new NotImplementedException();
-            //TaskList = new ObservableCollection<TaskTemplate>(FullTaskList);
         }
     }
 }

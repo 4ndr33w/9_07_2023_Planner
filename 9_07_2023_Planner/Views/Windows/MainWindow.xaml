@@ -105,16 +105,16 @@
                                 <informativeButtons:TotalTasksInformativeButton_UserControl Margin="10,5,10,1"
                                                                                             x:Name="totalTasksButonPanel"
                                                                                             DataContext="{StaticResource mainVM_DataContext}"/>
-                                <!--<taskGroupPanel:InformativeButton_UserControl Margin="10,5,10,1" 
-                                                                              x:Name="totalTasksButonPanel" 
-                                                                              DataContext="{Binding ShowTotalTasksButton}"
-                                                                              MouseLeftButtonDown="totalTasksButonPanel_MouseLeftButtonDown"/>-->
                                 <informativeButtons:TodayTasksInformativeButton_UserControl Margin="10,1,10,5"
                                                                                             x:Name="todayButtonPanel" DataContext="{StaticResource mainVM_DataContext}"/>
                             </StackPanel>
                             
-                            <taskGroupPanel:MyGroupsPanel_UserControl x:Name="myGroupsPanel" Selector.SelectionChanged="myGroupsPanel_SelectionChanged"/>
-                            <taskGroupPanel:DelegatedGroupPanel_UserControl  x:Name="delegatedGroupsPanel" Selector.SelectionChanged="delegatedGroupsPanel_SelectionChanged"/>
+                            <taskGroupPanel:MyGroupsPanel_UserControl x:Name="myGroupsPanel" 
+                                                                      Selector.SelectionChanged="myGroupsPanel_SelectionChanged" 
+                                                                      DataContext="{StaticResource mainVM_DataContext}"/>
+                            <taskGroupPanel:DelegatedGroupPanel_UserControl  x:Name="delegatedGroupsPanel" 
+                                                                             Selector.SelectionChanged="delegatedGroupsPanel_SelectionChanged"
+                                                                             DataContext="{StaticResource mainVM_DataContext}"/>
                             <StackPanel Margin="5,10">
                                 <taskGroupPanel:InformativeButton_UserControl Margin="10,5,10,1"
                                                                               DataContext="{Binding ShowExpiredTasksButton, UpdateSourceTrigger=PropertyChanged}"/>
