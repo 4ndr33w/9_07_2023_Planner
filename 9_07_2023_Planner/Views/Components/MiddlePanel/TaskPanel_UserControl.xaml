@@ -8,9 +8,9 @@
              xmlns:commands="clr-namespace:_9_07_2023_Planner.Infrastructure.Commands"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="600">
-    <!--<UserControl.DataContext>
+    <UserControl.DataContext>
         <dataContext:MainWindowViewModel></dataContext:MainWindowViewModel>
-    </UserControl.DataContext>-->
+    </UserControl.DataContext>
     <UserControl.Resources>
         <commands:AddNewTask_ShowWindowComand x:Key="showWindowOfAddingNewTaskCommand"/>
         <commands:ShowDefaultTaskListCommand x:Key="showDefaultTaskListCommand"/>

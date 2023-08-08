@@ -336,20 +336,41 @@ namespace _9_07_2023_Planner.ViewModels
         private void OnStartup()
         {
             TryToDeserializeData();
-            //GenerateTaskListMethod();
             InformativeButtonTitles();
             InformativeButtonsUpdate();
+            GroupCountersUpdate();
         }
-
+        private void SelectedGroupsHideDeleteButtons()
+        {
+            SelectedTask = null;
+            SelectedTaskIndex = -1;
+            MySelectedGroup = null;
+            SelectedMyGroupIndex = -1;
+            DelegatedSelectedGroup = null;
+            SelectedDelegatedGroupIndex = -1;
+        }
         private void InformativeButtonsUpdate()
         {
             TodayButton.Counter = FullTaskList == null? "0" : FullTaskList.Where(c => c.ExpirationDate.Date == DateTime.Today).ToList().Count.ToString();
             ShowTotalTasksButton.Counter = FullTaskList == null ? "0" : FullTaskList.Count.ToString();
             ShowExpiredTasksButton.Counter = (10).ToString();
             ShowCompletedTasksButton.Counter = (10).ToString();
+            //GroupCountersUpdate();
+        }
+
+        private void GroupCountersUpdate()
+        {
             if (FullTaskList != null)
             {
-                foreach (var task in FullTaskList)
+                foreach (var group in MyGroupList)
+                {
+                    group.Counter = 0;
+                }
+                foreach (var delegGroup in DelegatedGroupList)
+                {
+                    delegGroup.Counter = 0;
+                }
+                    foreach (var task in FullTaskList)
                 {
                     foreach (var myGroup in MyGroupList)
                     {
@@ -363,8 +384,8 @@ namespace _9_07_2023_Planner.ViewModels
                     }
                 }
             }
-
-          
+            OnPropertyChanged(nameof(MyGroupList));
+            OnPropertyChanged(nameof(DelegatedGroupList));
         }
         private void InformativeButtonTitles()
         {
@@ -421,8 +442,6 @@ namespace _9_07_2023_Planner.ViewModels
         }
         #endregion
 
-
-
         #endregion
 
         #region COMMANDS
@@ -444,10 +463,11 @@ namespace _9_07_2023_Planner.ViewModels
         private void ShowDefaultTaskListMethod(object parameter)
         {
             TaskList = new ObservableCollection<TaskTemplate>(FullTaskList);
+            GroupCountersUpdate();
             InformativeButtonsUpdate();
         }
         #endregion
-
+       
         #region SHOW TODAY TASKS COMMAND
         private RelayCommand _showTodayTasksCommand;
         public RelayCommand ShowTodayTasksCommand
@@ -460,25 +480,13 @@ namespace _9_07_2023_Planner.ViewModels
                 });
             }
         }
-        private void SelectedGroupsHideDeleteButtons()
-        {
-            if (MySelectedGroup != null)
-            {
-                MySelectedGroup.DeleteButtonVisibility = "Collapsed";
-                //MessageBox.Show(MySelectedGroup.DeleteButtonVisibility.ToString());
-            }
-            else if (DelegatedSelectedGroup != null)
-            {
-                DelegatedSelectedGroup.DeleteButtonVisibility = "Collapsed";
-            }
-            SelectedTask = null;
-            SelectedTaskIndex = -1;
-        }
+       
         public void ShowTodayTasksMethod(object parameter) 
         {
             TaskList = new ObservableCollection<TaskTemplate>(FullTaskList.Where(c => c.ExpirationDate.Date == DateTime.Now.Date));
             SelectedGroupsHideDeleteButtons();
             InformativeButtonsUpdate();
+            GroupCountersUpdate();
         }
         #endregion
 
@@ -500,6 +508,7 @@ namespace _9_07_2023_Planner.ViewModels
             TaskList = new ObservableCollection<TaskTemplate>(FullTaskList);
             SelectedGroupsHideDeleteButtons();
             InformativeButtonsUpdate();
+            GroupCountersUpdate();
         }
         #endregion
 
@@ -520,8 +529,6 @@ namespace _9_07_2023_Planner.ViewModels
             //TaskList = new ObservableCollection<TaskTemplate>(FullTaskList.Where(c => c.GroupColor ==));
         }
         #endregion
-
-
 
         #endregion
     }

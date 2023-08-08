@@ -30,10 +30,9 @@ namespace _9_07_2023_Planner.Views.Components.LeftPanel
         private void TaskGroupListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var viewModel = (DataContext as MainWindowViewModel);
-            var selectedGroup = TaskGroupListBox.SelectedItem as TaskGroupTemplate;
+            var selectedGroup = viewModel.DelegatedSelectedGroup;
             if (viewModel.SelectedDelegatedGroupIndex > -1)
             {
-                TaskGroupListBox.Items.Refresh();
                 viewModel.TaskList =
                     new System.Collections.ObjectModel.ObservableCollection<Models.ViewPanelTemplate.TaskTemplate>(
                         viewModel.FullTaskList.Where(c => c.GroupColor == selectedGroup.GroupColor && c.ExecutionOf == selectedGroup.ExecutionOf)
