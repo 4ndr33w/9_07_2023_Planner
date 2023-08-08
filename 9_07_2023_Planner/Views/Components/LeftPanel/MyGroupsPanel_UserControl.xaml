@@ -61,11 +61,12 @@
                                     </Button>
                                     <Label x:Name="GroupColorLabel" Background="{Binding Path=GroupColor}"
                                            VerticalAlignment="Center" BorderThickness="2" BorderBrush="Gray" Margin="10,0,0,0" Width="25" Height="15"/>
-                                    <TextBox Background="Transparent" VerticalAlignment="Center" IsEnabled="False"
+                                            <TextBox Background="Transparent" VerticalAlignment="Center" IsEnabled="False"
                                              BorderBrush="Transparent" HorizontalAlignment="Right"
                                              HorizontalContentAlignment="Center" Foreground="White"
                                              Margin="10,0,0,0" Text="{Binding Path=GroupName}"/>
-                                </StackPanel>
+
+                                        </StackPanel>
                                 <TextBlock Text=" "/>
                                 <TextBox DockPanel.Dock="Right" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
                                          VerticalContentAlignment="Center" Background="Transparent"
@@ -73,6 +74,7 @@
                                          Margin="10,0,-10,0" Width="40" Height="18"
                                          Foreground="White" Text="{Binding Counter, Mode=OneWay}"/>
                             </DockPanel>
+
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>

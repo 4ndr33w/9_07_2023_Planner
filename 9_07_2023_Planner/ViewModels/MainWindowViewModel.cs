@@ -465,7 +465,7 @@ namespace _9_07_2023_Planner.ViewModels
             if (MySelectedGroup != null)
             {
                 MySelectedGroup.DeleteButtonVisibility = "Collapsed";
-                MessageBox.Show(MySelectedGroup.DeleteButtonVisibility.ToString());
+                //MessageBox.Show(MySelectedGroup.DeleteButtonVisibility.ToString());
             }
             else if (DelegatedSelectedGroup != null)
             {
@@ -510,12 +510,14 @@ namespace _9_07_2023_Planner.ViewModels
         {
             get
             {
-                return _showFilteredByGroupTasksCommand ?? new RelayCommand(obj => { });
+                return _showFilteredByGroupTasksCommand ?? new RelayCommand(obj => {
+                    ShowFilteredByGroupTasksMethod(obj);
+                });
             }
         }
         private void ShowFilteredByGroupTasksMethod(object parameter)
         {
-
+            //TaskList = new ObservableCollection<TaskTemplate>(FullTaskList.Where(c => c.GroupColor ==));
         }
         #endregion
 

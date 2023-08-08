@@ -22,7 +22,7 @@ namespace _9_07_2023_Planner.Infrastructure.Commands
             //MessageBox.Show((parameter as TaskGroupPanel_UserControl).DataContext.ToString());
             MainWindowViewModel mainVM = new MainWindowViewModel();
             mainVM.TaskList = new System.Collections.ObjectModel.ObservableCollection<Models.ViewPanelTemplate.TaskTemplate>(mainVM.FullTaskList);
-            MessageBox.Show(mainVM.TaskList.Count.ToString());
+            //MessageBox.Show(mainVM.TaskList.Count.ToString());
             mainVM.TodayButton.Counter = mainVM.TaskList.Where(c => c.ExpirationDate.Date == DateTime.Today).Count().ToString();
 
             ViewRefreshMethod(mainVM.TaskList);
