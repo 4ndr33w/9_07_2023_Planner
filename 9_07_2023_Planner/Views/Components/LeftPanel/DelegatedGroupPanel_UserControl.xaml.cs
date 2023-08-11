@@ -29,10 +29,28 @@ namespace _9_07_2023_Planner.Views.Components.LeftPanel
         }
         private void TaskGroupListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //var viewModel = (DataContext as MainWindowViewModel);
+            ////viewModel.TaskList = null;
+            //var selectedGroup = viewModel.DelegatedSelectedGroup;
+            //if (viewModel.SelectedDelegatedGroupIndex > -1)
+            //{
+            //    //viewModel.TaskList = null;
+            //    viewModel.TaskList =
+            //        new System.Collections.ObjectModel.ObservableCollection<Models.ViewPanelTemplate.TaskTemplate>(
+            //            viewModel.FullTaskList.Where(c => c.GroupColor == selectedGroup.GroupColor && c.ExecutionOf == selectedGroup.ExecutionOf)
+            //            );
+            //}
+            //TaskGroupListBox.Items.Refresh();
+        }
+
+        private void TaskGroupListBox_MouseDown(object sender, MouseButtonEventArgs e)
+        {
             var viewModel = (DataContext as MainWindowViewModel);
+            //viewModel.TaskList = null;
             var selectedGroup = viewModel.DelegatedSelectedGroup;
             if (viewModel.SelectedDelegatedGroupIndex > -1)
             {
+                //viewModel.TaskList = null;
                 viewModel.TaskList =
                     new System.Collections.ObjectModel.ObservableCollection<Models.ViewPanelTemplate.TaskTemplate>(
                         viewModel.FullTaskList.Where(c => c.GroupColor == selectedGroup.GroupColor && c.ExecutionOf == selectedGroup.ExecutionOf)

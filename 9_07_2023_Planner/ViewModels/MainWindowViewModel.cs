@@ -438,7 +438,7 @@ namespace _9_07_2023_Planner.ViewModels
 
                 new TaskTemplate(DateTime.Now.AddDays(13), "Sample Task 5", "Sample Header 5", "Me", DateTime.Now, "Urgent", true, GroupList[0])
             };
-            //TaskList = new ObservableCollection<TaskTemplate>(FullTaskList);
+            TaskList = new ObservableCollection<TaskTemplate>(FullTaskList);
         }
         #endregion
 

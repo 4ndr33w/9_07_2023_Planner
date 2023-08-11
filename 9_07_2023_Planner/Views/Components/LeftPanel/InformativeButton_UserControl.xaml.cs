@@ -22,6 +22,7 @@ namespace _9_07_2023_Planner.Views.Components.LeftPanel
     {
         public InformativeButton_UserControl()
         {
+            DataContext = new ViewModels.GroupPanel.TodayInformativeButtonViewModel();
             InitializeComponent();
         }
     }

@@ -8,6 +8,7 @@
         xmlns:cmd="clr-namespace:_9_07_2023_Planner.Infrastructure.Commands"
         mc:Ignorable="d"
         xmlns:taskGroupPanel="clr-namespace:_9_07_2023_Planner.Views.Components.LeftPanel"
+        xmlns:infoButtonsContext="clr-namespace:_9_07_2023_Planner.ViewModels.GroupPanel"
         xmlns:rightPanel="clr-namespace:_9_07_2023_Planner.Views.Components.RightPanel"
         xmlns:taskPanel="clr-namespace:_9_07_2023_Planner.Views.Components.MiddlePanel"
         xmlns:commands="clr-namespace:_9_07_2023_Planner.Infrastructure.Commands"
@@ -19,6 +20,7 @@
     <Window.Resources>
         <commands:CloseApplicationCommand x:Key="CloseAppCmd"/>
         <dataContext:MainWindowViewModel x:Key="mainVM_DataContext"/>
+        <infoButtonsContext:TodayInformativeButtonViewModel x:Key="todayInfoButtonDataContext"/>
     </Window.Resources>
     <Window.InputBindings>
         <KeyBinding Modifiers="Ctrl" Key="Q" Command="{StaticResource CloseAppCmd}"/>
@@ -105,6 +107,7 @@
                                 <informativeButtons:TotalTasksInformativeButton_UserControl Margin="10,5,10,1"
                                                                                             x:Name="totalTasksButonPanel"
                                                                                             DataContext="{StaticResource mainVM_DataContext}"/>
+                                <taskGroupPanel:InformativeButton_UserControl Margin="10,5,10,1" DataContext="{StaticResource todayInfoButtonDataContext}"/>
                                 <informativeButtons:TodayTasksInformativeButton_UserControl Margin="10,1,10,5"
                                                                                             x:Name="todayButtonPanel" DataContext="{StaticResource mainVM_DataContext}"/>
                             </StackPanel>

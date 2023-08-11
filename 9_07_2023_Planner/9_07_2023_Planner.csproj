@@ -114,6 +114,7 @@
     <Compile Include="Models\TaskModel.cs" />
     <Compile Include="Models\ViewPanelTemplate\InformativeButtonTemplate.cs" />
     <Compile Include="Models\ViewPanelTemplate\TaskTemplate.cs" />
+    <Compile Include="ViewModels\GroupPanel\TodayInformativeButtonViewModel.cs" />
     <Compile Include="ViewModels\Groups\GroupPanelViewModel.cs" />
     <Compile Include="Views\Components\LeftPanel\DelegatedGroupPanel_UserControl.xaml.cs">
       <DependentUpon>DelegatedGroupPanel_UserControl.xaml</DependentUpon>

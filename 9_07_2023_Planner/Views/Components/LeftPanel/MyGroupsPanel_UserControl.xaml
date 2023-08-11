@@ -60,7 +60,7 @@
                                         <!--Command="ApplicationCommands.Delete"-->
                                     </Button>
                                     <Label x:Name="GroupColorLabel" Background="{Binding Path=GroupColor}"
-                                           VerticalAlignment="Center" BorderThickness="2" BorderBrush="Gray" Margin="10,0,0,0" Width="25" Height="15"/>
+                                           VerticalAlignment="Center" BorderThickness="2" BorderBrush="Gray" Margin="10,0,0,0" Width="24" Height="14"/>
                                             <TextBox Background="Transparent" VerticalAlignment="Center" IsEnabled="False"
                                              BorderBrush="Transparent" HorizontalAlignment="Right"
                                              HorizontalContentAlignment="Center" Foreground="White"
