@@ -339,6 +339,7 @@ namespace _9_07_2023_Planner.ViewModels
             InformativeButtonTitles();
             InformativeButtonsUpdate();
             GroupCountersUpdate();
+            GenerateTaskListMethod();
         }
         private void SelectedGroupsHideDeleteButtons()
         {

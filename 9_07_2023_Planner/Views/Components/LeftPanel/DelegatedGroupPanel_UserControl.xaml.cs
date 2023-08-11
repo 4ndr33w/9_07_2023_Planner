@@ -27,30 +27,22 @@ namespace _9_07_2023_Planner.Views.Components.LeftPanel
             DataContext = new MainWindowViewModel();
             InitializeComponent();
         }
-        private void TaskGroupListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            //var viewModel = (DataContext as MainWindowViewModel);
-            ////viewModel.TaskList = null;
-            //var selectedGroup = viewModel.DelegatedSelectedGroup;
-            //if (viewModel.SelectedDelegatedGroupIndex > -1)
-            //{
-            //    //viewModel.TaskList = null;
-            //    viewModel.TaskList =
-            //        new System.Collections.ObjectModel.ObservableCollection<Models.ViewPanelTemplate.TaskTemplate>(
-            //            viewModel.FullTaskList.Where(c => c.GroupColor == selectedGroup.GroupColor && c.ExecutionOf == selectedGroup.ExecutionOf)
-            //            );
-            //}
-            //TaskGroupListBox.Items.Refresh();
-        }
 
+        // Пока что не знаю как реализовать фильтранию списка не нарушая концепцию MVVM... Так что пока что так..
         private void TaskGroupListBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            //var viewModel = (DataContext as MainWindowViewModel);
+            //var myGroupsPanel = new MyGroupsPanel_UserControl();
+            //if (myGroupsPanel.)
+        }
+        private void TaskGroupListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
             var viewModel = (DataContext as MainWindowViewModel);
-            //viewModel.TaskList = null;
             var selectedGroup = viewModel.DelegatedSelectedGroup;
             if (viewModel.SelectedDelegatedGroupIndex > -1)
             {
-                //viewModel.TaskList = null;
+                viewModel.SelectedTask = null;
+                viewModel.SelectedTaskIndex = -1;
                 viewModel.TaskList =
                     new System.Collections.ObjectModel.ObservableCollection<Models.ViewPanelTemplate.TaskTemplate>(
                         viewModel.FullTaskList.Where(c => c.GroupColor == selectedGroup.GroupColor && c.ExecutionOf == selectedGroup.ExecutionOf)
@@ -58,5 +50,7 @@ namespace _9_07_2023_Planner.Views.Components.LeftPanel
             }
             TaskGroupListBox.Items.Refresh();
         }
+
+       
     }
 }

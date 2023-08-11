@@ -41,8 +41,6 @@
                          SelectedItem="{Binding MySelectedGroup, UpdateSourceTrigger=PropertyChanged}"
                          SelectionMode="Single" SelectedIndex="{Binding SelectedMyGroupIndex}" SelectionChanged="TaskGroupListBox_SelectionChanged"
                          ItemsSource="{Binding MyGroupList}">
-                    <!--ItemsSource="{Binding GroupList, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"-->
-                    <!--ItemsSource="{Binding GroupList, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"-->
                     <ListBox.ItemTemplate>
                         <DataTemplate x:Name="dataTemplateItem">
                             <DockPanel LastChildFill="True" Background="Transparent">

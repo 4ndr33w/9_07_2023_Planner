@@ -19,7 +19,6 @@
             <Setter Property="TextBox.IsEnabled" Value="False"/>
             <Setter Property="TextBox.HorizontalContentAlignment" Value="Center"/>
         </Style>
-
         <mainVM:MainWindowViewModel x:Key="mainVMDataContext"/>
     </UserControl.Resources>
     <!--<UserControl.DataContext>

@@ -27,14 +27,19 @@ namespace _9_07_2023_Planner.Views.Components.LeftPanel
             DataContext = new MainWindowViewModel();
             InitializeComponent();
         }
+
+        // Пока что не знаю как реализовать фильтранию списка не нарушая концепцию MVVM... Так что пока что так..
+        
         private void TaskGroupListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             
             var viewModel = (DataContext as MainWindowViewModel);
             var selectedGroup = TaskGroupListBox.SelectedItem as TaskGroupTemplate;
+
             if (viewModel.SelectedMyGroupIndex > -1)
             {
-                
+                viewModel.SelectedTask = null;
+                viewModel.SelectedTaskIndex = -1;
                 viewModel.TaskList =
                     new System.Collections.ObjectModel.ObservableCollection<Models.ViewPanelTemplate.TaskTemplate>(
                         viewModel.FullTaskList.Where(c => c.GroupColor == selectedGroup.GroupColor && c.ExecutionOf == selectedGroup.ExecutionOf)

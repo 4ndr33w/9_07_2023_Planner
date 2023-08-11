@@ -37,7 +37,7 @@
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
-                                        <Border BorderBrush="White" BorderThickness="1" Width="450" MinHeight="50" Background="{Binding GroupColor}">
+                                        <Border BorderBrush="White" BorderThickness="1" Width="460" MinHeight="50" Background="{Binding GroupColor}">
 
                                             <StackPanel>
                                                 <StackPanel Orientation="Horizontal">
@@ -75,8 +75,8 @@
                                                                             <TextBlock Text="Hide" Foreground="White" HorizontalAlignment="Center"/>
                                                                         </Border>
                                                                     </Button>
-                                                                    <Button x:Name="Btn_complete_task" 
-                                                                        Visibility="{Binding CompleteTaskMarkVisibility, UpdateSourceTrigger=PropertyChanged}"
+                                                                    <Button x:Name="Btn_complete_task"
+                                                                            Visibility="{Binding CompleteTaskMarkVisibility, UpdateSourceTrigger=PropertyChanged}"
                                                                         Margin="10,5,5,1" 
                                                                         Width="65"
                                                                         Height="35"
@@ -86,6 +86,7 @@
                                                                         Background="Transparent"
                                                                         HorizontalAlignment="Right"
                                                                         VerticalContentAlignment="Top" Padding="0">
+                                                                        <!---->
                                                                         <Border BorderThickness="1" BorderBrush="Black" CornerRadius="5">
                                                                             <TextBlock Text="Complete Task" TextAlignment="Center" Padding="3,0,3,3" TextWrapping="Wrap" HorizontalAlignment="Center"/>
                                                                         </Border>
