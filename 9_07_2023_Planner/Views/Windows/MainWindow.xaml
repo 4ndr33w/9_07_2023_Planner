@@ -13,4 +13,5 @@
     <Grid>
         
     </Grid>
+    <StackPanel></StackPanel>
 </Window>
