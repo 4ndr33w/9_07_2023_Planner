@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace _9_07_2023_Planner.ViewModels.Base
 {
@@ -15,10 +11,7 @@ namespace _9_07_2023_Planner.ViewModels.Base
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            //if (PropertyChanged != null) 
-            //{ 
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); 
-            //}
         }
 
         protected virtual bool Set<T> (ref T field, T value, [CallerMemberName] string propertyName = null)

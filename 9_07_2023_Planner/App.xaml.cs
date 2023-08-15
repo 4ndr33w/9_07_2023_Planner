@@ -7,6 +7,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls.Primitives;
 
 namespace _9_07_2023_Planner
 {
@@ -15,11 +16,12 @@ namespace _9_07_2023_Planner
     /// </summary>
     public partial class App : Application
     {
-        MainWindowViewModel _vm;
+        MainWindowViewModel _vm = new MainWindowViewModel();
 
-        public App() 
+        public App()
         {
             new MainWindow() { DataContext = _vm }.ShowDialog();
+            Shutdown();
         }
     }
 }

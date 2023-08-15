@@ -117,13 +117,181 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="GroupListFileName" xml:space="preserve">
-    <value>GroupList.json</value>
+  <data name="AddGroupButton" xml:space="preserve">
+    <value>+ Add Group</value>
   </data>
-  <data name="SaveDirectory" xml:space="preserve">
-    <value>\Planner</value>
+  <data name="AddGroupWindowText_ChooseColor" xml:space="preserve">
+    <value>Choose color of new group :</value>
   </data>
-  <data name="SavePath" xml:space="preserve">
-    <value />
+  <data name="AddGroupWindowText_EnterGroupName" xml:space="preserve">
+    <value>Enter New Group Name :</value>
+  </data>
+  <data name="ApplicationTitle" xml:space="preserve">
+    <value>Planner Application</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ChangeLanguageMessage" xml:space="preserve">
+    <value>Language will change after restart application</value>
+  </data>
+  <data name="ChangeLanguageWindowTitle" xml:space="preserve">
+    <value>Change Language</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Complete" xml:space="preserve">
+    <value>Complete</value>
+  </data>
+  <data name="CompletedTaskString" xml:space="preserve">
+    <value>!!! Task Completed !!!</value>
+  </data>
+  <data name="CompleteTaskButton" xml:space="preserve">
+    <value>Complete Task</value>
+  </data>
+  <data name="CreateTaskButton" xml:space="preserve">
+    <value>+ Create Task</value>
+  </data>
+  <data name="Default" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="DeleteGroupRequest" xml:space="preserve">
+    <value>Should delete group within all tasks?</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="EnterHeaderString" xml:space="preserve">
+    <value>EnterHeader...</value>
+  </data>
+  <data name="ExecutorString_Delegated" xml:space="preserve">
+    <value>Delegated</value>
+  </data>
+  <data name="ExecutorString_Me" xml:space="preserve">
+    <value>Me</value>
+  </data>
+  <data name="ExpiresString" xml:space="preserve">
+    <value>!!! EXPIRED !!!</value>
+  </data>
+  <data name="GroupIsAlreadyExist_ErrorMessage" xml:space="preserve">
+    <value>Thet group is already exists. Shoose another group name</value>
+  </data>
+  <data name="GroupsOfDelegatedTasks" xml:space="preserve">
+    <value>Delegated Tasks</value>
+  </data>
+  <data name="GroupsOfMyTasks" xml:space="preserve">
+    <value>My Tasks</value>
+  </data>
+  <data name="Header" xml:space="preserve">
+    <value>Header</value>
+  </data>
+  <data name="Hide" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="Is ShouldDeleteThatTask?" xml:space="preserve">
+    <value>Delete Task?</value>
+  </data>
+  <data name="IsTaskCompleted_RequestWindow" xml:space="preserve">
+    <value>Is that Task completed?</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="Menu_AddFromFile" xml:space="preserve">
+    <value>Add from file...</value>
+  </data>
+  <data name="NewTaskExecutor_EmptyString" xml:space="preserve">
+    <value>Enter Executor...</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="Properties" xml:space="preserve">
+    <value>Properties</value>
+  </data>
+  <data name="RussianLanguage" xml:space="preserve">
+    <value>Russian</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="SavingErrorMessage" xml:space="preserve">
+    <value>We've got trouble during saving data...</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search...</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="ShowCompletedTasksString" xml:space="preserve">
+    <value>Completed Tasks:</value>
+  </data>
+  <data name="ShowExpiredTasksString" xml:space="preserve">
+    <value>Expired Tasks:</value>
+  </data>
+  <data name="TaskContext_UrgencyCheckBoxMark" xml:space="preserve">
+    <value>Urgently</value>
+  </data>
+  <data name="TaskNoteContentButton" xml:space="preserve">
+    <value>Note Content</value>
+  </data>
+  <data name="TaskPanelExpanderHeader" xml:space="preserve">
+    <value>Tasks:</value>
+  </data>
+  <data name="TaskUrgencyMark" xml:space="preserve">
+    <value>!!! Urgent !!!</value>
+  </data>
+  <data name="timeRange_10Min" xml:space="preserve">
+    <value>10 min</value>
+  </data>
+  <data name="timeRange_15Min" xml:space="preserve">
+    <value>15 min</value>
+  </data>
+  <data name="timeRange_1Hour" xml:space="preserve">
+    <value>1 Hour</value>
+  </data>
+  <data name="timeRange_30Min" xml:space="preserve">
+    <value>30 min</value>
+  </data>
+  <data name="timeRange_5Min" xml:space="preserve">
+    <value>5 min</value>
+  </data>
+  <data name="Today" xml:space="preserve">
+    <value>Today:</value>
+  </data>
+  <data name="Tomorrow" xml:space="preserve">
+    <value>Tomorrow:</value>
+  </data>
+  <data name="TotalTasksString" xml:space="preserve">
+    <value>Total Tasks:</value>
+  </data>
+  <data name="WhoString" xml:space="preserve">
+    <value>Who:</value>
+  </data>
+  <data name="WindowMinimizedAnnounceNotification" xml:space="preserve">
+    <value>The app has been minimised. Click the tray icon to show</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
   </data>
 </root>

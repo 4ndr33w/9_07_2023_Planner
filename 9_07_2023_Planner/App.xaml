@@ -1,9 +1,23 @@
 ﻿<Application x:Class="_9_07_2023_Planner.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:_9_07_2023_Planner">
-    <!--StartupUri="MainWindow.xaml">-->
+             xmlns:local="clr-namespace:_9_07_2023_Planner"
+             xmlns:mainWindowCommands="clr-namespace:_9_07_2023_Planner.Infrastructure.Commands.MainWindowCommands"
+             xmlns:groupsContext="clr-namespace:_9_07_2023_Planner.ViewModels"
+             
+             xmlns:commonCommands="clr-namespace:_9_07_2023_Planner.Infrastructure.Commands">
+    <!--StartupUri="Views/Windows/MainWindow.xaml">-->
     <Application.Resources>
-         
+        <mainWindowCommands:AddNewTaskGroup_ShowWindowCommand x:Key="ShowChildWindowOfNewTaskGroupCommand"/>
+        <groupsContext:MainWindowViewModel x:Key="mainWindowVM"/>
+
+        <commonCommands:CloseApplicationCommand x:Key="CloseAppCommand"/>
+        <commonCommands:AddNewTaskGroupIntoListCommand x:Key="AddNewTaskGroupCommand"/>
+        <commonCommands:DeleteTaskGroupCommand x:Key="DeleteTaskGroupCommand"/>
+        <commonCommands:DeleteTaskGroup_ShowRequestWindowCommand x:Key="DeleteGroupRequestWindowCommand"/>
+        <commonCommands:AddNewTask_ShowWindowComand x:Key="ShowChildWindowOfNewTaskCommand"/>
+        <commonCommands:AddNewTaskIntoTaskListCommand x:Key="addNewTaskIntoTaskListCommand"/>
+        <commonCommands:TaskGroupPanelSelectionChangedCommand x:Key="taskGroupPanelSelectionChangedCommand"/>
+        <commonCommands:ShowTodayTasksCommand x:Key="showTodayTasksButtonCommand"/>
     </Application.Resources>
 </Application>

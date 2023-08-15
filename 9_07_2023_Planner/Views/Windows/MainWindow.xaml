@@ -5,9 +5,138 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_9_07_2023_Planner.Views.Windows"
         xmlns:dataContext="clr-namespace:_9_07_2023_Planner.ViewModels"
+        xmlns:cmd="clr-namespace:_9_07_2023_Planner.Infrastructure.Commands"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        xmlns:taskGroupPanel="clr-namespace:_9_07_2023_Planner.Views.Components.LeftPanel"
+        xmlns:infoButtonsContext="clr-namespace:_9_07_2023_Planner.ViewModels.GroupPanel"
+        xmlns:rightPanel="clr-namespace:_9_07_2023_Planner.Views.Components.RightPanel"
+        xmlns:taskPanel="clr-namespace:_9_07_2023_Planner.Views.Components.MiddlePanel"
+        xmlns:commands="clr-namespace:_9_07_2023_Planner.Infrastructure.Commands"
+        xmlns:informativeButtons="clr-namespace:_9_07_2023_Planner.Views.Components.LeftPanel.InformativeButtons"
+        Title="{Binding Path=Title}" Height="710" Width="1200" x:Name="mainWindow">
     <Window.DataContext>
         <dataContext:MainWindowViewModel></dataContext:MainWindowViewModel>
     </Window.DataContext>
+    <Window.Resources>
+        <commands:CloseApplicationCommand x:Key="CloseAppCmd"/>
+        <dataContext:MainWindowViewModel x:Key="mainVM_DataContext"/>
+        <infoButtonsContext:TodayInformativeButtonViewModel x:Key="todayInfoButtonDataContext"/>
+    </Window.Resources>
+    <Window.InputBindings>
+        <KeyBinding Modifiers="Ctrl" Key="Q" Command="{StaticResource CloseAppCmd}"/>
+    </Window.InputBindings>
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
+            <GradientStop Color="#FF1D1D1D"/>
+            <GradientStop Color="#FF424242" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <DockPanel>
+        <DockPanel.DataContext>
+            <dataContext:MainWindowViewModel></dataContext:MainWindowViewModel>
+        </DockPanel.DataContext>
+        <Menu DockPanel.Dock="Top">
+            <Menu.Background>
+                <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
+                    <GradientStop Color="#FF1D1D1D"/>
+                    <GradientStop Color="#FF424242" Offset="1"/>
+                </LinearGradientBrush>
+            </Menu.Background>
+            <MenuItem Header="File" Foreground="White">
+                <MenuItem Header="Exit" Command="{StaticResource CloseAppCmd}" Foreground="White">
+                    <MenuItem.Background>
+                        <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
+                            <GradientStop Color="#FF1D1D1D"/>
+                            <GradientStop Color="#FF424242" Offset="1"/>
+                        </LinearGradientBrush>
+                    </MenuItem.Background>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Settings" Foreground="White">
+                <MenuItem Header="Language" Foreground="White">
+                    MenuItem Header="Exit" Command="{StaticResource CloseAppCommand}" Foreground="White">
+                    <MenuItem.Background>
+                        <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
+                            <GradientStop Color="#FF1D1D1D"/>
+                            <GradientStop Color="#FF424242" Offset="1"/>
+                        </LinearGradientBrush>
+                    </MenuItem.Background>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Help" Foreground="White">
+                <MenuItem Header="Info">
+                    <MenuItem.Background>
+                        <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
+                            <GradientStop Color="#FF1D1D1D"/>
+                            <GradientStop Color="#FF424242" Offset="1"/>
+                        </LinearGradientBrush>
+                    </MenuItem.Background>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+        <StatusBar DockPanel.Dock="Bottom" Background="Transparent">
+            <!--<StatusBarItem>
+                <TextBlock Text="Progress: " Foreground="White"/>
+                
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock Text="30%" Foreground="White"/>
+            </StatusBarItem>-->
+            <!--<StatusBarItem>
+                <ProgressBar Value="30" Width="150" Height="14" Background="Transparent"/>
+            </StatusBarItem>-->
+        </StatusBar>
+        <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition Width="590"/>
+                    <ColumnDefinition/>
+
+                </Grid.ColumnDefinitions>
+                <GridSplitter BorderBrush="DimGray" BorderThickness="0" Grid.Column="0" Margin="1,5,1,5" MinWidth="150" Background="Transparent"/>
+                <GridSplitter BorderBrush="DimGray" BorderThickness="0" Grid.Column="1" MinWidth="200" Background="Transparent"/>
+                <Border Grid.Column="0" Grid.Row="0" BorderBrush="DimGray" BorderThickness="2" Margin="5" Background="Transparent">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <StackPanel x:Name="leftPanelStackPanel">
+                            <Calendar x:Name="Calendar" MouseDown="Calendar_MouseDown"/>
+                            <StackPanel Margin="5,10">
+                                <informativeButtons:TotalTasksInformativeButton_UserControl Margin="10,5,10,1"
+                                                                                            x:Name="totalTasksButonPanel"
+                                                                                            DataContext="{StaticResource mainVM_DataContext}"/>
+                                <informativeButtons:TodayTasksInformativeButton_UserControl Margin="10,1,10,5"
+                                                                                            x:Name="todayButtonPanel" DataContext="{StaticResource mainVM_DataContext}"/>
+                            </StackPanel>
+                            
+                            <taskGroupPanel:MyGroupsPanel_UserControl x:Name="myGroupsPanel" 
+                                                                      Selector.SelectionChanged="myGroupsPanel_SelectionChanged" 
+                                                                      DataContext="{StaticResource mainVM_DataContext}"/>
+                            <taskGroupPanel:DelegatedGroupPanel_UserControl  x:Name="delegatedGroupsPanel" 
+                                                                             Selector.SelectionChanged="delegatedGroupsPanel_SelectionChanged"
+                                                                             DataContext="{StaticResource mainVM_DataContext}"/>
+                            <StackPanel Margin="5,10">
+                                <taskGroupPanel:InformativeButton_UserControl Margin="10,5,10,1"
+                                                                              DataContext="{Binding ShowExpiredTasksButton, UpdateSourceTrigger=PropertyChanged}"/>
+                                <taskGroupPanel:InformativeButton_UserControl Margin="10,1,10,5"
+                                                                              DataContext="{Binding ShowCompletedTasksButton, UpdateSourceTrigger=PropertyChanged}"/>
+                            </StackPanel>
+                          
+                        </StackPanel>
+                    </ScrollViewer>
+                    
+                </Border>
+                <Border Grid.Column="1" Grid.Row="0" BorderBrush="DimGray" BorderThickness="2" Margin="5">
+                    <taskPanel:TaskPanel_UserControl x:Name="taskPanel" Selector.SelectionChanged="taskTanel_SelectionChanged" DataContext="{StaticResource mainVM_DataContext}"/>
+                </Border>
+                <Border Grid.Column="2" Grid.Row="0" BorderBrush="DimGray" BorderThickness="2" Margin="5" HorizontalAlignment="Stretch">
+                    <rightPanel:RightPanel_UserControl/>
+                </Border>
+            </Grid>
+            
+
+        </StackPanel>
+    </DockPanel>
 </Window>

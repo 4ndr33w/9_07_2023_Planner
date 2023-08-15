@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _9_07_2023_Planner.ViewModels
+namespace _9_07_2023_Planner.Infrastructure.Commands
 {
-    public class DataManageVM
+    internal class ShowTotalTasksCommand
     {
     }
 }
