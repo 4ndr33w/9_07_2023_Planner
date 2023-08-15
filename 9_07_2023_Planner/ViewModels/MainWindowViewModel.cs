@@ -335,11 +335,13 @@ namespace _9_07_2023_Planner.ViewModels
         #region METHODS
         private void OnStartup()
         {
+            
             TryToDeserializeData();
             InformativeButtonTitles();
+            GenerateTaskListMethod();
             InformativeButtonsUpdate();
             GroupCountersUpdate();
-            GenerateTaskListMethod();
+            
         }
         private void SelectedGroupsHideDeleteButtons()
         {
