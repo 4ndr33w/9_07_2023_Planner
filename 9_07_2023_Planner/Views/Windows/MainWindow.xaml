@@ -10,8 +10,4 @@
     <Window.DataContext>
         <dataContext:MainWindowViewModel></dataContext:MainWindowViewModel>
     </Window.DataContext>
-    <Grid>
-        
-    </Grid>
-    <StackPanel></StackPanel>
 </Window>
