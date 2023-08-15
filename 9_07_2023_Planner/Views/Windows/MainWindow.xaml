@@ -93,7 +93,7 @@
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="300"/>
-                    <ColumnDefinition Width="590"/>
+                    <ColumnDefinition Width="600"/>
                     <ColumnDefinition/>
 
                 </Grid.ColumnDefinitions>
@@ -102,7 +102,7 @@
                 <Border Grid.Column="0" Grid.Row="0" BorderBrush="DimGray" BorderThickness="2" Margin="5" Background="Transparent">
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel x:Name="leftPanelStackPanel">
-                            <Calendar x:Name="Calendar" MouseDown="Calendar_MouseDown"/>
+                            <Calendar x:Name="Calendar" SelectionMode="SingleDate" SelectedDatesChanged="Calendar_SelectedDatesChanged"/>
                             <StackPanel Margin="5,10">
                                 <informativeButtons:TotalTasksInformativeButton_UserControl Margin="10,5,10,1"
                                                                                             x:Name="totalTasksButonPanel"

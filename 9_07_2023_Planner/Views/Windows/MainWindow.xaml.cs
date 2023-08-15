@@ -19,6 +19,8 @@ using _9_07_2023_Planner.ViewModels;
 using _9_07_2023_Planner.Infrastructure.Commands;
 using _9_07_2023_Planner.Views.Components.LeftPanel;
 using _9_07_2023_Planner.Views.Components.MiddlePanel;
+using System.Collections.ObjectModel;
+using _9_07_2023_Planner.Models.ViewPanelTemplate;
 
 namespace _9_07_2023_Planner.Views.Windows
 {
@@ -104,9 +106,24 @@ namespace _9_07_2023_Planner.Views.Windows
             (myGroupsPanel as MyGroupsPanel_UserControl).TaskGroupListBox.SelectedIndex = -1;
         }
 
-        private void Calendar_MouseDown(object sender, MouseButtonEventArgs e)
+        private void Calendar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            var taskList = new ObservableCollection<TaskTemplate>((this.DataContext as MainWindowViewModel).FullTaskList.Where(c => c.ExpirationDate.Date == Calendar.SelectedDate));
+            (this.DataContext as MainWindowViewModel).TaskList = taskList;
+            //MessageBox.Show(taskList[0].Header);
+        }
 
+        private void Calendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var dataContextVM = (DataContext as MainWindowViewModel);
+            //var taskList = new ObservableCollection<TaskTemplate>(dataContextVM.FullTaskList.Where(c => c.ExpirationDate.Date == Calendar.SelectedDate));
+            if (dataContextVM.FullTaskList.Where(c => c.ExpirationDate.Date == Calendar.SelectedDate).ToList().Count > -1)
+            {
+                dataContextVM.TaskList = new ObservableCollection<TaskTemplate>(dataContextVM.FullTaskList.Where(c => c.ExpirationDate.Date == Calendar.SelectedDate));
+                MessageBox.Show(dataContextVM.TaskList[0].Header);
+            }
+            (taskPanel as TaskPanel_UserControl).TaskListBox.Items.Refresh();
+           
         }
     }
 }
