@@ -7,6 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using _9_07_2023_Planner.Views.Windows.ChildWindows;
 using System.Windows.Controls;
+using _9_07_2023_Planner.Views.Components.LeftPanel;
+using _9_07_2023_Planner.Views.Windows;
+using System.Windows;
 
 namespace _9_07_2023_Planner.Infrastructure.Commands.MainWindowCommands
 {
@@ -16,7 +19,22 @@ namespace _9_07_2023_Planner.Infrastructure.Commands.MainWindowCommands
 
         public override void Execute(object parameter)
         {
-            AddNewTaskGroupWindow newTaskGroupWindow = new AddNewTaskGroupWindow(parameter as ListBox);
+            //var parameterType = new MainWindow().myGroupsPanel;
+            //MessageBox.Show(parameterType.Name);
+            ////////////////
+            //parameter as MainWindow.myGroupsPanel;
+            ///////////////////
+
+            string callSourceWindowName = "";
+            if (parameter is MyGroupsPanel_UserControl)
+            {
+                callSourceWindowName = (parameter as MyGroupsPanel_UserControl).Name;
+            }
+            if (parameter is DelegatedGroupPanel_UserControl)
+            {
+                callSourceWindowName = (parameter as DelegatedGroupPanel_UserControl).Name;
+            }
+            AddNewTaskGroupWindow newTaskGroupWindow = new AddNewTaskGroupWindow(callSourceWindowName);
             SetWindowOwnerSetPositionAndShow.ShowModalWindow(newTaskGroupWindow);
         }
     }

@@ -39,5 +39,16 @@ namespace _9_07_2023_Planner.Infrastructure.Commands
             //taskPanel.TaskListBox.DataContext = taskList;
             taskPanel.TaskListBox.Items.Refresh();
         }
+        //private void ViewRefreshMethod(ObservableCollection<TaskTemplate> taskList, string callSourceWindowName)
+        //{
+        //    Views.Components.MiddlePanel.TaskPanel_UserControl taskPanel = new Views.Components.MiddlePanel.TaskPanel_UserControl();
+        //    //taskPanel.TaskListBox.Items.
+        //    //taskPanel.TaskListBox.ItemsSource = null;
+        //    //taskPanel.TaskListBox.Items.Clear();
+        //    taskPanel.TaskListBox.ItemsSource = taskList;
+        //    //MessageBox.Show((taskPanel.TaskListBox.ItemsSource as ObservableCollection<TaskTemplate>).Count.ToString());
+        //    //taskPanel.TaskListBox.DataContext = taskList;
+        //    taskPanel.TaskListBox.Items.Refresh();
+        //}
     }
 }

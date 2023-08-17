@@ -26,42 +26,87 @@ namespace _9_07_2023_Planner.Infrastructure.Commands
 
         public override void Execute(object parameter)
         {
-            var userControl = parameter as TaskGroupPanel_UserControl;
-            var dataContext = userControl.DataContext as MainWindowViewModel;
-
-            DataSerializer Serialize = new DataSerializer();
-            var addGroupWindow = (Window)parameter;
-
-            var _groupColor = (addGroupWindow as AddNewTaskGroupWindow).colorTextBox.Text;
-            var _groupName = (addGroupWindow as AddNewTaskGroupWindow).groupNameTextBox.Text;
+            var mainVM = (new MainWindow().DataContext as MainWindowViewModel);
+            var myGroupsUC = new MainWindow().myGroupsPanel.Name;
+            var delegatedGroupsUC = new MainWindow().delegatedGroupsPanel.Name;
+            var parameterName = (parameter as AddNewTaskGroupWindow).callSource;
             string _executor = "";
+            var _groupColor = (parameter as AddNewTaskGroupWindow).colorTextBox.Text;
+            var _groupName = (parameter as AddNewTaskGroupWindow).groupNameTextBox.Text;
+            DataSerializer Serialize = new DataSerializer();
 
-            var groupListBox = (addGroupWindow as AddNewTaskGroupWindow).taskGroupListBox as ListBox;
-            var mainVM = groupListBox.DataContext as MainWindowViewModel;
-            var groupList = mainVM.GroupList;
+            if (parameterName == myGroupsUC)
+            {
+                //MessageBox.Show(parameterName + "\n" + groupListCount);
+                _executor = "Me";
+                mainVM.MyGroupList.Add(new TaskGroupTemplate(_groupColor, _groupName, _executor));
+                //mainVM.TryToDeserializeData();
+
+                new MainWindow().myGroupsPanel.TaskGroupListBox.ItemsSource = mainVM.MyGroupList;
+                new MainWindow().myGroupsPanel.TaskGroupListBox.Items.Refresh();
+                //new MyGroupsPanel_UserControl().TaskGroupListBox.Items.Refresh();
+            }
+            if (parameterName == delegatedGroupsUC)
+            {
+                //MessageBox.Show(parameterName + "\n" + groupListCount);
+                _executor = "Delegated";
+                mainVM.DelegatedGroupList.Add(new TaskGroupTemplate(_groupColor, _groupName, _executor));
+                new MyGroupsPanel_UserControl().TaskGroupListBox.Items.Refresh();
+            }
+
+            mainVM.GroupList.Add(new TaskGroupTemplate(_groupColor, _groupName, _executor));
+            mainVM.GroupList = new System.Collections.ObjectModel.ObservableCollection<TaskGroupTemplate>(mainVM.GroupList);
+
+
+            mainVM.SelectedDelegatedGroupIndex = -1;
+            mainVM.SelectedMyGroupIndex = -1;
+
+            (parameter as AddNewTaskGroupWindow).Hide();
+
+            Serialize.JsonSerialization(mainVM.GroupList, TextData.directory);
+
+            mainVM.TryToDeserializeData();
+            //////////////////////////////////
+
+            //MessageBox.Show((parameter as AddNewTaskGroupWindow).callSource);
+
+            //if (parameter == MyGroupsPanel_UserControl.na)
+            //var userControl = parameter as MyGroupsPanel_UserControl;
+            //var dataContext = userControl.DataContext as MainWindowViewModel;
+
+            //DataSerializer Serialize = new DataSerializer();
+            //var addGroupWindow = (Window)parameter;
+
+            //var _groupColor = (addGroupWindow as AddNewTaskGroupWindow).colorTextBox.Text;
+            //var _groupName = (addGroupWindow as AddNewTaskGroupWindow).groupNameTextBox.Text;
+            //string _executor = "";
+
+            //var groupListBox = (addGroupWindow as AddNewTaskGroupWindow).taskGroupListBox as ListBox;
+            //var mainVM = groupListBox.DataContext as MainWindowViewModel;
+            //var groupList = mainVM.GroupList;
 
 
 
-            //if (userControl.TaskGroupListBox.ItemsSource == dataContext.MyGroupList)
-            //{
-            //    _executor = "Me";
-            //    dataContext.MyGroupList.Add(new TaskGroupTemplate(_groupColor, _groupName, _executor));
-            //}
-            //else
-            //{
-            //    _executor = "Delegated";
-            //    dataContext.DelegatedGroupList.Add(new TaskGroupTemplate(_groupColor, _groupName, _executor));
-            //}
+            ////if (userControl.TaskGroupListBox.ItemsSource == dataContext.MyGroupList)
+            ////{
+            ////    _executor = "Me";
+            ////    dataContext.MyGroupList.Add(new TaskGroupTemplate(_groupColor, _groupName, _executor));
+            ////}
+            ////else
+            ////{
+            ////    _executor = "Delegated";
+            ////    dataContext.DelegatedGroupList.Add(new TaskGroupTemplate(_groupColor, _groupName, _executor));
+            ////}
 
-            groupList.Add(new TaskGroupTemplate(_groupColor, _groupName, _executor));
-            groupList = new System.Collections.ObjectModel.ObservableCollection<TaskGroupTemplate>(groupList);
+            //groupList.Add(new TaskGroupTemplate(_groupColor, _groupName, _executor));
+            //groupList = new System.Collections.ObjectModel.ObservableCollection<TaskGroupTemplate>(groupList);
 
 
-            groupListBox.SelectedIndex = -1;
+            //groupListBox.SelectedIndex = -1;
 
-            addGroupWindow.Hide();
+            //addGroupWindow.Hide();
 
-            Serialize.JsonSerialization(groupList, TextData.directory);
+            //Serialize.JsonSerialization(groupList, TextData.directory);
         }
     }
 }

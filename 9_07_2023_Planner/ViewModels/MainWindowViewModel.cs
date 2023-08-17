@@ -398,7 +398,7 @@ namespace _9_07_2023_Planner.ViewModels
             _showCompletedTasksButton.Title = "Completed Tasks:";
         }
 
-        private void TryToDeserializeData()
+        public void TryToDeserializeData()
         {
             if (File.Exists(TextData.directory + "\\" + Properties.Resources.GroupListFileName))
             {

@@ -28,7 +28,7 @@
             <StackPanel Background="Transparent">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button x:Name="AddTaskGroupButton" Content="+ Add Group" Background="Transparent" Foreground="White" BorderBrush="White" BorderThickness="0"
-                            HorizontalAlignment="Center" Width="85" Margin="1,0,1,0" CommandParameter="{Binding ElementName=groupWindow_UC}"
+                            HorizontalAlignment="Center" Width="85" Margin="1,0,1,0" CommandParameter="{Binding ElementName=myGroupsWindow_UC}"
                         Command="{StaticResource showChildWindowCommand}">
                     </Button>
                     <Button x:Name="EditTaskGroupButton" Content="Edit Group" Background="Transparent" Foreground="White" BorderBrush="White" BorderThickness="0"
@@ -40,7 +40,7 @@
                 <ListBox Background="Transparent" x:Name="TaskGroupListBox" Tag="AncestorLevel 1"
                          SelectedItem="{Binding MySelectedGroup, UpdateSourceTrigger=PropertyChanged}"
                          SelectionMode="Single" SelectedIndex="{Binding SelectedMyGroupIndex}" SelectionChanged="TaskGroupListBox_SelectionChanged"
-                         ItemsSource="{Binding MyGroupList}">
+                         ItemsSource="{Binding MyGroupList, UpdateSourceTrigger=PropertyChanged}">
                     <ListBox.ItemTemplate>
                         <DataTemplate x:Name="dataTemplateItem">
                             <DockPanel LastChildFill="True" Background="Transparent">

@@ -106,13 +106,6 @@ namespace _9_07_2023_Planner.Views.Windows
             (myGroupsPanel as MyGroupsPanel_UserControl).TaskGroupListBox.SelectedIndex = -1;
         }
 
-        private void Calendar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            var taskList = new ObservableCollection<TaskTemplate>((this.DataContext as MainWindowViewModel).FullTaskList.Where(c => c.ExpirationDate.Date == Calendar.SelectedDate));
-            (this.DataContext as MainWindowViewModel).TaskList = taskList;
-            //MessageBox.Show(taskList[0].Header);
-        }
-
         private void Calendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
             var dataContextVM = (DataContext as MainWindowViewModel);
@@ -120,7 +113,7 @@ namespace _9_07_2023_Planner.Views.Windows
             if (dataContextVM.FullTaskList.Where(c => c.ExpirationDate.Date == Calendar.SelectedDate).ToList().Count > -1)
             {
                 dataContextVM.TaskList = new ObservableCollection<TaskTemplate>(dataContextVM.FullTaskList.Where(c => c.ExpirationDate.Date == Calendar.SelectedDate));
-                MessageBox.Show(dataContextVM.TaskList[0].Header);
+                //MessageBox.Show(dataContextVM.TaskList[0].Header);
             }
             (taskPanel as TaskPanel_UserControl).TaskListBox.Items.Refresh();
            
