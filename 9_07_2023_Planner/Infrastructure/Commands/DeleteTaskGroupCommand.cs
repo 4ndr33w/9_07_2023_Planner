@@ -5,6 +5,7 @@ using _9_07_2023_Planner.Models.ViewPanelTemplate;
 using _9_07_2023_Planner.ViewModels;
 using _9_07_2023_Planner.Views.Components.LeftPanel;
 using _9_07_2023_Planner.Views.Components.RequestWindowComponents;
+using _9_07_2023_Planner.Views.Windows;
 using _9_07_2023_Planner.Views.Windows.ChildWindows;
 using _9_07_2023_Planner.Views.Windows.RequestWindows;
 using System;
@@ -44,8 +45,6 @@ namespace _9_07_2023_Planner.Infrastructure.Commands
 
                 #region запрос на удаление
 
-                //var listBox = DeleteTaskGroupRequest_UserControl.Parameter as ListBox;
-                //var mainVM = listBox.DataContext as MainWindowViewModel;
                 var groupList = mainVM.GroupList;
                 //var selectedIndex = mainVM.SelectedGroupIndex;
                 var findGroup = groupList.First(c => c.GroupEquals(selectedGroup));
@@ -54,7 +53,6 @@ namespace _9_07_2023_Planner.Infrastructure.Commands
                 {
                     groupList.Remove(findGroup);
                 }
-                
                 requestWindow.Hide();
                 //DeleteTaskGroupRequest_UserControl.Window.Hide();
                 #endregion
@@ -64,6 +62,17 @@ namespace _9_07_2023_Planner.Infrastructure.Commands
                 Serialize.JsonSerialization(groupList, TextData.directory);
                 groupList.Clear();
                 mainVM.TryToDeserializeData();
+
+                var mainWindow = new MainWindow();
+
+                (mainWindow.myGroupsPanel as MyGroupsPanel_UserControl).TaskGroupListBox.Items.Clear();
+                (mainWindow.myGroupsPanel as MyGroupsPanel_UserControl).TaskGroupListBox.ItemsSource = mainVM.MyGroupList;
+
+                (mainWindow.delegatedGroupsPanel as DelegatedGroupPanel_UserControl).TaskGroupListBox.Items.Clear();
+                (mainWindow.delegatedGroupsPanel as DelegatedGroupPanel_UserControl).TaskGroupListBox.ItemsSource = mainVM.MyGroupList;
+
+
+
                 #endregion
             }
         }
