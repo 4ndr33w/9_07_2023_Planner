@@ -5,16 +5,21 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:_9_07_2023_Planner.Views.Components.RequestWindowComponents"
              xmlns:dataContext="clr-namespace:_9_07_2023_Planner.ViewModels"
+             xmlns:commands="clr-namespace:_9_07_2023_Planner.Infrastructure.Commands"
              mc:Ignorable="d" x:Name="deleteTaskGroupRequestWindow_UserControl">
-    <UserControl.DataContext>
+    <!--<UserControl.DataContext>
         <dataContext:MainWindowViewModel/>
-    </UserControl.DataContext>
+    </UserControl.DataContext>-->
+    <UserControl.Resources>
+        <commands:DeleteTaskGroupCommand x:Key="deleteGroupCommand"/>
+    </UserControl.Resources>
     <Grid>
         <StackPanel>
             <TextBlock Text="Удалить группу со всеми входящими в неё задачами?" Foreground="White" HorizontalAlignment="Center" Margin="10,20,10,20"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button x:Name="Btn_Cancel" Width="80" Content="Cancel" Background="Transparent" Foreground="White" Margin="0,15,10,30" Padding="5" IsCancel="True"/>
-                <Button x:Name="Btn_OK" Width="80" Content="OK" Background="Transparent" Foreground="White" Margin="10,15,0,30" Padding="10,5,10,5"/>
+                <Button x:Name="Btn_OK" Width="80" Content="OK" Background="Transparent" Foreground="White" Margin="10,15,0,30" Padding="10,5,10,5"
+                        Command="{StaticResource deleteGroupCommand}" CommandParameter="{Binding ElementName=deleteTaskGroupRequestWindow_UserControl}"/>
                 <!--Command="{StaticResource DeleteTaskGroupCommand}"/>-->
                 <!--CommandParameter="{Binding ElementName=deleteTaskGroupRequestWindow_UserControl}"/>-->
             </StackPanel>

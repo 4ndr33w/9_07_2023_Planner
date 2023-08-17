@@ -7,7 +7,7 @@
         xmlns:deleteGroup="clr-namespace:_9_07_2023_Planner.Views.Components.RequestWindowComponents"
         xmlns:dataContext="clr-namespace:_9_07_2023_Planner.ViewModels"
         mc:Ignorable="d" WindowStyle="None"
-        Title="RequestWindow" Height="150" Width="330">
+        Title="RequestWindow" Height="150" Width="330" Name="requestWindow">
     <!--xmlns:deleteGroup="clr-namespace:_9_07_2023_Planner.Views.Components.RequestWindowComponents"-->
     <Window.DataContext>
         <dataContext:MainWindowViewModel/>
@@ -20,7 +20,7 @@
     </Window.Background>
     <Grid>
         <StackPanel>
-            <deleteGroup:DeleteTaskGroupRequest_UserControl></deleteGroup:DeleteTaskGroupRequest_UserControl>
+            <deleteGroup:DeleteTaskGroupRequest_UserControl x:Name="DeleteTaskGroupRequest_UserControlPanel" DataContext="{Binding ElementName=requestWindow}"></deleteGroup:DeleteTaskGroupRequest_UserControl>
             <!--<deleteGroup:DeleteTaskGroupRequest_UserControl 
                 x:Name="deleteGroupShow_UK">
                 --><!--Visibility="{Binding DeleteGroupRequestWindowUserControlVisibility, UpdateSourceTrigger=PropertyChanged}">--><!--

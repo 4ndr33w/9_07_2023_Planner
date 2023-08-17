@@ -20,7 +20,7 @@ namespace _9_07_2023_Planner.Infrastructure.Commands
         public override void Execute(object parameter)
         {
             //MessageBox.Show($"{((parameter as ListBox).SelectedItem as TaskGroupTemplate).GroupName}");
-            RequestWindow requestWindow = new RequestWindow();
+            RequestWindow requestWindow = new RequestWindow(parameter);
             //requestWindow.ShowDialog();
             //requestWindow.deleteGroupShow_UK.Visibility = System.Windows.Visibility.Visible;
 

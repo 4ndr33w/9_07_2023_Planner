@@ -25,6 +25,12 @@ namespace _9_07_2023_Planner.Infrastructure.Commands
 
         public override void Execute(object parameter)
         {
+            var requestWindow = (parameter as DeleteTaskGroupRequest_UserControl).DataContext as RequestWindow;
+            var listBox = requestWindow._parameter as ListBox;
+            var selectedGroup = listBox.SelectedItem as TaskGroupTemplate;
+
+            var mainVM = requestWindow.DataContext as MainWindowViewModel;
+            //MessageBox.Show(selectedGroup.GroupName + "\n" + mainVM.GroupList.Count.ToString());
             if (parameter != null)
             {
                 #region логика для удаления группы без запроса - передавая ЛистБокс как параметр
@@ -38,17 +44,26 @@ namespace _9_07_2023_Planner.Infrastructure.Commands
 
                 #region запрос на удаление
 
-                var listBox = DeleteTaskGroupRequest_UserControl.Parameter as ListBox;
-                var mainVM = listBox.DataContext as MainWindowViewModel;
+                //var listBox = DeleteTaskGroupRequest_UserControl.Parameter as ListBox;
+                //var mainVM = listBox.DataContext as MainWindowViewModel;
                 var groupList = mainVM.GroupList;
-                var selectedIndex = mainVM.SelectedGroupIndex;
-                groupList.RemoveAt(selectedIndex);
-                DeleteTaskGroupRequest_UserControl.Window.Hide();
+                //var selectedIndex = mainVM.SelectedGroupIndex;
+                var findGroup = groupList.First(c => c.GroupEquals(selectedGroup));
+                //MessageBox.Show(groupList.First(c => c.GroupEquals(selectedGroup)).GroupName);
+                if (findGroup != default)
+                {
+                    groupList.Remove(findGroup);
+                }
+                
+                requestWindow.Hide();
+                //DeleteTaskGroupRequest_UserControl.Window.Hide();
                 #endregion
 
                 #region Сериализация
                 DataSerializer Serialize = new DataSerializer();
                 Serialize.JsonSerialization(groupList, TextData.directory);
+                groupList.Clear();
+                mainVM.TryToDeserializeData();
                 #endregion
             }
         }

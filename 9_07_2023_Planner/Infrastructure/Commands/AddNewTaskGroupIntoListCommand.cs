@@ -40,18 +40,19 @@ namespace _9_07_2023_Planner.Infrastructure.Commands
                 //MessageBox.Show(parameterName + "\n" + groupListCount);
                 _executor = "Me";
                 mainVM.MyGroupList.Add(new TaskGroupTemplate(_groupColor, _groupName, _executor));
-                //mainVM.TryToDeserializeData();
+                mainVM.TryToDeserializeData();
 
-                new MainWindow().myGroupsPanel.TaskGroupListBox.ItemsSource = mainVM.MyGroupList;
-                new MainWindow().myGroupsPanel.TaskGroupListBox.Items.Refresh();
-                //new MyGroupsPanel_UserControl().TaskGroupListBox.Items.Refresh();
+                //new MainWindow().myGroupsPanel.TaskGroupListBox.ItemsSource = mainVM.MyGroupList;
+                //new MainWindow().myGroupsPanel.TaskGroupListBox.Items.Refresh();
+                new MyGroupsPanel_UserControl().TaskGroupListBox.Items.Refresh();
             }
             if (parameterName == delegatedGroupsUC)
             {
                 //MessageBox.Show(parameterName + "\n" + groupListCount);
                 _executor = "Delegated";
                 mainVM.DelegatedGroupList.Add(new TaskGroupTemplate(_groupColor, _groupName, _executor));
-                new MyGroupsPanel_UserControl().TaskGroupListBox.Items.Refresh();
+                mainVM.TryToDeserializeData();
+                new DelegatedGroupPanel_UserControl().TaskGroupListBox.Items.Refresh();
             }
 
             mainVM.GroupList.Add(new TaskGroupTemplate(_groupColor, _groupName, _executor));

@@ -402,10 +402,17 @@ namespace _9_07_2023_Planner.ViewModels
         {
             if (File.Exists(TextData.directory + "\\" + Properties.Resources.GroupListFileName))
             {
+                DataSerializer Serialize = new DataSerializer();
                 if (GroupList.Count < 1)
                 {
-                    DataSerializer Serialize = new DataSerializer();
+                    
                     GroupList = Serialize.JsonDeserialization(TextData.directory);
+                }
+                else
+                {
+                    GroupList.Clear();
+                    GroupList = Serialize.JsonDeserialization(TextData.directory);
+
                 }
 
                 foreach (var group in GroupList) 

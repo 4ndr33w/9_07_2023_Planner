@@ -13,7 +13,8 @@
         xmlns:taskPanel="clr-namespace:_9_07_2023_Planner.Views.Components.MiddlePanel"
         xmlns:commands="clr-namespace:_9_07_2023_Planner.Infrastructure.Commands"
         xmlns:informativeButtons="clr-namespace:_9_07_2023_Planner.Views.Components.LeftPanel.InformativeButtons"
-        Title="{Binding Path=Title}" Height="710" Width="1200" x:Name="mainWindow">
+        Title="{Binding Path=Title}" Height="710" Width="1200" x:Name="mainWindow"
+        WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <dataContext:MainWindowViewModel></dataContext:MainWindowViewModel>
     </Window.DataContext>
