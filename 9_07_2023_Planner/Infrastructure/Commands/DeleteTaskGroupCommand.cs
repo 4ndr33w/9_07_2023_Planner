@@ -49,20 +49,43 @@ namespace _9_07_2023_Planner.Infrastructure.Commands
                 ////var selectedIndex = mainVM.SelectedGroupIndex;
                 var findGroup = groupList.First(c => c.GroupEquals(selectedGroup));
                 ////////////////////
-                MessageBox.Show(findGroup.GroupName);
+                //MessageBox.Show(findGroup.GroupName);
                 /////////////////////////
+                //MessageBox.Show(listBox.Items.Count.ToString());
                 if (findGroup != default)
                 {
                     groupList.Remove(findGroup);
                 }
                 requestWindow.Hide();
+                if (mainVM.MyGroupList.Contains(findGroup))
+                {
+                    //MessageBox.Show(listBox.Items.Count.ToString());
+                    mainVM.MyGroupList.Remove(findGroup);
+                    //listBox.ItemsSource = null;
+                    listBox.ItemsSource = new List<TaskGroupTemplate>(mainVM.MyGroupList);
+                    //listBox.Items.Refresh();
+                    //listBox.SelectedIndex = -1;
+                }
+                if (mainVM.DelegatedGroupList.Contains(findGroup))
+                {
+                    mainVM.DelegatedGroupList.Remove(findGroup);
+                    //listBox.ItemsSource = null;
+                    listBox.ItemsSource = new List<TaskGroupTemplate>(mainVM.MyGroupList);
+                    //listBox.Items.Refresh();
+                    //listBox.SelectedIndex = -1;
+                }
+                
                 ////DeleteTaskGroupRequest_UserControl.Window.Hide();
+                ///
+                
                 #endregion
 
                 #region Сериализация
                 DataSerializer Serialize = new DataSerializer();
                 Serialize.JsonSerialization(groupList, TextData.directory);
-                groupList.Clear();
+                //groupList.Clear();
+                //mainVM.MyGroupList.Clear();
+                //mainVM.DelegatedGroupList.Clear();
                 mainVM.TryToDeserializeData();
 
                 //var mainWindow = new MainWindow();

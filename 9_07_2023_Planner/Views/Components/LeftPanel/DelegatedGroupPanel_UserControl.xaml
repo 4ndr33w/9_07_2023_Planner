@@ -40,7 +40,7 @@
                 <ListBox Background="Transparent" x:Name="TaskGroupListBox" Tag="AncestorLevel 1"
                          SelectedItem="{Binding DelegatedSelectedGroup}"
                          SelectionMode="Single" SelectedIndex="{Binding SelectedDelegatedGroupIndex}" SelectionChanged="TaskGroupListBox_SelectionChanged"
-                         ItemsSource="{Binding DelegatedGroupList}" MouseDown="TaskGroupListBox_MouseDown">
+                         ItemsSource="{Binding DelegatedGroupList, UpdateSourceTrigger=PropertyChanged}" MouseDown="TaskGroupListBox_MouseDown">
                     <!--ItemsSource="{Binding GroupList, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"-->
                     <!--ItemsSource="{Binding GroupList, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"-->
                     <ListBox.ItemTemplate>
