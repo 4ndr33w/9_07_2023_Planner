@@ -42,7 +42,7 @@ namespace _9_07_2023_Planner.Infrastructure.Commands
                 //MessageBox.Show(parameterName + "\n" + mainVM.MyGroupList.Count);
 
                 _executor = "Me";
-                mainVM.MyGroupList.Add(new TaskGroupTemplate(_groupColor, _groupName, _executor));
+                //mainVM.MyGroupList.Add(new TaskGroupTemplate(_groupColor, _groupName, _executor));
                 //mainVM.TryToDeserializeData();
 
                 //new MainWindow().myGroupsPanel.TaskGroupListBox.ItemsSource = mainVM.MyGroupList;
@@ -53,7 +53,7 @@ namespace _9_07_2023_Planner.Infrastructure.Commands
             {
             //MessageBox.Show(parameterName + "\n");
                 _executor = "Delegated";
-                mainVM.DelegatedGroupList.Add(new TaskGroupTemplate(_groupColor, _groupName, _executor));
+                //mainVM.DelegatedGroupList.Add(new TaskGroupTemplate(_groupColor, _groupName, _executor));
                 //mainVM.TryToDeserializeData();
                 new DelegatedGroupPanel_UserControl().TaskGroupListBox.Items.Refresh();
             }

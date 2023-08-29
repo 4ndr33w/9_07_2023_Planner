@@ -416,8 +416,11 @@ namespace _9_07_2023_Planner.ViewModels
 
                 }
 
+                MyGroupList.Clear();
+                DelegatedGroupList.Clear();
                 foreach (var group in GroupList) 
                 { 
+                    
                     if (group.ExecutionOf == "Delegated") DelegatedGroupList.Add((group));
                     else MyGroupList.Add(group);
                 }
@@ -444,17 +447,17 @@ namespace _9_07_2023_Planner.ViewModels
         }
         private void GenerateTaskListMethod()
         {
-            FullTaskList = new ObservableCollection<TaskTemplate>
-            {
-                 new TaskTemplate(DateTime.Now, "SampleTask1", "Sample Header 1", "Me", DateTime.Now, "Urgent", true, new TaskGroupModel(GroupList[0])),
-                new TaskTemplate(DateTime.Now.AddDays(9), "Sample Task 2", "Sample Header 2", "Me", DateTime.Now, "Urgent", true, GroupList[1]),
-                new TaskTemplate(DateTime.Now.AddDays(11), "Sample Task 3", "Sample Header 3", "Me", DateTime.Now, "Urgent", true, GroupList[2]),
-                new TaskTemplate(DateTime.Now.AddDays(12), "Sample Task 4", "Sample Header 4", "Me", DateTime.Now, "Urgent", true, GroupList[2]),
+            //FullTaskList = new ObservableCollection<TaskTemplate>
+            //{
+            //     new TaskTemplate(DateTime.Now, "SampleTask1", "Sample Header 1", "Me", DateTime.Now, "Urgent", true, new TaskGroupModel(GroupList[1])),
+            //    new TaskTemplate(DateTime.Now.AddDays(9), "Sample Task 2", "Sample Header 2", "Me", DateTime.Now, "Urgent", true, GroupList[3]),
+            //    new TaskTemplate(DateTime.Now.AddDays(11), "Sample Task 3", "Sample Header 3", "Me", DateTime.Now, "Urgent", true, GroupList[2]),
+            //    new TaskTemplate(DateTime.Now.AddDays(12), "Sample Task 4", "Sample Header 4", "Me", DateTime.Now, "Urgent", true, GroupList[4]),
 
 
-                new TaskTemplate(DateTime.Now.AddDays(13), "Sample Task 5", "Sample Header 5", "Me", DateTime.Now, "Urgent", true, GroupList[0])
-            };
-            TaskList = new ObservableCollection<TaskTemplate>(FullTaskList);
+            //    new TaskTemplate(DateTime.Now.AddDays(13), "Sample Task 5", "Sample Header 5", "Me", DateTime.Now, "Urgent", true, GroupList[4])
+            //};
+            //TaskList = new ObservableCollection<TaskTemplate>(FullTaskList);
         }
         #endregion
 

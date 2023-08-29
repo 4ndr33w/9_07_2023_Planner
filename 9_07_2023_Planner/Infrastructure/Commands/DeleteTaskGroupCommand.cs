@@ -46,15 +46,17 @@ namespace _9_07_2023_Planner.Infrastructure.Commands
                 #region запрос на удаление
 
                 var groupList = mainVM.GroupList;
-                //var selectedIndex = mainVM.SelectedGroupIndex;
+                ////var selectedIndex = mainVM.SelectedGroupIndex;
                 var findGroup = groupList.First(c => c.GroupEquals(selectedGroup));
-                //MessageBox.Show(groupList.First(c => c.GroupEquals(selectedGroup)).GroupName);
+                ////////////////////
+                MessageBox.Show(findGroup.GroupName);
+                /////////////////////////
                 if (findGroup != default)
                 {
                     groupList.Remove(findGroup);
                 }
                 requestWindow.Hide();
-                //DeleteTaskGroupRequest_UserControl.Window.Hide();
+                ////DeleteTaskGroupRequest_UserControl.Window.Hide();
                 #endregion
 
                 #region Сериализация
@@ -63,13 +65,13 @@ namespace _9_07_2023_Planner.Infrastructure.Commands
                 groupList.Clear();
                 mainVM.TryToDeserializeData();
 
-                var mainWindow = new MainWindow();
+                //var mainWindow = new MainWindow();
 
-                (mainWindow.myGroupsPanel as MyGroupsPanel_UserControl).TaskGroupListBox.Items.Clear();
-                (mainWindow.myGroupsPanel as MyGroupsPanel_UserControl).TaskGroupListBox.ItemsSource = mainVM.MyGroupList;
+                //(mainWindow.myGroupsPanel as MyGroupsPanel_UserControl).TaskGroupListBox.Items.Clear();
+                //(mainWindow.myGroupsPanel as MyGroupsPanel_UserControl).TaskGroupListBox.ItemsSource = mainVM.MyGroupList;
 
-                (mainWindow.delegatedGroupsPanel as DelegatedGroupPanel_UserControl).TaskGroupListBox.Items.Clear();
-                (mainWindow.delegatedGroupsPanel as DelegatedGroupPanel_UserControl).TaskGroupListBox.ItemsSource = mainVM.MyGroupList;
+                //(mainWindow.delegatedGroupsPanel as DelegatedGroupPanel_UserControl).TaskGroupListBox.Items.Clear();
+                //(mainWindow.delegatedGroupsPanel as DelegatedGroupPanel_UserControl).TaskGroupListBox.ItemsSource = mainVM.MyGroupList;
 
 
 
