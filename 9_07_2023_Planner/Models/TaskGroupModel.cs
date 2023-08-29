@@ -8,7 +8,7 @@ using System.Windows.Media;
 
 namespace _9_07_2023_Planner.Models
 {
-    internal class TaskGroupModel //: ViewModelBase
+    public class TaskGroupModel //: ViewModelBase
     {
         //protected DateTime _id;
         protected static int _groupId;

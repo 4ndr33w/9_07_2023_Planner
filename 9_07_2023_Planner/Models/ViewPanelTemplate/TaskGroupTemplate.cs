@@ -7,7 +7,7 @@ using System.Windows.Media;
 
 namespace _9_07_2023_Planner.Models.ViewPanelTemplate
 {
-    internal class TaskGroupTemplate : TaskGroupModel
+    public class TaskGroupTemplate : TaskGroupModel
     {
         private string deleteButtonVisibility = "Collapsed";
 

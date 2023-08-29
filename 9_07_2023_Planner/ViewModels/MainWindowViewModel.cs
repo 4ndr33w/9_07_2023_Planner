@@ -21,7 +21,7 @@ using System.Windows.Input;
 
 namespace _9_07_2023_Planner.ViewModels
 {
-    internal class MainWindowViewModel : ViewModelBase
+    public class MainWindowViewModel : ViewModelBase
     {
         #region FIELDS
 
@@ -336,7 +336,7 @@ namespace _9_07_2023_Planner.ViewModels
         private void OnStartup()
         {
             TryToDeserializeData();
-            GenerateGroupList();
+            //GenerateGroupList();
             
             InformativeButtonTitles();
             GenerateTaskListMethod();

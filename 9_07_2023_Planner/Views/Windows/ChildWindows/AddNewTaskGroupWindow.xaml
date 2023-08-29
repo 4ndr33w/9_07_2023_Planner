@@ -12,6 +12,9 @@
     <Window.Resources>
         <commonCommands:AddNewTaskGroupIntoListCommand x:Key="addNewGroupCommand"/>
     </Window.Resources>
+    <Window.DataContext>
+        <dataContext:MainWindowViewModel/>
+    </Window.DataContext>
     <Grid>
         <StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">

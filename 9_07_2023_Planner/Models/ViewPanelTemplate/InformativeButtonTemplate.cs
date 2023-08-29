@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace _9_07_2023_Planner.Models.ViewPanelTemplate
 {
-    internal class InformativeButtonTemplate : ViewModelBase
+    public class InformativeButtonTemplate : ViewModelBase
     {
         private string _title;
         private string _counter;

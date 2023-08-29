@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace _9_07_2023_Planner.ViewModels.Base
 {
-    internal abstract class ViewModelBase : INotifyPropertyChanged, IDisposable
+    public abstract class ViewModelBase : INotifyPropertyChanged, IDisposable
     {
         public ViewModelBase() { }
         public event PropertyChangedEventHandler PropertyChanged;

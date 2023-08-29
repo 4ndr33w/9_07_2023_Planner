@@ -12,7 +12,7 @@ using System.Xml.Linq;
 
 namespace _9_07_2023_Planner.Models
 {
-    internal class TaskModel : TaskGroupModel
+    public class TaskModel : TaskGroupModel
     {
         protected DateTime _date;
         protected string _note;

@@ -26,37 +26,40 @@ namespace _9_07_2023_Planner.Infrastructure.Commands
 
         public override void Execute(object parameter)
         {
-            var mainVM = (new MainWindow().DataContext as MainWindowViewModel);
-            var myGroupsUC = new MainWindow().myGroupsPanel.Name;
-            var delegatedGroupsUC = new MainWindow().delegatedGroupsPanel.Name;
+            var mainVM = ((parameter as AddNewTaskGroupWindow).DataContext as MainWindowViewModel); //(new MainWindow().DataContext as MainWindowViewModel);
+            //var myGroupsUC = new MainWindow().myGroupsPanel.Name;
+            //var delegatedGroupsUC = new MainWindow().delegatedGroupsPanel.Name;
             var parameterName = (parameter as AddNewTaskGroupWindow).callSource;
+            var myGroupsPanelName = "myGroupsPanel"; //((parameter as AddNewTaskGroupWindow).DataContext as MainWindowViewModel).
+            var delegatedGroupsPanelName = "delegatedGroupsPanel";
             string _executor = "";
             var _groupColor = (parameter as AddNewTaskGroupWindow).colorTextBox.Text;
             var _groupName = (parameter as AddNewTaskGroupWindow).groupNameTextBox.Text;
             DataSerializer Serialize = new DataSerializer();
 
-            if (parameterName == myGroupsUC)
+            if (parameterName == myGroupsPanelName)
             {
-                //MessageBox.Show(parameterName + "\n" + groupListCount);
+                //MessageBox.Show(parameterName + "\n" + mainVM.MyGroupList.Count);
+
                 _executor = "Me";
                 mainVM.MyGroupList.Add(new TaskGroupTemplate(_groupColor, _groupName, _executor));
-                mainVM.TryToDeserializeData();
+                //mainVM.TryToDeserializeData();
 
                 //new MainWindow().myGroupsPanel.TaskGroupListBox.ItemsSource = mainVM.MyGroupList;
                 //new MainWindow().myGroupsPanel.TaskGroupListBox.Items.Refresh();
-                new MyGroupsPanel_UserControl().TaskGroupListBox.Items.Refresh();
+                //new MyGroupsPanel_UserControl().TaskGroupListBox.Items.Refresh();
             }
-            if (parameterName == delegatedGroupsUC)
+            if (parameterName == delegatedGroupsPanelName)
             {
-                //MessageBox.Show(parameterName + "\n" + groupListCount);
+            //MessageBox.Show(parameterName + "\n");
                 _executor = "Delegated";
                 mainVM.DelegatedGroupList.Add(new TaskGroupTemplate(_groupColor, _groupName, _executor));
-                mainVM.TryToDeserializeData();
+                //mainVM.TryToDeserializeData();
                 new DelegatedGroupPanel_UserControl().TaskGroupListBox.Items.Refresh();
             }
 
             mainVM.GroupList.Add(new TaskGroupTemplate(_groupColor, _groupName, _executor));
-            mainVM.GroupList = new System.Collections.ObjectModel.ObservableCollection<TaskGroupTemplate>(mainVM.GroupList);
+            //mainVM.GroupList = new System.Collections.ObjectModel.ObservableCollection<TaskGroupTemplate>(mainVM.GroupList);
 
 
             mainVM.SelectedDelegatedGroupIndex = -1;
