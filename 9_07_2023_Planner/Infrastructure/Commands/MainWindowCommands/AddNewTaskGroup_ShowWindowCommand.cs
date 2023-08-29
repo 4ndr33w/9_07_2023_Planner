@@ -26,15 +26,16 @@ namespace _9_07_2023_Planner.Infrastructure.Commands.MainWindowCommands
             ///////////////////
 
             string callSourceWindowName = "";
-            if (parameter is MyGroupsPanel_UserControl)
-            {
-                callSourceWindowName = (parameter as MyGroupsPanel_UserControl).Name;
-            }
-            if (parameter is DelegatedGroupPanel_UserControl)
-            {
-                callSourceWindowName = (parameter as DelegatedGroupPanel_UserControl).Name;
-            }
-            AddNewTaskGroupWindow newTaskGroupWindow = new AddNewTaskGroupWindow(callSourceWindowName);
+            //if (parameter is MyGroupsPanel_UserControl)
+            //{
+            //    callSourceWindowName = (parameter as MyGroupsPanel_UserControl).Name;
+            //}
+            //if (parameter is DelegatedGroupPanel_UserControl)
+            //{
+            //    callSourceWindowName = (parameter as DelegatedGroupPanel_UserControl).Name;
+            //}
+            AddNewTaskGroupWindow newTaskGroupWindow = new AddNewTaskGroupWindow(parameter);
+            //AddNewTaskGroupWindow newTaskGroupWindow = new AddNewTaskGroupWindow(callSourceWindowName);
             SetWindowOwnerSetPositionAndShow.ShowModalWindow(newTaskGroupWindow);
         }
     }

@@ -20,6 +20,8 @@ namespace _9_07_2023_Planner.Infrastructure.Commands
 
         public override void Execute(object parameter)
         {
+
+            
             
             var mainVM = (parameter as AddNewTaskWindow).NewNoteControlTab.DataContext as MainWindowViewModel;
             var selectedGroup = (parameter as AddNewTaskWindow).TaskGroupComboBox.SelectedItem as TaskGroupTemplate;

@@ -62,22 +62,24 @@ namespace _9_07_2023_Planner.Infrastructure.Commands
                     //MessageBox.Show(listBox.Items.Count.ToString());
                     mainVM.MyGroupList.Remove(findGroup);
                     //listBox.ItemsSource = null;
-                    listBox.ItemsSource = new List<TaskGroupTemplate>(mainVM.MyGroupList);
+                    listBox.ItemsSource = new ObservableCollection<TaskGroupTemplate>(mainVM.MyGroupList);
                     //listBox.Items.Refresh();
-                    //listBox.SelectedIndex = -1;
+                    //selectedGroup = null;
+                    listBox.SelectedIndex = -1;
                 }
                 if (mainVM.DelegatedGroupList.Contains(findGroup))
                 {
                     mainVM.DelegatedGroupList.Remove(findGroup);
                     //listBox.ItemsSource = null;
-                    listBox.ItemsSource = new List<TaskGroupTemplate>(mainVM.MyGroupList);
+                    listBox.ItemsSource = new ObservableCollection<TaskGroupTemplate>(mainVM.DelegatedGroupList);
                     //listBox.Items.Refresh();
-                    //listBox.SelectedIndex = -1;
+                    //selectedGroup = null;
+                    listBox.SelectedIndex = -1;
                 }
                 
                 ////DeleteTaskGroupRequest_UserControl.Window.Hide();
                 ///
-                
+
                 #endregion
 
                 #region Сериализация
@@ -86,7 +88,7 @@ namespace _9_07_2023_Planner.Infrastructure.Commands
                 //groupList.Clear();
                 //mainVM.MyGroupList.Clear();
                 //mainVM.DelegatedGroupList.Clear();
-                mainVM.TryToDeserializeData();
+                //mainVM.TryToDeserializeData();
 
                 //var mainWindow = new MainWindow();
 
