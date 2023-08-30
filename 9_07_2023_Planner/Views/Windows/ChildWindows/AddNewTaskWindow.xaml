@@ -34,9 +34,9 @@
                         Width="60"
                         Content="OK" 
                         Foreground="White" 
-                        Margin="15,5,0,5"
-                        Command="{StaticResource addNewTaskIntoTaskListCommand}"
-                        CommandParameter="{Binding ElementName=addNewTaskWindow}"/>
+                        Margin="15,5,0,5"/>
+                <!--Command="{StaticResource addNewTaskIntoTaskListCommand}"
+                        CommandParameter="{Binding ElementName=addNewTaskWindow}"/>-->
             </StackPanel>
             <TabControl x:Name="NewNoteControlTab" Width="500" Margin="5,5,5,5">
                 <TabControl.Background>

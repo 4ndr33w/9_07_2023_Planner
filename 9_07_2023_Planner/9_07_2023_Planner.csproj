@@ -99,9 +99,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DataHandlers\DataSerializer.cs" />
+    <Compile Include="Infrastructure\Commands\AddNewTaskGroup_ShowWindowCommand.cs" />
     <Compile Include="Infrastructure\Commands\AddNewTaskIntoTaskListCommand.cs" />
     <Compile Include="Infrastructure\Commands\AddNewTask_ShowWindowComand.cs" />
     <Compile Include="Infrastructure\Commands\DeleteTaskGroup_ShowRequestWindowCommand.cs" />
+    <Compile Include="Infrastructure\Commands\MainWindowCommands\AddNewTaskGroup_ShowWindowCommand.cs" />
     <Compile Include="Infrastructure\Commands\ShowDefaultTaskListCommand.cs" />
     <Compile Include="Infrastructure\Commands\ShowTodayTasksCommand.cs" />
     <Compile Include="Infrastructure\Commands\ShowTotalTasksCommand.cs" />
@@ -128,6 +130,7 @@
     <Compile Include="Views\Components\LeftPanel\MyGroupsPanel_UserControl.xaml.cs">
       <DependentUpon>MyGroupsPanel_UserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Components\LeftPanel\TaskGroupPanel_UserControl.xaml.cs" />
     <Compile Include="Views\Components\RequestWindowComponents\DeleteTaskGroupRequest_UserControl.xaml.cs">
       <DependentUpon>DeleteTaskGroupRequest_UserControl.xaml</DependentUpon>
     </Compile>
@@ -158,8 +161,8 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Components\LeftPanel\TaskGroupPanel_UserControl.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Components\MiddlePanel\TaskPanel_UserControl.xaml">
       <SubType>Designer</SubType>
@@ -194,7 +197,6 @@
     <Compile Include="Infrastructure\Commands\Base\CommandBase.cs" />
     <Compile Include="Infrastructure\Commands\CloseApplicationCommand.cs" />
     <Compile Include="Infrastructure\Commands\DeleteTaskGroupCommand.cs" />
-    <Compile Include="Infrastructure\Commands\MainWindowCommands\AddNewTaskGroup_ShowWindowCommand.cs" />
     <Compile Include="Infrastructure\RelayCommand.cs" />
     <Compile Include="Infrastructure\SetWindowOwnerSetPositionAndShow.cs" />
     <Compile Include="Models\TaskGroupModel.cs" />
@@ -203,9 +205,6 @@
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\Components\LeftPanel\InformativeButton_UserControl.xaml.cs">
       <DependentUpon>InformativeButton_UserControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Components\LeftPanel\TaskGroupPanel_UserControl.xaml.cs">
-      <DependentUpon>TaskGroupPanel_UserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Components\MiddlePanel\TaskPanel_UserControl.xaml.cs">
       <DependentUpon>TaskPanel_UserControl.xaml</DependentUpon>

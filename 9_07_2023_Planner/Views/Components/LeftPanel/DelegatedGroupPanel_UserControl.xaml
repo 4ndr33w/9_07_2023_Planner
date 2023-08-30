@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
               xmlns:dataContext="clr-namespace:_9_07_2023_Planner.ViewModels"
-             xmlns:mainWindowCommands="clr-namespace:_9_07_2023_Planner.Infrastructure.Commands.MainWindowCommands"
+             xmlns:mainWindowCommands="clr-namespace:_9_07_2023_Planner.Infrastructure.Commands"
              xmlns:commonCommands="clr-namespace:_9_07_2023_Planner.Infrastructure.Commands"
              xmlns:local="clr-namespace:_9_07_2023_Planner.Views.Components.LeftPanel"
              mc:Ignorable="d" 

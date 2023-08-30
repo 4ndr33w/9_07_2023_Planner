@@ -2,6 +2,7 @@
 using _9_07_2023_Planner.Models.ViewPanelTemplate;
 using _9_07_2023_Planner.ViewModels;
 using _9_07_2023_Planner.Views.Components.LeftPanel;
+using _9_07_2023_Planner.Views.Windows.ChildWindows;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,13 +20,19 @@ namespace _9_07_2023_Planner.Infrastructure.Commands
         public override void Execute(object parameter)
         {
 
-            //MessageBox.Show((parameter as TaskGroupPanel_UserControl).DataContext.ToString());
-            MainWindowViewModel mainVM = new MainWindowViewModel();
-            mainVM.TaskList = new System.Collections.ObjectModel.ObservableCollection<Models.ViewPanelTemplate.TaskTemplate>(mainVM.FullTaskList);
-            //MessageBox.Show(mainVM.TaskList.Count.ToString());
-            mainVM.TodayButton.Counter = mainVM.TaskList.Where(c => c.ExpirationDate.Date == DateTime.Today).Count().ToString();
+            AddNewTaskWindow newTaskWindow = new AddNewTaskWindow();
+            //AddNewTaskGroupWindow newTaskGroupWindow = new AddNewTaskGroupWindow(callSourceWindowName);
+            SetWindowOwnerSetPositionAndShow.ShowModalWindow(newTaskWindow);
 
-            ViewRefreshMethod(mainVM.TaskList);
+
+
+            ////MessageBox.Show((parameter as TaskGroupPanel_UserControl).DataContext.ToString());
+            //MainWindowViewModel mainVM = new MainWindowViewModel();
+            //mainVM.TaskList = new System.Collections.ObjectModel.ObservableCollection<Models.ViewPanelTemplate.TaskTemplate>(mainVM.FullTaskList);
+            ////MessageBox.Show(mainVM.TaskList.Count.ToString());
+            //mainVM.TodayButton.Counter = mainVM.TaskList.Where(c => c.ExpirationDate.Date == DateTime.Today).Count().ToString();
+
+            //ViewRefreshMethod(mainVM.TaskList);
         }
 
         private void ViewRefreshMethod(ObservableCollection<TaskTemplate> taskList)
